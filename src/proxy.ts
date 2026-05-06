@@ -1,11 +1,7 @@
-import NextAuth from "next-auth";
-import { authConfig } from "@/lib/auth.config";
 import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
 
-const { auth } = NextAuth(authConfig);
-
-export const proxy = auth((req) => {
-  const isLoggedIn = !!req.auth;
+export function proxy(req: NextRequest) {
   const { pathname } = req.nextUrl;
 
   const publicPaths = ["/landing", "/demo", "/login", "/register", "/"];
@@ -14,6 +10,12 @@ export const proxy = auth((req) => {
     pathname.startsWith("/api/auth") ||
     pathname.startsWith("/_next") ||
     pathname.startsWith("/favicon");
+
+  const sessionCookie =
+    req.cookies.get("authjs.session-token") ||
+    req.cookies.get("__Secure-authjs.session-token");
+
+  const isLoggedIn = !!sessionCookie;
 
   if (!isLoggedIn && !isPublic) {
     if (pathname.startsWith("/api/")) {
@@ -27,7 +29,7 @@ export const proxy = auth((req) => {
   }
 
   return NextResponse.next();
-});
+}
 
 export const config = {
   matcher: ["/((?!_next/static|_next/image|favicon.ico|.*\\.png$).*)"],
