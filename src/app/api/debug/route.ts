@@ -2,9 +2,11 @@ import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 
 export async function GET() {
+  const secret = process.env.AUTH_SECRET ?? "";
   const checks: Record<string, string> = {
-    AUTH_SECRET: process.env.AUTH_SECRET ? "set" : "MISSING",
-    DATABASE_URL: process.env.DATABASE_URL ? process.env.DATABASE_URL.substring(0, 20) + "..." : "MISSING",
+    AUTH_SECRET_LEN: String(secret.length),
+    AUTH_SECRET_FIRST_CHAR: secret.charCodeAt(0).toString(),
+    DATABASE_URL: process.env.DATABASE_URL ? process.env.DATABASE_URL.substring(0, 25) + "..." : "MISSING",
     NODE_ENV: process.env.NODE_ENV ?? "unknown",
   };
 
