@@ -1,0 +1,106 @@
+@import "tailwindcss";
+
+@theme inline {
+  /* Navy renk paleti */
+  --color-navy: #0D1B2A;
+  --color-navy-light: #152236;
+  --color-navy-card: #1A2940;
+  --color-navy-border: #243650;
+
+  /* Gold renk paleti */
+  --color-gold: #F5A623;
+  --color-gold-hover: #E09510;
+  --color-gold-muted: #C4841C;
+
+  /* Metin renkleri */
+  --color-text-primary: #F0F4F8;
+  --color-text-secondary: #A8B5C8;
+  --color-text-muted: #6B7E96;
+
+  /* Beceri renkleri */
+  --color-skill-horen: #3B82F6;
+  --color-skill-lesen: #10B981;
+  --color-skill-schreiben: #F59E0B;
+  --color-skill-sprechen: #8B5CF6;
+  --color-skill-grammatik: #14B8A6;
+
+  /* Durum renkleri */
+  --color-success: #10B981;
+  --color-error: #EF4444;
+  --color-warning: #F59E0B;
+
+  /* Font */
+  --font-sans: var(--font-geist-sans), system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), monospace;
+}
+
+:root {
+  --background: #0D1B2A;
+  --foreground: #F0F4F8;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #152236;
+}
+::-webkit-scrollbar-thumb {
+  background: #243650;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #F5A623;
+}
+
+/* Kart animasyonu */
+.flashcard-flip {
+  perspective: 1000px;
+}
+.flashcard-inner {
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+.flashcard-inner.flipped {
+  transform: rotateY(180deg);
+}
+.flashcard-front,
+.flashcard-back {
+  backface-visibility: hidden;
+}
+.flashcard-back {
+  transform: rotateY(180deg);
+}
+
+/* Progress ring animasyonu */
+@keyframes progress-ring {
+  from { stroke-dashoffset: 283; }
+}
+
+/* Fade-in animation for lesson sections and vocab reveals */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fadeIn {
+  animation: fadeIn 0.25s ease-out both;
+}
+
+/* Table row stagger */
+@keyframes slideInRow {
+  from { opacity: 0; transform: translateX(-8px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+.animate-slideInRow {
+  animation: slideInRow 0.2s ease-out both;
+}

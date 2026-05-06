@@ -1,0 +1,183 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                  String   @id @default(cuid())
+  name                String
+  email               String   @unique
+  password            String
+  currentLevel        String   @default("A1")
+  streak              Int      @default(0)
+  totalXP             Int      @default(0)
+  role                String   @default("student")
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+
+  progress        UserProgress[]
+  vocabulary      UserVocabulary[]
+  examAttempts    UserExamAttempt[]
+  workSessions    UserWorkSession[]
+  wochenplans     UserWochenplan[]
+  notepad         UserNotepad?
+  grammarProgress UserGrammarProgress?
+  mistakes        UserMistakes?
+}
+
+model Level {
+  id          String @id @default(cuid())
+  name        String @unique
+  displayName String
+  description String
+  goalXP      Int    @default(1000)
+  goalVocab   Int    @default(500)
+  order       Int
+
+  units      Unit[]
+  vocabulary Vocabulary[]
+  mockExams  MockExam[]
+}
+
+model Unit {
+  id          String  @id @default(cuid())
+  levelId     String
+  name        String
+  description String  @default("")
+  order       Int
+  isLocked    Boolean @default(false)
+
+  level   Level    @relation(fields: [levelId], references: [id])
+  lessons Lesson[]
+}
+
+model Lesson {
+  id          String @id @default(cuid())
+  unitId      String
+  name        String
+  order       Int
+  contentType String
+  content     String @default("{}")
+
+  unit Unit @relation(fields: [unitId], references: [id])
+}
+
+model Vocabulary {
+  id              String @id @default(cuid())
+  word            String
+  meaning         String
+  exampleSentence String @default("")
+  levelId         String
+  partOfSpeech    String @default("")
+
+  level      Level            @relation(fields: [levelId], references: [id])
+  userVocabs UserVocabulary[]
+}
+
+model UserVocabulary {
+  id              String    @id @default(cuid())
+  userId          String
+  vocabularyId    String
+  confidenceLevel Float     @default(2.5)
+  interval        Int       @default(1)
+  repetitions     Int       @default(0)
+  nextReviewDate  DateTime  @default(now())
+  lastReviewedAt  DateTime?
+  learned         Boolean   @default(false)
+
+  user       User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  vocabulary Vocabulary @relation(fields: [vocabularyId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, vocabularyId])
+  @@index([nextReviewDate])
+  @@index([userId, nextReviewDate])
+}
+
+model MockExam {
+  id       String @id @default(cuid())
+  name     String
+  levelId  String
+  content  String @default("{}")
+  duration Int
+
+  level    Level             @relation(fields: [levelId], references: [id])
+  attempts UserExamAttempt[]
+}
+
+model UserExamAttempt {
+  id          String   @id @default(cuid())
+  userId      String
+  examId      String
+  score       Float
+  passed      Boolean
+  feedback    String   @default("{}")
+  attemptDate DateTime @default(now())
+
+  user User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  exam MockExam @relation(fields: [examId], references: [id], onDelete: Cascade)
+}
+
+model UserProgress {
+  id     String @id @default(cuid())
+  userId String
+  skill  String
+  score  Float  @default(0)
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, skill])
+}
+
+model UserWorkSession {
+  id            String   @id @default(cuid())
+  userId        String
+  date          DateTime @default(now())
+  minutesWorked Int
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, date])
+}
+
+model UserWochenplan {
+  id        String   @id @default(cuid())
+  userId    String
+  weekKey   String
+  data      String   @default("{}")
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, weekKey])
+}
+
+model UserNotepad {
+  id        String   @id @default(cuid())
+  userId    String   @unique
+  tabs      String   @default("[]")
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model UserGrammarProgress {
+  id        String   @id @default(cuid())
+  userId    String   @unique
+  progress  String   @default("{}")
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model UserMistakes {
+  id        String   @id @default(cuid())
+  userId    String   @unique
+  data      String   @default("[]")
+  updatedAt DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
