@@ -1,10 +1,8 @@
 import { auth } from "@/lib/auth";
 import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
 
-export async function proxy(req: NextRequest) {
-  const session = await auth();
-  const isLoggedIn = !!session?.user;
+export const proxy = auth((req) => {
+  const isLoggedIn = !!req.auth;
   const { pathname } = req.nextUrl;
 
   const publicPaths = ["/landing", "/demo", "/login", "/register", "/"];
@@ -26,7 +24,7 @@ export async function proxy(req: NextRequest) {
   }
 
   return NextResponse.next();
-}
+});
 
 export const config = {
   matcher: ["/((?!_next/static|_next/image|favicon.ico|.*\\.png$).*)"],
