@@ -5128,6 +5128,2192 @@ const B2_TEILE: HorenTeil[] = [
   },
 ];
 
+// ── C1 — Teile 1–10 ──────────────────────────────────────────────────────────
+
+const C1_TEILE: HorenTeil[] = [
+  // ── Teile 1–3: Kurztexte & Berichte (richtig/falsch) ─────────────────────
+
+  {
+    id: 1,
+    type: "ansagen",
+    typeLabel: "Akademische Kurztexte",
+    typeLabelTr: "Akademik Kısa Metinler",
+    title: "Demokratie und politischer Extremismus",
+    difficulty: 3,
+    questionFormat: "richtigfalsch",
+    instruction:
+      "Sie hören fünf kurze Texte zu politischen und gesellschaftlichen Themen auf C1-Niveau. Entscheiden Sie: Ist die Aussage richtig oder falsch?",
+    questions: [
+      {
+        id: 1,
+        shortAudio:
+          "Politischer Extremismus gedeiht besonders in Zeiten gesellschaftlicher Verunsicherung. Studien belegen, dass wirtschaftliche Prekarität, soziale Desintegration und das Gefühl mangelnder politischer Repräsentation wesentliche Treiber für die Hinwendung zu radikalen Bewegungen sind. Dabei sind es nicht ausschließlich sozioökonomisch Benachteiligte, die anfällig für extremistische Ideologien sind.",
+        question:
+          "Extremistische Anfälligkeit betrifft laut der Studie ausschließlich sozioökonomisch benachteiligte Bevölkerungsgruppen.",
+        correct: 1,
+        explanation:
+          "Falsch. Die Studie zeigt, dass nicht nur Benachteiligte anfällig sind — extremistische Ideologien können verschiedene Bevölkerungsschichten ansprechen.",
+      },
+      {
+        id: 2,
+        shortAudio:
+          "Populistische Parteien nutzen bewusst eine vereinfachende Dichotomie zwischen 'dem Volk' und 'den Eliten'. Diese Rhetorik ermöglicht es ihnen, komplexe gesellschaftliche Probleme auf vermeintlich eindeutige Ursachen zurückzuführen und sich als einzige legitime Vertreter des 'wahren Volkes' zu positionieren.",
+        question:
+          "Populistische Rhetorik vereinfacht komplexe gesellschaftliche Probleme bewusst.",
+        correct: 0,
+        explanation:
+          "Richtig. Populisten nutzen die Dichotomie 'Volk vs. Elite', um komplexe Probleme zu vereinfachen und sich als Volksvertreter zu inszenieren.",
+      },
+      {
+        id: 3,
+        shortAudio:
+          "Die sogenannte 'Mitte-Studie' der Friedrich-Ebert-Stiftung zeigt, dass autoritäre und menschenfeindliche Einstellungen keineswegs auf den politischen Rand beschränkt sind. Solche Einstellungen finden sich auch in der gesellschaftlichen Mitte — wenngleich in weniger manifester Form.",
+        question:
+          "Autoritäre Einstellungen sind laut der Mitte-Studie ausschließlich in Randgruppen der Gesellschaft verbreitet.",
+        correct: 1,
+        explanation:
+          "Falsch. Die Studie belegt, dass solche Einstellungen auch in der gesellschaftlichen Mitte — wenn auch weniger ausgeprägt — vorkommen.",
+      },
+      {
+        id: 4,
+        shortAudio:
+          "Digitale Plattformen haben die Verbreitung extremistischer Inhalte erheblich beschleunigt. Algorithmen, die auf Engagement optimieren, bevorzugen emotionale und polarisierende Inhalte gegenüber sachlichen Informationen — was als 'Outrage-Economy' bezeichnet wird.",
+        question:
+          "Soziale-Medien-Algorithmen sind so ausgerichtet, dass sie sachliche Informationen gegenüber emotionalen Inhalten bevorzugen.",
+        correct: 1,
+        explanation:
+          "Falsch. Engagement-optimierte Algorithmen fördern gerade emotionale und polarisierende Inhalte — das Gegenteil ist der Fall.",
+      },
+      {
+        id: 5,
+        shortAudio:
+          "Präventionsansätze gegen Radikalisierung setzen heute zunehmend auf Resilienzförderung statt auf reine Verbotspolitik. Medienkompetenz, kritisches Denken und die Stärkung zivilgesellschaftlicher Strukturen gelten als nachhaltigere Strategien gegen Extremismus.",
+        question:
+          "Moderne Prävention gegen Radikalisierung setzt vorrangig auf Verbotspolitik.",
+        correct: 1,
+        explanation:
+          "Falsch. Moderne Ansätze setzen auf Resilienzförderung, Medienkompetenz und Zivilgesellschaft — nicht primär auf Verbote.",
+      },
+    ],
+    xp: 70,
+  },
+
+  {
+    id: 2,
+    type: "ansagen",
+    typeLabel: "Akademische Kurztexte",
+    typeLabelTr: "Akademik Kısa Metinler",
+    title: "Neuroplastizität und lebenslanges Lernen",
+    difficulty: 3,
+    questionFormat: "richtigfalsch",
+    instruction:
+      "Sie hören fünf kurze Texte aus dem Bereich Neurowissenschaften. Entscheiden Sie: Ist die Aussage richtig oder falsch?",
+    questions: [
+      {
+        id: 1,
+        shortAudio:
+          "Lange Zeit galt das Gehirn nach der Kindheit als weitgehend statisch. Neuere Forschungen haben jedoch gezeigt, dass das Gehirn ein Leben lang plastisch bleibt — es kann neue synaptische Verbindungen bilden und bestehende verstärken oder abschwächen. Dieses Phänomen wird als Neuroplastizität bezeichnet.",
+        question:
+          "Neuere Forschungen belegen, dass das Gehirn nur in der Kindheit plastisch ist.",
+        correct: 1,
+        explanation:
+          "Falsch. Neuroplastizität ist ein lebenslanger Prozess — das Gehirn kann sich in jedem Alter strukturell verändern.",
+      },
+      {
+        id: 2,
+        shortAudio:
+          "Schlaf spielt eine entscheidende Rolle für die Konsolidierung von Gedächtnisinhalten. Während des Tiefschlafs werden tagsüber gebildete synaptische Verbindungen selektiv gestärkt oder eliminiert — ein Prozess, der als synaptische Homöostase bezeichnet wird.",
+        question:
+          "Die Konsolidierung von Gedächtnisinhalten findet laut der Forschung hauptsächlich im Wachzustand statt.",
+        correct: 1,
+        explanation:
+          "Falsch. Die Gedächtniskonsolidierung erfolgt vor allem im Schlaf — insbesondere im Tiefschlaf.",
+      },
+      {
+        id: 3,
+        shortAudio:
+          "Das Erlernen einer zweiten Sprache im Erwachsenenalter stimuliert nachweislich mehrere Hirnregionen gleichzeitig und kann den kognitiven Abbau im Alter verlangsamen. Mehrsprachigkeit gilt daher als eine Form der 'kognitiven Reserve'.",
+        question:
+          "Mehrsprachigkeit kann laut Forschung zum Schutz vor kognitivem Abbau beitragen.",
+        correct: 0,
+        explanation:
+          "Richtig. Mehrsprachigkeit gilt als kognitive Reserve und kann den altersbedingten kognitiven Abbau verlangsamen.",
+      },
+      {
+        id: 4,
+        shortAudio:
+          "Meditation und Achtsamkeitsübungen führen nachweislich zu strukturellen Veränderungen im präfrontalen Kortex — einer Region, die für Entscheidungsfindung und emotionale Regulation zuständig ist. Bereits acht Wochen regelmäßiger Meditation zeigen messbare Effekte.",
+        question:
+          "Strukturelle Gehirnveränderungen durch Meditation erfordern mindestens mehrere Jahre regelmäßiger Praxis.",
+        correct: 1,
+        explanation:
+          "Falsch. Studien zeigen, dass bereits acht Wochen regelmäßiger Meditation messbare strukturelle Veränderungen bewirken können.",
+      },
+      {
+        id: 5,
+        shortAudio:
+          "Chronischer Stress wirkt sich negativ auf den Hippocampus aus — eine für das episodische Gedächtnis zentrale Hirnstruktur. Erhöhte Kortisolspiegel können neuronale Verbindungen schwächen und langfristig das Volumen des Hippocampus reduzieren.",
+        question:
+          "Chronischer Stress stärkt laut der Forschung die für das Gedächtnis zuständigen Gehirnstrukturen.",
+        correct: 1,
+        explanation:
+          "Falsch. Chronischer Stress schädigt den Hippocampus — er schwächt neuronale Verbindungen und kann das Hippocampusvolumen reduzieren.",
+      },
+    ],
+    xp: 70,
+  },
+
+  {
+    id: 3,
+    type: "ansagen",
+    typeLabel: "Akademische Kurztexte",
+    typeLabelTr: "Akademik Kısa Metinler",
+    title: "Soziale Ungleichheit und Bildungschancen",
+    difficulty: 3,
+    questionFormat: "richtigfalsch",
+    instruction:
+      "Sie hören fünf kurze Texte zum Thema Bildungsgerechtigkeit. Entscheiden Sie: Ist die Aussage richtig oder falsch?",
+    questions: [
+      {
+        id: 1,
+        shortAudio:
+          "Deutschland gehört nach wie vor zu den OECD-Ländern, in denen der Bildungserfolg am stärksten von der sozialen Herkunft abhängt. Der sogenannte 'PISA-Schock' von zweitausend eins hat diesen Befund erstmals einer breiten Öffentlichkeit bewusst gemacht.",
+        question:
+          "In Deutschland ist der Zusammenhang zwischen sozialer Herkunft und Bildungserfolg im OECD-Vergleich besonders stark ausgeprägt.",
+        correct: 0,
+        explanation:
+          "Richtig. Deutschland weist trotz Reformen nach wie vor eine hohe soziale Selektivität im Bildungssystem auf.",
+      },
+      {
+        id: 2,
+        shortAudio:
+          "Das dreigliedrige Schulsystem in Deutschland — Hauptschule, Realschule, Gymnasium — wird von Bildungsforschern als mitverantwortlich für soziale Reproduktion kritisiert. Die frühe Selektion nach der Grundschule fixiere soziale Ungleichheiten, statt sie zu überwinden.",
+        question:
+          "Bildungsforscher loben das dreigliedrige Schulsystem für seine Förderung sozialer Durchlässigkeit.",
+        correct: 1,
+        explanation:
+          "Falsch. Das System wird gerade wegen der frühen Selektion kritisiert, da es soziale Ungleichheiten reproduziert statt abbaut.",
+      },
+      {
+        id: 3,
+        shortAudio:
+          "Ganztagsschulen gelten als vielversprechendes Instrument zur Kompensation sozialer Benachteiligung. Sie ermöglichen individuelle Förderung, die in der Herkunftsfamilie nicht geleistet werden kann. Dennoch sind sie in Deutschland noch nicht flächendeckend etabliert.",
+        question:
+          "Ganztagsschulen sind in Deutschland bereits flächendeckend eingeführt worden.",
+        correct: 1,
+        explanation:
+          "Falsch. Ganztagsschulen sind zwar im Aufbau, aber noch nicht deutschlandweit vollständig etabliert.",
+      },
+      {
+        id: 4,
+        shortAudio:
+          "Bildungsarmut ist eng mit relativer Einkommensarmut verknüpft. Kinder aus einkommensschwachen Familien haben seltener Zugang zu außerschulischer Förderung wie Nachhilfe, Musikunterricht oder Sportverein — Angeboten, die kulturelles Kapital im Sinne Bourdieus akkumulieren.",
+        question:
+          "Der Begriff 'kulturelles Kapital' im Bildungskontext geht auf den Soziologen Pierre Bourdieu zurück.",
+        correct: 0,
+        explanation:
+          "Richtig. Bourdieus Konzept des kulturellen Kapitals ist zentral für das Verständnis sozialer Reproduktion im Bildungssystem.",
+      },
+      {
+        id: 5,
+        shortAudio:
+          "Studien zeigen, dass Kinder mit Migrationshintergrund in Deutschland trotz gleicher kognitiver Fähigkeiten seltener Gymnasialempfehlungen erhalten als Kinder ohne Migrationshintergrund. Forscher sprechen von institutioneller Benachteiligung im Selektionsprozess.",
+        question:
+          "Kinder mit Migrationshintergrund erhalten in Deutschland unabhängig von kognitiven Fähigkeiten gleich häufig Gymnasialempfehlungen.",
+        correct: 1,
+        explanation:
+          "Falsch. Studien belegen eine systematische Benachteiligung von Kindern mit Migrationshintergrund bei der Schulempfehlung.",
+      },
+    ],
+    xp: 70,
+  },
+
+  // ── Teile 4–6: Gespräche & Diskussionen (MCQ) ────────────────────────────
+
+  {
+    id: 4,
+    type: "gespraeche",
+    typeLabel: "Akademisches Gespräch",
+    typeLabelTr: "Akademik Tartışma",
+    title: "KI-Ethik und gesellschaftliche Verantwortung",
+    difficulty: 3,
+    maleSpeakers: ["Prof. Richter"],
+    audioText:
+      "Moderatorin: Willkommen zu unserem Gespräch über Künstliche Intelligenz und Ethik. Ich begrüße Prof. Richter von der Universität München und Dr. Yıldız vom Ethikinstitut Berlin. Professor, beginnen Sie: Ist KI eine Bedrohung oder eine Chance? Prof. Richter: Beides, und das ist keine Ausweichung. KI ist ein Werkzeug — wie jede transformative Technologie zuvor. Die entscheidende Frage ist nicht, was KI tun kann, sondern wer über ihren Einsatz entscheidet und nach welchen Kriterien. Dr. Yıldız: Ich stimme zu, möchte aber auf einen blinden Fleck hinweisen: Algorithmen sind nie neutral. Sie reproduzieren die Vorurteile der Daten, mit denen sie trainiert wurden. Bei Kreditvergabe, Stellenbesetzung oder Strafverfolgung führt das zu messbaren Diskriminierungen. Prof. Richter: Das stimmt, aber ist das ein Argument gegen KI oder für bessere Datenqualität und Regulierung? Ich plädiere für klare Haftungsregeln und verpflichtende Transparenz bei automatisierten Entscheidungsprozessen. Dr. Yıldız: Der EU AI Act geht in diese Richtung — er klassifiziert KI-Systeme nach Risiko und verlangt für Hochrisikoanwendungen menschliche Aufsicht. Das ist ein Fortschritt. Aber Regulierung hinkt der technologischen Entwicklung immer hinterher. Prof. Richter: Deshalb brauchen wir interdisziplinäre Gremien — Ethiker, Juristen, Techniker, Soziologen — die kontinuierlich evaluieren. Und wir brauchen Bildung: KI-Kompetenz als Pflichtbestandteil in Schulen und Universitäten. Dr. Yıldız: Absolut. Das Ziel muss sein, dass Menschen KI verstehen und hinterfragen können — nicht blind vertrauen.",
+    instruction:
+      "Sie hören ein Expertengespräch über KI-Ethik. Wählen Sie die richtige Antwort.",
+    questions: [
+      {
+        id: 1,
+        question: "Welche Position vertritt Prof. Richter zur KI?",
+        options: [
+          "KI ist grundsätzlich gefährlich und sollte stark eingeschränkt werden.",
+          "KI ist ein Werkzeug, dessen Nutzung von gesellschaftlichen Entscheidungen abhängt.",
+          "KI ist neutral und braucht keine ethische Regulierung.",
+        ],
+        correct: 1,
+        explanation:
+          "'KI ist ein Werkzeug — die entscheidende Frage ist, wer über ihren Einsatz entscheidet' — Prof. Richter sieht KI weder als reine Bedrohung noch als unproblematische Chance.",
+      },
+      {
+        id: 2,
+        question: "Welchen 'blinden Fleck' nennt Dr. Yıldız?",
+        options: [
+          "KI-Systeme verbrauchen zu viel Energie.",
+          "Algorithmen reproduzieren Vorurteile der Trainingsdaten.",
+          "KI kann keine kreativen Aufgaben übernehmen.",
+        ],
+        correct: 1,
+        explanation:
+          "'Algorithmen sind nie neutral — sie reproduzieren die Vorurteile der Daten' — das ist der zentrale Kritikpunkt von Dr. Yıldız.",
+      },
+      {
+        id: 3,
+        question: "Was verlangt der EU AI Act für Hochrisikoanwendungen?",
+        options: [
+          "Ein vollständiges Verbot automatisierter Entscheidungen",
+          "Menschliche Aufsicht bei Hochrisikoanwendungen",
+          "Ausschließlich europäische Trainingsdaten",
+        ],
+        correct: 1,
+        explanation:
+          "'für Hochrisikoanwendungen menschliche Aufsicht' — der EU AI Act klassifiziert KI nach Risikoniveau und fordert Kontrolle.",
+      },
+      {
+        id: 4,
+        question: "Was schlägt Prof. Richter als Lösung vor?",
+        options: [
+          "Ein Moratorium für KI-Entwicklung bis zur vollständigen Regulierung",
+          "Interdisziplinäre Gremien und KI-Kompetenz in der Bildung",
+          "Übertragung der KI-Regulierung an private Unternehmen",
+        ],
+        correct: 1,
+        explanation:
+          "'interdisziplinäre Gremien und KI-Kompetenz als Pflichtbestandteil in Schulen' — Prof. Richter setzt auf Bildung und kollektive Governance.",
+      },
+      {
+        id: 5,
+        question: "Worin sind sich beide Gesprächspartner am Ende einig?",
+        options: [
+          "KI sollte vollständig staatlich kontrolliert werden.",
+          "Menschen müssen KI verstehen und kritisch hinterfragen können.",
+          "Die technologische Entwicklung sollte verlangsamt werden.",
+        ],
+        correct: 1,
+        explanation:
+          "'Menschen müssen KI verstehen und hinterfragen können' — beide sind sich einig, dass KI-Kompetenz in der Gesellschaft unverzichtbar ist.",
+      },
+    ],
+    xp: 70,
+  },
+
+  {
+    id: 5,
+    type: "gespraeche",
+    typeLabel: "Akademisches Gespräch",
+    typeLabelTr: "Akademik Tartışma",
+    title: "Urbanisierung und nachhaltige Stadtentwicklung",
+    difficulty: 3,
+    maleSpeakers: ["Dr. Berger"],
+    audioText:
+      "Moderatorin: Über die Hälfte der Weltbevölkerung lebt bereits in Städten — und der Anteil wächst. Wie müssen Städte der Zukunft aussehen? Dr. Berger, Sie forschen zu nachhaltiger Stadtplanung. Dr. Berger: Städte der Zukunft müssen drei Ziele gleichzeitig erfüllen: ökologische Nachhaltigkeit, soziale Gerechtigkeit und wirtschaftliche Resilienz. Das klingt nach einer Formel, ist aber ein echtes Spannungsfeld. Prof. Santos: Ich würde ergänzen: Partizipation. Die Bewohner müssen in Planungsprozesse einbezogen werden. Sonst entstehen Quartiere, die auf dem Papier nachhaltig wirken, aber von den Menschen nicht gelebt werden. Dr. Berger: Das Konzept der '15-Minuten-Stadt' — alles Notwendige fußläufig erreichbar — ist dafür ein gutes Beispiel. In Paris wird es ernsthaft verfolgt. Die Idee ist, Monofunktionalität zu überwinden: Wohn-, Arbeits- und Freizeitfunktionen sollen wieder durchmischt werden. Prof. Santos: Aber das birgt auch Risiken. Wenn begehrte Stadtteile aufgewertet werden, steigen die Mietpreise, und einkommensschwache Bewohner werden verdrängt — Gentrification. Nachhaltigkeit darf nicht für wenige, sondern muss für alle sein. Dr. Berger: Deshalb brauchen wir soziale Wohnungspolitik als integralen Bestandteil der Stadtplanung. Wien zeigt seit Jahrzehnten, dass es möglich ist, hochwertigen Wohnraum für breite Bevölkerungsschichten bereitzustellen. Prof. Santos: Das Wiener Modell ist bewundernswert, aber schwer auf wachstumsstarke Metropolen in Schwellenländern zu übertragen. Dort fehlen schlicht die institutionellen Kapazitäten und finanziellen Ressourcen.",
+    instruction:
+      "Sie hören ein Gespräch zwischen zwei Stadtplanungsexperten. Wählen Sie die richtige Antwort.",
+    questions: [
+      {
+        id: 1,
+        question: "Welche drei Ziele nennt Dr. Berger für Städte der Zukunft?",
+        options: [
+          "Technologie, Wachstum und Effizienz",
+          "Ökologische Nachhaltigkeit, soziale Gerechtigkeit und wirtschaftliche Resilienz",
+          "Dichte, Mobilität und Digitalisierung",
+        ],
+        correct: 1,
+        explanation:
+          "'ökologische Nachhaltigkeit, soziale Gerechtigkeit und wirtschaftliche Resilienz' — das sind die drei Kernziele laut Dr. Berger.",
+      },
+      {
+        id: 2,
+        question: "Was versteht man unter dem Konzept der '15-Minuten-Stadt'?",
+        options: [
+          "Städte, die mit öffentlichem Nahverkehr in 15 Minuten zu durchqueren sind",
+          "Stadtkonzept, bei dem alles Notwendige fußläufig erreichbar ist",
+          "Schnellbauprogramm für städtische Infrastruktur",
+        ],
+        correct: 1,
+        explanation:
+          "'alles Notwendige fußläufig erreichbar' — das 15-Minuten-Stadt-Konzept zielt auf gemischte Nutzung und kurze Wege.",
+      },
+      {
+        id: 3,
+        question: "Welches Risiko der Stadtaufwertung nennt Prof. Santos?",
+        options: [
+          "Rückgang des kulturellen Angebots in Innenstädten",
+          "Verdrängung einkommensschwacher Bewohner durch steigende Mieten",
+          "Überlastung des öffentlichen Nahverkehrs",
+        ],
+        correct: 1,
+        explanation:
+          "'Gentrification — einkommensschwache Bewohner werden verdrängt' — Aufwertung ohne Schutzmaßnahmen führt zu sozialer Verdrängung.",
+      },
+      {
+        id: 4,
+        question: "Welche Stadt nennt Dr. Berger als Vorbild für soziale Wohnungspolitik?",
+        options: ["Berlin", "Amsterdam", "Wien"],
+        correct: 2,
+        explanation:
+          "'Wien zeigt seit Jahrzehnten, dass es möglich ist' — Wien gilt als internationales Modell für sozialen Wohnungsbau.",
+      },
+      {
+        id: 5,
+        question: "Warum ist das Wiener Modell laut Prof. Santos schwer übertragbar?",
+        options: [
+          "Es basiert auf veralteten Baustandards.",
+          "Metropolen in Schwellenländern fehlen institutionelle Kapazitäten und Ressourcen.",
+          "Die Bevölkerungsdichte in Wien ist zu niedrig als Vergleichsgröße.",
+        ],
+        correct: 1,
+        explanation:
+          "'fehlen institutionelle Kapazitäten und finanzielle Ressourcen' — das Wiener Modell setzt voraus, was viele Schwellenlandmetropolen nicht haben.",
+      },
+    ],
+    xp: 70,
+  },
+
+  {
+    id: 6,
+    type: "gespraeche",
+    typeLabel: "Akademisches Gespräch",
+    typeLabelTr: "Akademik Tartışma",
+    title: "Kulturelles Erbe und digitale Transformation",
+    difficulty: 3,
+    maleSpeakers: ["Dr. Haas"],
+    audioText:
+      "Moderatorin: Digitalisierung verändert alles — auch den Umgang mit kulturellem Erbe. Wie positionieren sich Museen und Archive in dieser Entwicklung? Dr. Haas, Sie leiten ein Projekt zur digitalen Transformation im Kulturbereich. Dr. Haas: Die Digitalisierung bietet enorme Chancen: Millionen von Kunstwerken und Dokumenten weltweit zugänglich zu machen, Barrieren abzubauen, neue Zielgruppen zu erschließen. Aber sie verändert auch die Art, wie wir mit Kultur in Berührung kommen — und das nicht immer zum Besseren. Prof. Müller-Kirsch: Ich sehe das ambivalent. Einerseits demokratisiert Digitalisierung den Zugang zu Wissen. Andererseits besteht die Gefahr, dass das digitale Surrogat das Original ersetzt. Ein Gemälde am Bildschirm zu sehen ist nicht dasselbe wie davor zu stehen. Dr. Haas: Einverstanden. Deshalb sehe ich Digitalisierung als Ergänzung, nicht als Ersatz. Hochauflösende Scans ermöglichen zum Beispiel die wissenschaftliche Untersuchung von Werken, ohne das Original zu gefährden. Prof. Müller-Kirsch: Ein anderes Problem ist die Nachhaltigkeit digitaler Daten. Analoge Archive haben Jahrhunderte überdauert. Digitale Formate veralten innerhalb von Jahrzehnten, und Migration auf neue Systeme ist kostspielig und fehleranfällig. Dr. Haas: Das ist ein reales Problem — wir nennen es 'digitale Obsoleszenz'. Lösungsansätze sind offene Formate und redundante Speicherung. Aber es stimmt: Ohne kontinuierliche Investitionen riskieren wir den Verlust digitaler Bestände. Prof. Müller-Kirsch: Und dann ist da noch die Frage des geistigen Eigentums. Wer darf digitalisierte Werke nutzen? Viele Kulturinstitutionen sperren digitalisiertes Gemeingut hinter Paywalls — das widerspricht dem Gedanken der Zugänglichkeit.",
+    instruction:
+      "Sie hören ein Gespräch über Digitalisierung im Kulturbereich. Wählen Sie die richtige Antwort.",
+    questions: [
+      {
+        id: 1,
+        question: "Welche Chance der Digitalisierung betont Dr. Haas?",
+        options: [
+          "Kostensenkung bei der Restaurierung von Kunstwerken",
+          "Weltweite Zugänglichkeit von Kulturerbe und Erschließung neuer Zielgruppen",
+          "Vollständige Ablösung analoger Archive",
+        ],
+        correct: 1,
+        explanation:
+          "'Millionen von Kunstwerken weltweit zugänglich zu machen, neue Zielgruppen zu erschließen' — das ist die zentrale Chance laut Dr. Haas.",
+      },
+      {
+        id: 2,
+        question: "Welche Gefahr sieht Prof. Müller-Kirsch bei der Digitalisierung?",
+        options: [
+          "Überlastung der Serverinfrastruktur in Museen",
+          "Das digitale Surrogat könnte das Original ersetzen",
+          "Zu hohe Kosten für Besucher",
+        ],
+        correct: 1,
+        explanation:
+          "'das digitale Surrogat ersetzt das Original' — die Erfahrung eines Originals lässt sich durch eine digitale Kopie nicht ersetzen.",
+      },
+      {
+        id: 3,
+        question: "Was versteht man unter 'digitaler Obsoleszenz'?",
+        options: [
+          "Die Veralterung digitaler Formate, die Datenverlust riskiert",
+          "Die Überschreitung von Speicherkapazitäten in Archiven",
+          "Den Verlust analoger Kompetenz durch Digitalisierung",
+        ],
+        correct: 0,
+        explanation:
+          "'Digitale Formate veralten — wir nennen es digitale Obsoleszenz' — veraltete Formate gefährden den Erhalt digitaler Bestände.",
+      },
+      {
+        id: 4,
+        question: "Welche Lösungsansätze gegen digitale Obsoleszenz nennt Dr. Haas?",
+        options: [
+          "Rückkehr zu analogen Speichermethoden",
+          "Offene Formate und redundante Speicherung",
+          "Zentralisierung aller Daten in einer europäischen Cloud",
+        ],
+        correct: 1,
+        explanation:
+          "'offene Formate und redundante Speicherung' — diese Strategien sollen digitale Bestände langfristig sichern.",
+      },
+      {
+        id: 5,
+        question: "Welches Problem beim geistigen Eigentum kritisiert Prof. Müller-Kirsch?",
+        options: [
+          "Kulturinstitutionen verkaufen Originale statt Digitalisate.",
+          "Digitalisiertes Gemeingut wird hinter Paywalls gesperrt.",
+          "Künstler erhalten keine Vergütung für digitale Nutzung.",
+        ],
+        correct: 1,
+        explanation:
+          "'viele Kulturinstitutionen sperren digitalisiertes Gemeingut hinter Paywalls' — das widerspricht dem Demokratisierungsversprechen der Digitalisierung.",
+      },
+    ],
+    xp: 70,
+  },
+
+  // ── Teile 7–10: Interview & Vortrag (MCQ) ────────────────────────────────
+
+  {
+    id: 7,
+    type: "informationen",
+    typeLabel: "Wissenschaftlicher Vortrag",
+    typeLabelTr: "Bilimsel Konuşma",
+    title: "Sprache, Denken und Weltbild",
+    difficulty: 3,
+    audioText:
+      "Die Frage, ob Sprache das Denken formt oder umgekehrt, beschäftigt Linguisten und Philosophen seit Jahrhunderten. Die sogenannte Sapir-Whorf-Hypothese — auch als linguistischer Relativismus bekannt — behauptet, dass die Struktur einer Sprache die Wahrnehmung ihrer Sprecher beeinflusst. In ihrer starken Version besagt sie, dass Menschen ohne ein bestimmtes sprachliches Konzept dieses auch nicht denken können. Diese extreme Position gilt heute als widerlegt. Die schwache Version — dass Sprache das Denken beeinflusst, ohne es vollständig zu determinieren — ist empirisch besser gestützt. Experimente mit Farbwahrnehmung sind ein klassisches Beispiel: Sprecher von Sprachen, die blaue und grüne Farbtöne sprachlich nicht trennen, reagieren bei Unterscheidungsaufgaben langsamer als Sprecher mit zwei getrennten Wörtern. Ein anderes faszinierendes Beispiel ist das räumliche Denken. Sprecher mancher indigener Sprachen orientieren sich nicht nach relativen Richtungsangaben wie 'links' und 'rechts', sondern nach absoluten Himmelsrichtungen. Diese Sprecher haben eine überlegene absolute Raumorientierung — selbst wenn sie sich in unbekannten Umgebungen befinden. Was bedeutet das für uns? Mehrsprachigkeit bietet nicht nur kommunikative Vorteile, sondern möglicherweise auch kognitive Flexibilität: wer mehrere sprachliche Systeme beherrscht, kann die Welt aus mehreren Perspektiven wahrnehmen.",
+    instruction:
+      "Sie hören einen Vortrag über Sprache und Denken. Wählen Sie die richtige Antwort.",
+    questions: [
+      {
+        id: 1,
+        question: "Was behauptet die starke Version der Sapir-Whorf-Hypothese?",
+        options: [
+          "Denken ist vollständig unabhängig von Sprache.",
+          "Menschen können ohne sprachliches Konzept dieses Konzept nicht denken.",
+          "Alle Sprachen haben dieselbe kognitive Wirkung.",
+        ],
+        correct: 1,
+        explanation:
+          "'Menschen ohne ein bestimmtes sprachliches Konzept können dieses nicht denken' — die starke Version gilt als widerlegt.",
+      },
+      {
+        id: 2,
+        question: "Welche Version des linguistischen Relativismus ist empirisch besser gestützt?",
+        options: [
+          "Die starke Version: Sprache determiniert das Denken vollständig.",
+          "Die schwache Version: Sprache beeinflusst das Denken, ohne es zu determinieren.",
+          "Die neutrale Version: Sprache und Denken sind völlig unabhängig.",
+        ],
+        correct: 1,
+        explanation:
+          "'Die schwache Version ist empirisch besser gestützt' — Sprache beeinflusst, determiniert aber nicht das Denken.",
+      },
+      {
+        id: 3,
+        question: "Was belegen Experimente zur Farbwahrnehmung?",
+        options: [
+          "Alle Menschen nehmen Farben identisch wahr, unabhängig von ihrer Sprache.",
+          "Sprecher ohne sprachliche Trennung von Blau und Grün reagieren bei Unterscheidungsaufgaben langsamer.",
+          "Farbbegriffe haben keinen Einfluss auf kognitive Verarbeitungsgeschwindigkeit.",
+        ],
+        correct: 1,
+        explanation:
+          "'Sprecher reagieren bei Unterscheidungsaufgaben langsamer' — sprachliche Kategorien beeinflussen nachweislich die Wahrnehmungsverarbeitung.",
+      },
+      {
+        id: 4,
+        question: "Was ist das Besondere an Sprechern, die absolute statt relative Richtungsangaben nutzen?",
+        options: [
+          "Sie können schneller lesen und schreiben.",
+          "Sie haben eine überlegene absolute räumliche Orientierung.",
+          "Sie lernen Fremdsprachen leichter.",
+        ],
+        correct: 1,
+        explanation:
+          "'überlegene absolute Raumorientierung' — Sprecher mit Himmelsrichtungssystem entwickeln herausragende räumliche Fähigkeiten.",
+      },
+      {
+        id: 5,
+        question: "Welchen kognitiven Vorteil bietet Mehrsprachigkeit laut dem Vortrag?",
+        options: [
+          "Schnellere mathematische Verarbeitung",
+          "Kognitive Flexibilität durch mehrere Wahrnehmungsperspektiven",
+          "Besseres Langzeitgedächtnis für visuelle Informationen",
+        ],
+        correct: 1,
+        explanation:
+          "'kognitive Flexibilität: wer mehrere Sprachen beherrscht, kann die Welt aus mehreren Perspektiven wahrnehmen' — Mehrsprachigkeit erweitert den kognitiven Horizont.",
+      },
+    ],
+    xp: 75,
+  },
+
+  {
+    id: 8,
+    type: "informationen",
+    typeLabel: "Wissenschaftlicher Vortrag",
+    typeLabelTr: "Bilimsel Konuşma",
+    title: "Bioethik und medizinische Entscheidungen",
+    difficulty: 3,
+    audioText:
+      "Die Bioethik befasst sich mit moralischen Fragen, die durch Fortschritte in der Medizin und den Biowissenschaften entstehen. Zu den zentralen Prinzipien der medizinischen Ethik gehören Patientenautonomie, Wohltun, Schadensvermeidung und Gerechtigkeit — Grundsätze, die vom Medizinethiker Beauchamp und dem Philosophen Childress formuliert wurden. Besonders die Patientenautonomie hat in den letzten Jahrzehnten an Bedeutung gewonnen: Das Recht des Patienten, über seine eigene Behandlung informiert zu entscheiden, gilt heute als unveräußerlich. Dieses Prinzip wurde durch historische Fehlentwicklungen wie die Nürnberger Kodizes und die Deklaration von Helsinki gestärkt — Reaktionen auf schwerwiegende ethische Verstöße in der Forschungsgeschichte. Ein besonders umstrittenes Feld ist die prädiktive Genetik: Soll man wissen dürfen, ob man genetisch prädisponiert für schwere Erkrankungen ist? Und wenn ja: Wer darf diese Information einsehen? Versicherungen? Arbeitgeber? Hier kollidieren das Recht auf Wissen mit dem Recht auf Nichtwissen und dem Datenschutz. Ebenso komplex ist die Frage der aktiven Sterbehilfe. In einigen europäischen Ländern ist assistierter Suizid unter strengen Auflagen legal. In Deutschland hat das Bundesverfassungsgericht zweitausend zwanzig das allgemeine Persönlichkeitsrecht auf einen selbstbestimmten Tod anerkannt — und damit die Debatte neu entfacht.",
+    instruction:
+      "Sie hören einen Vortrag über Bioethik. Wählen Sie die richtige Antwort.",
+    questions: [
+      {
+        id: 1,
+        question: "Wer hat die vier zentralen Prinzipien der medizinischen Ethik formuliert?",
+        options: [
+          "Die Weltgesundheitsorganisation (WHO)",
+          "Beauchamp und Childress",
+          "Das Bundesverfassungsgericht",
+        ],
+        correct: 1,
+        explanation:
+          "'vom Medizinethiker Beauchamp und dem Philosophen Childress formuliert' — die vier Prinzipien sind ein Grundpfeiler moderner Medizinethik.",
+      },
+      {
+        id: 2,
+        question: "Durch welche historischen Ereignisse wurde das Prinzip der Patientenautonomie gestärkt?",
+        options: [
+          "Die Einführung der gesetzlichen Krankenversicherung",
+          "Die Nürnberger Kodizes und die Deklaration von Helsinki",
+          "Die Entwicklung der Intensivmedizin",
+        ],
+        correct: 1,
+        explanation:
+          "'Nürnberger Kodizes und Deklaration von Helsinki — Reaktionen auf ethische Verstöße' — historische Fehler haben das Recht auf informierte Einwilligung gestärkt.",
+      },
+      {
+        id: 3,
+        question: "Welches Spannungsfeld entsteht bei der prädiktiven Genetik?",
+        options: [
+          "Zwischen Forschungsinteresse und Therapiemöglichkeiten",
+          "Zwischen Recht auf Wissen, Recht auf Nichtwissen und Datenschutz",
+          "Zwischen nationaler Gesundheitspolitik und europäischem Recht",
+        ],
+        correct: 1,
+        explanation:
+          "'Recht auf Wissen kollidiert mit dem Recht auf Nichtwissen und Datenschutz' — prädiktive Genetik wirft komplexe Interessenkonflikte auf.",
+      },
+      {
+        id: 4,
+        question: "Was hat das Bundesverfassungsgericht 2020 anerkannt?",
+        options: [
+          "Das Recht auf kostenlose medizinische Versorgung",
+          "Das allgemeine Persönlichkeitsrecht auf einen selbstbestimmten Tod",
+          "Die Pflicht zur genetischen Beratung vor Behandlungsbeginn",
+        ],
+        correct: 1,
+        explanation:
+          "'allgemeines Persönlichkeitsrecht auf einen selbstbestimmten Tod' — das Bundesverfassungsgericht hat 2020 assistierten Suizid unter diesem Recht anerkannt.",
+      },
+      {
+        id: 5,
+        question: "Wer könnte laut dem Vortrag Interesse an prädiktiven Genominformationen haben?",
+        options: [
+          "Ausschließlich behandelnde Ärzte",
+          "Versicherungen und Arbeitgeber",
+          "Nur direkte Familienangehörige",
+        ],
+        correct: 1,
+        explanation:
+          "'Wer darf diese Information einsehen? Versicherungen? Arbeitgeber?' — der Vortrag thematisiert den gesellschaftlichen Missbrauch genetischer Daten.",
+      },
+    ],
+    xp: 75,
+  },
+
+  {
+    id: 9,
+    type: "informationen",
+    typeLabel: "Wissenschaftlicher Vortrag",
+    typeLabelTr: "Bilimsel Konuşma",
+    title: "Wirtschaftliche Ungleichheit und soziale Mobilität",
+    difficulty: 3,
+    audioText:
+      "Die Vermögensungleichheit in Deutschland ist im internationalen Vergleich besonders ausgeprägt. Das reichste Prozent der Bevölkerung besitzt etwa dreißig Prozent des gesamten Nettovermögens — eine Konzentration, die höher ist als in vielen anderen westeuropäischen Ländern. Gleichzeitig ist die Armutsrisikoquote — also der Anteil der Bevölkerung mit weniger als sechzig Prozent des Medianeinkommens — in den vergangenen Jahrzehnten gestiegen. Die Ökonomen sprechen von einer 'doppelten Schere': oben akkumuliert sich immer mehr Vermögen, unten wächst die relative Armut. Besonders problematisch ist dabei die geringe soziale Mobilität: In Deutschland hängt der wirtschaftliche Erfolg eines Menschen überdurchschnittlich stark von der sozialen Stellung der Eltern ab. Studien zeigen, dass es durchschnittlich sechs Generationen dauert, bis eine Familie aus dem untersten Einkommensquintil den gesellschaftlichen Durchschnitt erreicht — in den skandinavischen Ländern sind es zwei bis drei Generationen. Einige Ökonomen argumentieren, dass Ungleichheit bis zu einem gewissen Grad Innovationsanreize schafft. Kritiker entgegnen, dass extreme Ungleichheit das Vertrauen in Institutionen untergräbt, sozialen Zusammenhalt gefährdet und die politische Teilhabe benachteiligter Gruppen einschränkt. Das Konzept der 'Chancengerechtigkeit' — jeder soll die gleiche Startchance haben, unabhängig von der Herkunft — ist weitgehend Konsens. Strittig bleibt, welche politischen Instrumente geeignet sind: Erbschaftssteuerreform, Vermögenssteuer, Mindestlohnerhöhung oder verstärkte Investitionen in Bildung.",
+    instruction:
+      "Sie hören einen Vortrag über wirtschaftliche Ungleichheit. Wählen Sie die richtige Antwort.",
+    questions: [
+      {
+        id: 1,
+        question: "Wie viel Prozent des deutschen Nettovermögens besitzt das reichste Prozent der Bevölkerung?",
+        options: ["Etwa zehn Prozent", "Etwa dreißig Prozent", "Etwa fünfzig Prozent"],
+        correct: 1,
+        explanation:
+          "'das reichste Prozent besitzt etwa dreißig Prozent des Nettovermögens' — Deutschland hat eine im Westeuropavergleich hohe Vermögenskonzentration.",
+      },
+      {
+        id: 2,
+        question: "Was versteht man unter der 'doppelten Schere'?",
+        options: [
+          "Wachsende Lohnunterschiede zwischen Ost- und Westdeutschland",
+          "Oben akkumuliert sich Vermögen, unten wächst relative Armut",
+          "Die Kluft zwischen privatem und öffentlichem Sektor",
+        ],
+        correct: 1,
+        explanation:
+          "'oben akkumuliert sich Vermögen, unten wächst relative Armut' — die doppelte Schere beschreibt Polarisierung an beiden Enden der Vermögensverteilung.",
+      },
+      {
+        id: 3,
+        question: "Wie viele Generationen dauert es in Deutschland durchschnittlich, um aus dem untersten Einkommensquintil den Durchschnitt zu erreichen?",
+        options: ["Zwei bis drei Generationen", "Vier bis fünf Generationen", "Sechs Generationen"],
+        correct: 2,
+        explanation:
+          "'in Deutschland durchschnittlich sechs Generationen' — das ist deutlich mehr als in skandinavischen Ländern.",
+      },
+      {
+        id: 4,
+        question: "Welches Argument bringen Kritiker gegen extreme Ungleichheit vor?",
+        options: [
+          "Ungleichheit schaffe keine Innovationsanreize.",
+          "Extreme Ungleichheit untergräbt Institutionenvertrauen und gefährdet sozialen Zusammenhalt.",
+          "Ungleichheit führt automatisch zu wirtschaftlichem Wachstum.",
+        ],
+        correct: 1,
+        explanation:
+          "'extreme Ungleichheit untergräbt das Vertrauen in Institutionen und gefährdet sozialen Zusammenhalt' — das sind die zentralen Gegenargumente.",
+      },
+      {
+        id: 5,
+        question: "Welches Konzept gilt im Vortrag als weitgehend gesellschaftlicher Konsens?",
+        options: [
+          "Ergebnisgleichheit — alle sollen am Ende gleich viel verdienen",
+          "Chancengerechtigkeit — gleiche Startchancen unabhängig von der Herkunft",
+          "Leistungslose Einkommen sind gesellschaftlich zu verbieten",
+        ],
+        correct: 1,
+        explanation:
+          "'Chancengerechtigkeit ist weitgehend Konsens' — strittig bleibt, mit welchen Instrumenten sie erreicht werden soll.",
+      },
+    ],
+    xp: 75,
+  },
+
+  {
+    id: 10,
+    type: "informationen",
+    typeLabel: "Wissenschaftlicher Vortrag",
+    typeLabelTr: "Bilimsel Konuşma",
+    title: "Erkenntnistheorie und kritisches Denken",
+    difficulty: 3,
+    audioText:
+      "Erkenntnistheorie — auch Epistemologie genannt — ist jener Zweig der Philosophie, der sich mit der Natur, dem Ursprung und den Grenzen menschlichen Wissens befasst. Eine zentrale Frage lautet: Was können wir mit Sicherheit wissen, und wie? Der Philosoph René Descartes begann sein Projekt mit dem methodischen Zweifel: Er zweifelte an allem, woran man zweifeln kann, und gelangte zum berühmten Schluss 'Cogito ergo sum' — 'Ich denke, also bin ich.' Damit identifizierte er das denkende Selbst als einzigen unverrückbaren Ausgangspunkt. Die Aufklärung machte den menschlichen Verstand zum Maßstab aller Dinge — in deutlicher Abgrenzung zu Autoritäten wie Kirche oder Tradition. Immanuel Kant wiederum zeigte, dass das Erkennen selbst aktiv ist: Das menschliche Gehirn ordnet Sinneseindrücke durch angeborene Kategorien wie Raum, Zeit und Kausalität. Wir erkennen also nicht die Dinge an sich, sondern die Dinge, wie sie uns erscheinen. Im zwanzigsten Jahrhundert haben Karl Popper und Thomas Kuhn das Wissenschaftsverständnis revolutioniert. Popper betonte das Prinzip der Falsifizierbarkeit: Eine Theorie ist nur dann wissenschaftlich, wenn sie grundsätzlich widerlegbar ist. Kuhn hingegen zeigte, dass Wissenschaft nicht linear fortschreitet, sondern in Paradigmenwechseln: Revolutionäre neue Sichtweisen ersetzen das bisherige Weltbild. Für das alltägliche Leben bedeutet kritisches Denken: Quellen hinterfragen, kognitive Verzerrungen kennen und den eigenen Erkenntnisprozess reflektieren.",
+    instruction:
+      "Sie hören einen philosophischen Vortrag über Erkenntnistheorie. Wählen Sie die richtige Antwort.",
+    questions: [
+      {
+        id: 1,
+        question: "Was meint Descartes mit dem methodischen Zweifel?",
+        options: [
+          "Er zweifelte ausschließlich an religiösen Dogmen.",
+          "Er zweifelte an allem, woran man zweifeln kann, um einen sicheren Ausgangspunkt zu finden.",
+          "Er lehnte alle empirische Beobachtung ab.",
+        ],
+        correct: 1,
+        explanation:
+          "'Er zweifelte an allem, woran man zweifeln kann' — das methodische Zweifeln führte Descartes zum unverzichtbaren Schluss 'Cogito ergo sum'.",
+      },
+      {
+        id: 2,
+        question: "Was zeigte Immanuel Kant über den menschlichen Erkenntnisprozess?",
+        options: [
+          "Das menschliche Gehirn nimmt die Welt passiv und unvermittelt wahr.",
+          "Das Erkennen ist aktiv: Das Gehirn ordnet Eindrücke durch angeborene Kategorien.",
+          "Wahre Erkenntnis ist nur durch Sprache möglich.",
+        ],
+        correct: 1,
+        explanation:
+          "'Das Erkennen ist aktiv — angeborene Kategorien wie Raum, Zeit und Kausalität ordnen Eindrücke' — Kant zeigte, dass wir die Dinge nie 'an sich' erkennen.",
+      },
+      {
+        id: 3,
+        question: "Was ist das Prinzip der Falsifizierbarkeit nach Karl Popper?",
+        options: [
+          "Eine Theorie gilt als wissenschaftlich, wenn sie durch Experimente bestätigt wurde.",
+          "Eine Theorie ist wissenschaftlich, wenn sie grundsätzlich widerlegbar ist.",
+          "Wissenschaft beruht auf der Autorität anerkannter Experten.",
+        ],
+        correct: 1,
+        explanation:
+          "'Eine Theorie ist nur dann wissenschaftlich, wenn sie grundsätzlich widerlegbar ist' — Falsifizierbarkeit ist Poppers Abgrenzungskriterium für Wissenschaft.",
+      },
+      {
+        id: 4,
+        question: "Was versteht Thomas Kuhn unter einem 'Paradigmenwechsel'?",
+        options: [
+          "Eine schrittweise Verbesserung bestehender wissenschaftlicher Theorien",
+          "Eine revolutionäre neue Sichtweise, die das bisherige Weltbild ersetzt",
+          "Die Rückkehr zu früheren wissenschaftlichen Erkenntnissen",
+        ],
+        correct: 1,
+        explanation:
+          "'Revolutionäre neue Sichtweisen ersetzen das bisherige Weltbild' — Kuhn zeigte, dass Wissenschaft nicht linear, sondern durch Paradigmenwechsel voranschreitet.",
+      },
+      {
+        id: 5,
+        question: "Was bedeutet kritisches Denken im alltäglichen Leben laut dem Vortrag?",
+        options: [
+          "Alle etablierten Meinungen grundsätzlich ablehnen",
+          "Quellen hinterfragen, kognitive Verzerrungen kennen und den eigenen Erkenntnisprozess reflektieren",
+          "Ausschließlich auf empirische Daten vertrauen",
+        ],
+        correct: 1,
+        explanation:
+          "'Quellen hinterfragen, kognitive Verzerrungen kennen, den eigenen Erkenntnisprozess reflektieren' — das sind die drei Säulen kritischen Denkens.",
+      },
+    ],
+    xp: 75,
+  },
+
+  // ── Teile 11–15: Akademische Kurztexte (richtig/falsch) ──────────────────
+
+  {
+    id: 11,
+    type: "ansagen",
+    typeLabel: "Akademische Kurztexte",
+    typeLabelTr: "Akademik Kısa Metinler",
+    title: "Klimapolitik und internationale Abkommen",
+    difficulty: 3,
+    questionFormat: "richtigfalsch",
+    instruction:
+      "Sie hören fünf kurze Texte zur internationalen Klimapolitik. Entscheiden Sie: Ist die Aussage richtig oder falsch?",
+    questions: [
+      {
+        id: 1,
+        shortAudio:
+          "Das Pariser Abkommen von zweitausend fünfzehn verpflichtet die Unterzeichnerstaaten, die globale Erwärmung auf möglichst 1,5 Grad Celsius gegenüber dem vorindustriellen Niveau zu begrenzen. Es ist jedoch kein verbindlicher Sanktionsmechanismus vorgesehen — die Umsetzung obliegt der nationalen Eigenverantwortung.",
+        question:
+          "Das Pariser Abkommen enthält verbindliche Sanktionen für Staaten, die ihre Klimaziele verfehlen.",
+        correct: 1,
+        explanation:
+          "Falsch. Das Pariser Abkommen beruht auf nationaler Eigenverantwortung ohne verbindliche Sanktionsmechanismen.",
+      },
+      {
+        id: 2,
+        shortAudio:
+          "Der Emissionshandel ist ein marktwirtschaftliches Instrument zur CO₂-Reduktion. Unternehmen erhalten oder kaufen Zertifikate für Treibhausgasemissionen und können diese handeln. Durch eine schrittweise Verknappung der Zertifikate soll die Emissionsreduzierung wirtschaftlich attraktiv werden.",
+        question:
+          "Der Emissionshandel soll durch Marktmechanismen Anreize zur CO₂-Reduzierung schaffen.",
+        correct: 0,
+        explanation:
+          "Richtig. Die Verknappung von Zertifikaten soll wirtschaftliche Anreize zur Emissionsreduzierung setzen.",
+      },
+      {
+        id: 3,
+        shortAudio:
+          "Industrieländer haben im Rahmen der Klimaverhandlungen zugesagt, Entwicklungsländern jährlich hundert Milliarden Dollar für Klimaschutz und Klimaanpassung bereitzustellen. Dieses Ziel wurde jedoch trotz Fristsetzung mehrfach verfehlt.",
+        question:
+          "Das Ziel von 100 Milliarden Dollar jährlicher Klimafinanzierung für Entwicklungsländer wurde bislang stets vollständig erfüllt.",
+        correct: 1,
+        explanation:
+          "Falsch. Das Ziel wurde trotz Fristsetzung mehrfach verfehlt.",
+      },
+      {
+        id: 4,
+        shortAudio:
+          "Der sogenannte 'Carbon Border Adjustment Mechanism' der EU — auch CO₂-Grenzausgleichsmechanismus genannt — soll verhindern, dass Unternehmen die Produktion in Länder mit niedrigeren Klimastandards verlagern. Importeure aus Drittstaaten müssen für ihre Emissionen bezahlen, wenn ihre Heimatländer keinen vergleichbaren CO₂-Preis erheben.",
+        question:
+          "Der EU-CO₂-Grenzausgleich soll Produktionsverlagerungen in klimapolitisch schwächere Länder verhindern.",
+        correct: 0,
+        explanation:
+          "Richtig. Der Mechanismus soll 'Carbon Leakage' — also das Abwandern emissionsintensiver Produktion — verhindern.",
+      },
+      {
+        id: 5,
+        shortAudio:
+          "Klimaschutz und wirtschaftliche Entwicklung werden häufig als Gegensätze dargestellt. Neuere Studien zeigen jedoch, dass ambitionierter Klimaschutz langfristig wirtschaftlich vorteilhaft sein kann — durch Innovationen, neue Märkte für grüne Technologien und die Vermeidung von Klimaschäden.",
+        question:
+          "Klimaschutz und wirtschaftliche Entwicklung schließen sich laut neuerer Forschung grundsätzlich aus.",
+        correct: 1,
+        explanation:
+          "Falsch. Neuere Studien zeigen, dass ambitionierter Klimaschutz langfristig wirtschaftlich vorteilhaft sein kann.",
+      },
+    ],
+    xp: 70,
+  },
+
+  {
+    id: 12,
+    type: "ansagen",
+    typeLabel: "Akademische Kurztexte",
+    typeLabelTr: "Akademik Kısa Metinler",
+    title: "Künstliche Intelligenz in der Medizin",
+    difficulty: 3,
+    questionFormat: "richtigfalsch",
+    instruction:
+      "Sie hören fünf kurze Texte über KI in der Medizin. Entscheiden Sie: Ist die Aussage richtig oder falsch?",
+    questions: [
+      {
+        id: 1,
+        shortAudio:
+          "KI-Systeme erreichen bei der Erkennung bestimmter Krebsarten aus bildgebenden Verfahren mittlerweile eine Genauigkeit, die mit erfahrenen Radiologen vergleichbar oder in einigen Fällen sogar überlegen ist. Besonders bei der Früherkennung von Brustkrebs und Melanomen wurden bemerkenswerte Ergebnisse erzielt.",
+        question:
+          "KI-Systeme sind bei der Erkennung von Krebsarten aus Bildgebung in keinem Fall so präzise wie erfahrene Radiologen.",
+        correct: 1,
+        explanation:
+          "Falsch. In einigen Bereichen — wie Brustkrebs- und Melanomerkennung — übertreffen KI-Systeme bereits erfahrene Radiologen.",
+      },
+      {
+        id: 2,
+        shortAudio:
+          "Der Einsatz von KI in der Diagnostik wirft grundlegende Haftungsfragen auf. Wenn ein KI-System eine falsche Diagnose stellt, ist unklar, wer verantwortlich ist — der Arzt, der Hersteller oder das Krankenhaus. Rechtliche Rahmenbedingungen für KI-gestützte Medizinprodukte sind noch in der Entwicklung.",
+        question:
+          "Die Haftungsfragen beim Einsatz von KI in der Medizin sind in Deutschland bereits vollständig rechtlich geregelt.",
+        correct: 1,
+        explanation:
+          "Falsch. Rechtliche Rahmenbedingungen für KI-Medizinprodukte befinden sich noch in der Entwicklung.",
+      },
+      {
+        id: 3,
+        shortAudio:
+          "Prädiktive KI-Algorithmen können auf Basis von Patientendaten Krankheitsrisiken vorhersagen, bevor Symptome auftreten. Dies eröffnet Möglichkeiten für präventive Medizin, birgt aber auch Risiken: Falsch-positive Prognosen können zu unnötigen Behandlungen und psychischer Belastung führen.",
+        question:
+          "Prädiktive KI in der Medizin birgt neben Chancen auch das Risiko unnötiger Behandlungen durch Falsch-positive Prognosen.",
+        correct: 0,
+        explanation:
+          "Richtig. Falsch-positive Prognosen können zu unnötigen Eingriffen und Belastungen für Patienten führen.",
+      },
+      {
+        id: 4,
+        shortAudio:
+          "Trainingsdaten für medizinische KI-Systeme stammen häufig überwiegend aus bestimmten demografischen Gruppen. Das führt dazu, dass diese Systeme bei unterrepräsentierten Gruppen — etwa Frauen oder Menschen mit dunkler Hautfarbe — schlechtere Ergebnisse liefern können.",
+        question:
+          "Medizinische KI-Systeme sind grundsätzlich frei von demografischen Verzerrungen.",
+        correct: 1,
+        explanation:
+          "Falsch. Einseitige Trainingsdaten führen zu schlechteren Ergebnissen bei unterrepräsentierten Gruppen.",
+      },
+      {
+        id: 5,
+        shortAudio:
+          "Die Digitalisierung in der Medizin umfasst auch elektronische Patientenakten, die den Informationsaustausch zwischen Ärzten verbessern sollen. In Deutschland wird die ePA — elektronische Patientenakte — seit zweitausend vierundzwanzig schrittweise eingeführt.",
+        question:
+          "Die elektronische Patientenakte wird in Deutschland seit 2024 schrittweise eingeführt.",
+        correct: 0,
+        explanation:
+          "Richtig. Die ePA wird in Deutschland seit 2024 stufenweise für alle gesetzlich Versicherten eingeführt.",
+      },
+    ],
+    xp: 70,
+  },
+
+  {
+    id: 13,
+    type: "ansagen",
+    typeLabel: "Akademische Kurztexte",
+    typeLabelTr: "Akademik Kısa Metinler",
+    title: "Globale Migrationsbewegungen",
+    difficulty: 3,
+    questionFormat: "richtigfalsch",
+    instruction:
+      "Sie hören fünf kurze Texte zum Thema Migration. Entscheiden Sie: Ist die Aussage richtig oder falsch?",
+    questions: [
+      {
+        id: 1,
+        shortAudio:
+          "Laut Schätzungen der Vereinten Nationen lebten zu Beginn der zwanziger Jahre des einundzwanzigsten Jahrhunderts rund zweihundert achtzig Millionen Menschen außerhalb ihres Geburtslandes — das entspricht etwa dreieinhalb Prozent der Weltbevölkerung. Die Mehrheit der Migranten zieht jedoch in benachbarte Länder, nicht in westliche Industriestaaten.",
+        question:
+          "Die Mehrheit globaler Migranten wandert laut UN-Schätzungen in westliche Industriestaaten.",
+        correct: 1,
+        explanation:
+          "Falsch. Die Mehrheit der Migranten zieht in Nachbarländer, nicht primär in westliche Industriestaaten.",
+      },
+      {
+        id: 2,
+        shortAudio:
+          "Der Klimawandel gilt zunehmend als Migrationstreiber. Steigende Meeresspiegel, Dürren und extreme Wetterereignisse zwingen Menschen, ihre Heimat zu verlassen. Die Weltbank prognostiziert bis zweitausend fünfzig bis zu zweihundert Millionen Klimamigrantinnen und -migranten.",
+        question:
+          "Der Klimawandel wird laut Weltbank zu einer signifikanten Zunahme von Migrationsbewegungen führen.",
+        correct: 0,
+        explanation:
+          "Richtig. Die Weltbank erwartet bis 2050 bis zu 200 Millionen Klimamigranten weltweit.",
+      },
+      {
+        id: 3,
+        shortAudio:
+          "Rücküberweisungen — sogenannte Remittances — sind für viele Entwicklungsländer eine bedeutendere Einnahmequelle als ausländische Direktinvestitionen oder Entwicklungshilfe. Im Jahr zweitausend zwanzig überstiegen die globalen Rücküberweisungen fünfhundert Milliarden US-Dollar.",
+        question:
+          "Rücküberweisungen von Migranten sind für viele Entwicklungsländer bedeutsamer als Entwicklungshilfe.",
+        correct: 0,
+        explanation:
+          "Richtig. Remittances übersteigen in vielen Entwicklungsländern sowohl Direktinvestitionen als auch offizielle Entwicklungshilfe.",
+      },
+      {
+        id: 4,
+        shortAudio:
+          "Das Konzept des 'Brain Drain' beschreibt die Abwanderung hochqualifizierter Fachkräfte aus Entwicklungs- und Schwellenländern in reichere Staaten. Dies kann in den Herkunftsländern erhebliche Lücken in Bildung, Gesundheit und Forschung hinterlassen.",
+        question:
+          "Brain Drain bezeichnet die Abwanderung von Rentnern aus reicheren in ärmere Länder.",
+        correct: 1,
+        explanation:
+          "Falsch. Brain Drain bezeichnet die Abwanderung hochqualifizierter Fachkräfte aus ärmeren in reichere Länder.",
+      },
+      {
+        id: 5,
+        shortAudio:
+          "Integration gelingt laut sozialwissenschaftlicher Forschung am besten, wenn sie als wechselseitiger Prozess verstanden wird — nicht nur als Anpassungsleistung der Zugewanderten, sondern auch als Öffnung der Aufnahmegesellschaft. Interkulturelles Lernen und strukturelle Teilhabe sind dabei entscheidend.",
+        question:
+          "Erfolgreiche Integration erfordert laut Forschung ausschließlich Anpassungsleistungen der Eingewanderten.",
+        correct: 1,
+        explanation:
+          "Falsch. Integration ist laut Forschung ein wechselseitiger Prozess — auch die Aufnahmegesellschaft muss sich öffnen.",
+      },
+    ],
+    xp: 70,
+  },
+
+  {
+    id: 14,
+    type: "ansagen",
+    typeLabel: "Akademische Kurztexte",
+    typeLabelTr: "Akademik Kısa Metinler",
+    title: "Wertewandel in modernen Gesellschaften",
+    difficulty: 3,
+    questionFormat: "richtigfalsch",
+    instruction:
+      "Sie hören fünf kurze Texte zum gesellschaftlichen Wertewandel. Entscheiden Sie: Ist die Aussage richtig oder falsch?",
+    questions: [
+      {
+        id: 1,
+        shortAudio:
+          "Der Soziologe Ronald Inglehart beschreibt einen weltweiten Wandel von materialistischen zu postmaterialistischen Werten. Während ältere Generationen Sicherheit und Wohlstand in den Vordergrund stellen, priorisieren jüngere Generationen in entwickelten Gesellschaften zunehmend Selbstverwirklichung, Partizipation und Umweltschutz.",
+        question:
+          "Inglehart zufolge priorisieren jüngere Generationen in Wohlstandsgesellschaften zunehmend materielle Sicherheit gegenüber Selbstverwirklichung.",
+        correct: 1,
+        explanation:
+          "Falsch. Inglehart beschreibt den umgekehrten Trend: Jüngere priorisieren postmaterielle Werte wie Selbstverwirklichung und Umweltschutz.",
+      },
+      {
+        id: 2,
+        shortAudio:
+          "Die Individualisierung moderner Gesellschaften hat sowohl Vor- als auch Nachteile. Einerseits ermöglicht sie größere persönliche Freiheit und Lebensgestaltung. Andererseits kann sie zu sozialer Isolation, dem Rückgang verbindlicher Gemeinschaften und einem Verlust kollektiver Sinngebung führen.",
+        question:
+          "Individualisierung wird in der Soziologie ausschließlich als positiver gesellschaftlicher Trend bewertet.",
+        correct: 1,
+        explanation:
+          "Falsch. Individualisierung hat Schattenseiten: soziale Isolation, Rückgang von Gemeinschaftsbindungen und Sinnverlust.",
+      },
+      {
+        id: 3,
+        shortAudio:
+          "Religiöse Bindungen nehmen in westlichen Industriegesellschaften langfristig ab — ein Prozess, der als Säkularisierung bezeichnet wird. Gleichzeitig wächst weltweit die Zahl religiöser Menschen, da in bevölkerungsreichen Entwicklungsregionen hohe Religiosität mit demografischem Wachstum einhergeht.",
+        question:
+          "Weltweit nimmt die Zahl religiöser Menschen ab, weil Säkularisierung ein globaler Trend ist.",
+        correct: 1,
+        explanation:
+          "Falsch. Säkularisierung ist ein westliches Phänomen; global wächst die Zahl religiöser Menschen durch demografisches Wachstum in religiösen Regionen.",
+      },
+      {
+        id: 4,
+        shortAudio:
+          "Studien zeigen, dass Vertrauen in staatliche Institutionen — Parlamente, Gerichte, Medien — in vielen westlichen Demokratien seit den achtziger Jahren tendenziell gesunken ist. Forscher sehen darin eine Gefahr für die demokratische Legitimation.",
+        question:
+          "Das Vertrauen in staatliche Institutionen ist in westlichen Demokratien seit den 1980er Jahren gestiegen.",
+        correct: 1,
+        explanation:
+          "Falsch. Studien zeigen einen tendenziellen Rückgang des Institutionenvertrauens in westlichen Demokratien.",
+      },
+      {
+        id: 5,
+        shortAudio:
+          "Der Begriff 'Generation Z' bezeichnet die zwischen Mitte der neunziger Jahre und Anfang der zweitausend zehnerjahre Geborenen. Diese Kohorte ist die erste, die vollständig mit dem Internet aufgewachsen ist. Ihre politischen und sozialen Werte unterscheiden sich in vielen Bereichen deutlich von denen der Vorgängergenerationen.",
+        question:
+          "Die Generation Z ist die erste Kohorte, die vollständig in einer digitalen Umgebung aufgewachsen ist.",
+        correct: 0,
+        explanation:
+          "Richtig. Generation Z ist die erste Generation, für die das Internet von Kindheit an selbstverständlich war.",
+      },
+    ],
+    xp: 70,
+  },
+
+  {
+    id: 15,
+    type: "ansagen",
+    typeLabel: "Akademische Kurztexte",
+    typeLabelTr: "Akademik Kısa Metinler",
+    title: "Rente und demografischer Wandel",
+    difficulty: 3,
+    questionFormat: "richtigfalsch",
+    instruction:
+      "Sie hören fünf kurze Texte zum Thema Rente und Demografie. Entscheiden Sie: Ist die Aussage richtig oder falsch?",
+    questions: [
+      {
+        id: 1,
+        shortAudio:
+          "Das deutsche Rentensystem basiert auf dem Umlageverfahren: Die heutigen Erwerbstätigen finanzieren durch ihre Beiträge die Renten der heutigen Ruheständler. Dieses System gerät durch die alternde Bevölkerung unter Druck, da immer weniger Beitragszahler für immer mehr Rentner aufkommen müssen.",
+        question:
+          "Das deutsche Rentensystem funktioniert nach dem Kapitaldeckungsverfahren, bei dem jeder individuell für seine eigene Rente spart.",
+        correct: 1,
+        explanation:
+          "Falsch. Deutschland nutzt das Umlageverfahren — aktive Beitragszahler finanzieren direkt die aktuellen Renten.",
+      },
+      {
+        id: 2,
+        shortAudio:
+          "Das Renteneintrittsalter in Deutschland wird schrittweise auf siebenundsechzig Jahre angehoben. Kritiker bemängeln, dass körperlich belastende Berufe von dieser Regelung unverhältnismäßig stark betroffen sind, da viele Betroffene nicht bis siebenundsechzig arbeitsfähig bleiben.",
+        question:
+          "Die Anhebung des Rentenalters auf 67 Jahre wird kritisiert, weil sie Menschen in körperlich belastenden Berufen benachteiligt.",
+        correct: 0,
+        explanation:
+          "Richtig. Körperlich Beschäftigte können oft nicht bis 67 arbeiten und sind daher überproportional betroffen.",
+      },
+      {
+        id: 3,
+        shortAudio:
+          "Länder wie Schweden und die Niederlande haben ihr Rentensystem bereits stärker kapitalgedeckt und auf Nachhaltigkeit ausgerichtet. In Deutschland wird die Einführung einer staatlichen Aktienrente — ähnlich dem norwegischen Staatsfonds — diskutiert.",
+        question:
+          "Deutschland hat bereits ein vollständig kapitalgedecktes Rentensystem wie Norwegen eingeführt.",
+        correct: 1,
+        explanation:
+          "Falsch. Deutschland diskutiert noch die Einführung einer kapitalgedeckten Komponente — umgesetzt ist sie noch nicht.",
+      },
+      {
+        id: 4,
+        shortAudio:
+          "Altersarmut ist in Deutschland ein wachsendes Problem. Besonders betroffen sind Frauen, die aufgrund von Teilzeit, Kindererziehung und Pflegearbeit geringere Rentenansprüche erworben haben. Auch Langzeitarbeitslose und geringfügig Beschäftigte sind überdurchschnittlich von Altersarmut bedroht.",
+        question:
+          "Altersarmut betrifft in Deutschland überwiegend wohlhabende ältere Menschen.",
+        correct: 1,
+        explanation:
+          "Falsch. Altersarmut betrifft besonders Frauen, Langzeitarbeitslose und geringfügig Beschäftigte.",
+      },
+      {
+        id: 5,
+        shortAudio:
+          "Zuwanderung wird als ein möglicher Beitrag zur Stabilisierung des Rentensystems diskutiert. Junge Zuwanderer zahlen Beiträge in die Sozialversicherung ein und entlasten so das System. Allerdings zeigen Studien, dass der Effekt begrenzt ist und strukturelle Reformen des Rentensystems unumgänglich sind.",
+        question:
+          "Zuwanderung allein kann laut Studien das strukturelle Defizit des deutschen Rentensystems vollständig lösen.",
+        correct: 1,
+        explanation:
+          "Falsch. Zuwanderung leistet einen Beitrag, kann aber strukturelle Reformen des Rentensystems nicht ersetzen.",
+      },
+    ],
+    xp: 70,
+  },
+
+  // ── Teile 16–22: Akademische Gespräche (MCQ) ─────────────────────────────
+
+  {
+    id: 16,
+    type: "gespraeche",
+    typeLabel: "Akademisches Gespräch",
+    typeLabelTr: "Akademik Tartışma",
+    title: "Freier Wille und Determinismus",
+    difficulty: 3,
+    maleSpeakers: ["Prof. Lange"],
+    audioText:
+      "Moderatorin: Haben wir einen freien Willen, oder sind unsere Entscheidungen durch Gehirn und Umwelt determiniert? Prof. Lange, Sie sind Neurophilosoph — was sagen Sie? Prof. Lange: Das ist eine der tiefsten Fragen der Philosophie. Neurowissenschaftler wie Benjamin Libet haben gezeigt, dass Gehirnaktivität messbar vor dem bewussten Erleben einer Entscheidung beginnt. Das legt nahe, dass das Bewusstsein nicht der Ursprung, sondern möglicherweise die Beobachterin unserer Entscheidungen ist. Dr. Reyes: Ich halte diese Interpretation für zu reduktionistisch. Libet selbst hat betont, dass das Bewusstsein noch die Möglichkeit hatte, eine Handlung zu 'vetieren' — also zu stoppen. Das ist eine Form von Kontrolle. Prof. Lange: Das sogenannte 'Veto-Recht' ist interessant, aber schwach als Fundament für Willensfreiheit. Wenn selbst das Veto durch unbewusste Prozesse vorbereitet wird, worin besteht die Freiheit? Dr. Reyes: Kompatibilisten würden sagen: Freiheit bedeutet nicht Unabhängigkeit von Kausalität, sondern Handeln gemäß den eigenen Wünschen und Überzeugungen — ohne äußeren Zwang. In diesem Sinne ist Willensfreiheit mit Determinismus vereinbar. Prof. Lange: Das ist ein wichtiger Punkt. Aber dann stellt sich die Frage, wer für unsere Wünsche und Überzeugungen verantwortlich ist. Wenn sie durch Erziehung, Gene und Umwelt geformt wurden — haben wir sie dann wirklich frei gewählt? Dr. Reyes: Vielleicht ist das die falsche Frage. Moralische Verantwortung setzt keine absolute Ursprungsfreiheit voraus — sie setzt Zurechnungsfähigkeit voraus: die Fähigkeit, auf Gründe zu reagieren.",
+    instruction:
+      "Sie hören ein philosophisches Gespräch über freien Willen. Wählen Sie die richtige Antwort.",
+    questions: [
+      {
+        id: 1,
+        question: "Was haben Libets Experimente laut Prof. Lange gezeigt?",
+        options: [
+          "Das Bewusstsein initiiert Entscheidungen vor jeder Gehirnaktivität.",
+          "Gehirnaktivität beginnt messbar vor dem bewussten Erleben einer Entscheidung.",
+          "Freier Wille und Gehirnaktivität sind vollständig unabhängig.",
+        ],
+        correct: 1,
+        explanation:
+          "'Gehirnaktivität messbar vor dem bewussten Erleben' — Libet zeigte, dass das Gehirn Entscheidungen vorbereitet, bevor wir sie bewusst erleben.",
+      },
+      {
+        id: 2,
+        question: "Was versteht Dr. Reyes unter dem 'Veto-Recht' im Kontext des Willens?",
+        options: [
+          "Die Fähigkeit des Bewusstseins, eine begonnene Handlung noch zu stoppen",
+          "Das Recht, Gesetze abzulehnen",
+          "Die Fähigkeit des Unbewussten, Entscheidungen zu blockieren",
+        ],
+        correct: 0,
+        explanation:
+          "'das Bewusstsein hatte noch die Möglichkeit, eine Handlung zu vetieren' — das Veto-Recht ist eine Form bewusster Kontrolle.",
+      },
+      {
+        id: 3,
+        question: "Was verstehen Kompatibilisten unter Willensfreiheit?",
+        options: [
+          "Vollständige Unabhängigkeit von kausalen Prozessen",
+          "Handeln gemäß eigenen Wünschen ohne äußeren Zwang",
+          "Die Fähigkeit, genetische Prägungen zu überwinden",
+        ],
+        correct: 1,
+        explanation:
+          "'Freiheit bedeutet Handeln gemäß eigenen Wünschen ohne äußeren Zwang' — Kompatibilismus vereinbart Willensfreiheit mit Determinismus.",
+      },
+      {
+        id: 4,
+        question: "Welche Frage stellt Prof. Lange gegenüber dem kompatibilistischen Ansatz?",
+        options: [
+          "Ob Entscheidungen durch Sprache beeinflusst werden",
+          "Wer für unsere Wünsche und Überzeugungen verantwortlich ist, wenn sie durch Erziehung und Gene geformt wurden",
+          "Ob Gehirnforschung moralisches Urteilen ersetzt",
+        ],
+        correct: 1,
+        explanation:
+          "'Wer ist für unsere Wünsche verantwortlich, wenn sie durch Erziehung und Gene geformt wurden?' — das ist die verbleibende Herausforderung für den Kompatibilismus.",
+      },
+      {
+        id: 5,
+        question: "Welches Kriterium für moralische Verantwortung nennt Dr. Reyes?",
+        options: [
+          "Absolute Ursprungsfreiheit aller Entscheidungen",
+          "Zurechnungsfähigkeit: die Fähigkeit, auf Gründe zu reagieren",
+          "Volle Bewusstheit aller eigenen Motivationen",
+        ],
+        correct: 1,
+        explanation:
+          "'Verantwortung setzt Zurechnungsfähigkeit voraus — die Fähigkeit, auf Gründe zu reagieren' — nicht absolute Freiheit, sondern Reaktionsfähigkeit begründet Verantwortung.",
+      },
+    ],
+    xp: 70,
+  },
+
+  {
+    id: 17,
+    type: "gespraeche",
+    typeLabel: "Akademisches Gespräch",
+    typeLabelTr: "Akademik Tartışma",
+    title: "Qualitätsjournalismus im digitalen Zeitalter",
+    difficulty: 3,
+    maleSpeakers: ["Dr. Schwarz"],
+    audioText:
+      "Moderatorin: Vertrauen in Medien schwindet, Desinformation breitet sich aus — wie steht es um den Journalismus? Dr. Schwarz, Sie forschen zu Mediensoziologie. Dr. Schwarz: Der Strukturwandel der Öffentlichkeit ist enorm. Früher kontrollierten wenige Verlage den Informationszugang. Heute kann jeder publizieren — was Demokratisierung und Fragmentierung gleichzeitig bedeutet. Prof. Engel: Und Qualitätsverlust. Wenn Klicks die Werbeeinnahmen bestimmen, entstehen Anreize für reißerische Überschriften statt sachliche Analyse. Clickbait ist kein Zufall, sondern Systemlogik. Dr. Schwarz: Das stimmt, aber ich würde differenzieren: Es gibt weiterhin starken Qualitätsjournalismus — die Frage ist seine Finanzierung. Abonnementmodelle zeigen, dass Menschen bereit sind, für guten Journalismus zu zahlen. Prof. Engel: Für einen Teil des Publikums. Das Problem ist: wer bezahlt, wählt seine Medien — und bekommt tendenziell, was er bereits glaubt. Qualitätsjournalismus erreicht nicht jene, die ihn am nötigsten hätten. Dr. Schwarz: Das ist das Paradox der Informationsgesellschaft. Medienkompetenz ist entscheidend — die Fähigkeit, Quellen zu beurteilen, Fakten von Meinungen zu unterscheiden und Manipulationsversuche zu erkennen. Prof. Engel: Aber Medienkompetenz allein reicht nicht. Wir brauchen strukturelle Lösungen: Förderung öffentlich-rechtlicher Medien, Regulierung algorithmischer Empfehlungssysteme und internationale Kooperation gegen Desinformationskampagnen. Dr. Schwarz: Einverstanden. Und Transparenz: Journalisten müssen offenlegen, wie Entscheidungen getroffen werden — auch Fehler öffentlich korrigieren. Vertrauen entsteht durch Rechenschaftspflicht.",
+    instruction:
+      "Sie hören ein Gespräch über Journalismus und Medien. Wählen Sie die richtige Antwort.",
+    questions: [
+      {
+        id: 1,
+        question: "Was versteht Dr. Schwarz unter dem 'Strukturwandel der Öffentlichkeit'?",
+        options: [
+          "Die Verlagerung von Print- zu Digitalmedien ohne weitere Konsequenzen",
+          "Demokratisierung und Fragmentierung durch den offenen Zugang zu Publikation",
+          "Die Monopolisierung der Medienlandschaft durch Großkonzerne",
+        ],
+        correct: 1,
+        explanation:
+          "'Demokratisierung und Fragmentierung gleichzeitig' — der Strukturwandel bedeutet Chancen und Risiken zugleich.",
+      },
+      {
+        id: 2,
+        question: "Was meint Prof. Engel mit 'Clickbait ist Systemlogik'?",
+        options: [
+          "Clickbait ist ein technisches Problem der Suchmaschinenoptimierung.",
+          "Wenn Klicks Werbeeinnahmen bestimmen, entstehen wirtschaftliche Anreize für reißerische Inhalte.",
+          "Clickbait entsteht durch mangelnde Ausbildung von Journalisten.",
+        ],
+        correct: 1,
+        explanation:
+          "'Klicks bestimmen Werbeeinnahmen — das erzeugt Anreize für reißerische Überschriften' — Clickbait ist eine strukturelle, keine individuelle Fehlfunktion.",
+      },
+      {
+        id: 3,
+        question: "Welches Problem sieht Prof. Engel beim Abonnementmodell?",
+        options: [
+          "Es ist zu teuer für Verlage.",
+          "Qualitätsjournalismus erreicht oft nicht diejenigen, die ihn am nötigsten hätten.",
+          "Abonnenten lesen weniger als kostenlose Nutzer.",
+        ],
+        correct: 1,
+        explanation:
+          "'Qualitätsjournalismus erreicht nicht jene, die ihn am nötigsten hätten' — das Modell verstärkt bestehende Informationsungleichheiten.",
+      },
+      {
+        id: 4,
+        question: "Welche strukturellen Lösungen fordert Prof. Engel?",
+        options: [
+          "Vollständige Privatisierung öffentlich-rechtlicher Medien",
+          "Förderung öffentlich-rechtlicher Medien, Regulierung von Algorithmen, internationale Kooperation",
+          "Ausschließliche Konzentration auf Medienkompetenzbildung in Schulen",
+        ],
+        correct: 1,
+        explanation:
+          "'öffentlich-rechtliche Förderung, Algorithmenregulierung, internationale Kooperation' — drei Säulen der strukturellen Medienreform.",
+      },
+      {
+        id: 5,
+        question: "Wie entsteht laut Dr. Schwarz Vertrauen in Medien?",
+        options: [
+          "Durch prominente Journalisten und bekannte Markennamen",
+          "Durch Rechenschaftspflicht und öffentliche Fehlerkorrektur",
+          "Durch niedrige Abonnementpreise und breite Verfügbarkeit",
+        ],
+        correct: 1,
+        explanation:
+          "'Vertrauen entsteht durch Rechenschaftspflicht und öffentliche Fehlerkorrektur' — Transparenz über Entscheidungsprozesse ist entscheidend.",
+      },
+    ],
+    xp: 70,
+  },
+
+  {
+    id: 18,
+    type: "gespraeche",
+    typeLabel: "Akademisches Gespräch",
+    typeLabelTr: "Akademik Tartışma",
+    title: "Gleichstellung in der Arbeitswelt",
+    difficulty: 3,
+    maleSpeakers: ["Dr. Pfeiffer"],
+    audioText:
+      "Moderatorin: Der Gender Pay Gap ist ein häufig diskutiertes Thema. Wo stehen wir wirklich? Dr. Pfeiffer, Sie haben dazu geforscht. Dr. Pfeiffer: In Deutschland beträgt der unbereinigte Gender Pay Gap aktuell etwa achtzehn Prozent — das bedeutet, Frauen verdienen im Durchschnitt achtzehn Prozent weniger als Männer. Bereinigt man um Faktoren wie Berufsfeld, Arbeitszeit und Qualifikation, schrumpft die Lücke auf etwa sechs Prozent. Prof. Stein: Aber diese Bereinigung verdeckt das eigentliche Problem. Warum werden feminisierte Berufe schlechter bezahlt? Warum arbeiten Frauen häufiger in Teilzeit? Diese Strukturen sind nicht naturgegeben — sie sind gesellschaftlich produziert. Dr. Pfeiffer: Absolut. Das Konzept der 'Lohngerechtigkeit' muss auch Berufswertigkeiten hinterfragen: Warum verdient ein Lkw-Fahrer mehr als eine Altenpflegerin mit vergleichbarer Qualifikation? Prof. Stein: Genau. Und das Elterngeld allein reicht nicht. Solange Elternzeit überwiegend von Müttern genommen wird, reproduzieren wir die Ungleichheit. Wir brauchen echte Anreize für Väterzeit. Dr. Pfeiffer: Norwegen zeigt, dass es funktioniert. Dort nehmen fast neunzig Prozent der Väter Elternzeit — und das hat messbare Auswirkungen auf Karriereverläufe beider Elternteile. Prof. Stein: Das erfordert aber auch einen Kulturwandel in Unternehmen. Väter in Elternzeit werden noch immer mit versteckter Skepsis konfrontiert. Rechtliche Regelungen und gelebte Kultur müssen zusammenkommen. Dr. Pfeiffer: Einverstanden. Und wir dürfen nicht vergessen: Gleichstellung ist kein Nullsummenspiel. Studien zeigen, dass Unternehmen mit höherer Geschlechtervielfalt in Führungspositionen wirtschaftlich besser abschneiden.",
+    instruction:
+      "Sie hören ein Gespräch über Gleichstellung in der Arbeitswelt. Wählen Sie die richtige Antwort.",
+    questions: [
+      {
+        id: 1,
+        question: "Was beträgt der unbereinigte Gender Pay Gap in Deutschland laut Dr. Pfeiffer?",
+        options: ["Etwa sechs Prozent", "Etwa achtzehn Prozent", "Etwa dreißig Prozent"],
+        correct: 1,
+        explanation:
+          "'unbereinigte Gender Pay Gap etwa achtzehn Prozent' — nach Bereinigung um Berufsfeld und Arbeitszeit schrumpft die Lücke auf sechs Prozent.",
+      },
+      {
+        id: 2,
+        question: "Welches strukturelle Problem hinter dem Gender Pay Gap nennt Prof. Stein?",
+        options: [
+          "Frauen haben durchschnittlich niedrigere Bildungsabschlüsse.",
+          "Feminisierte Berufe werden schlechter bezahlt und Frauen arbeiten häufiger in Teilzeit.",
+          "Frauen wählen bewusst geringer bezahlte Berufe.",
+        ],
+        correct: 1,
+        explanation:
+          "'Feminisierte Berufe werden schlechter bezahlt — das ist gesellschaftlich produziert, nicht naturgegeben' — strukturelle Ungleichheiten liegen tiefer als Berufswahl.",
+      },
+      {
+        id: 3,
+        question: "Welches Beispiel nennt Dr. Pfeiffer zur Lohngerechtigkeit?",
+        options: [
+          "Ein Arzt verdient mehr als ein Ingenieur.",
+          "Ein Lkw-Fahrer verdient mehr als eine Altenpflegerin mit vergleichbarer Qualifikation.",
+          "Führungskräfte werden unabhängig vom Geschlecht gleich bezahlt.",
+        ],
+        correct: 1,
+        explanation:
+          "'Lkw-Fahrer verdient mehr als eine Altenpflegerin' — das zeigt die strukturelle Unterbewertung von Fürsorgeberufen.",
+      },
+      {
+        id: 4,
+        question: "Welches Land nennen die Gesprächspartner als Vorbild für Väterzeit?",
+        options: ["Schweden", "Norwegen", "Island"],
+        correct: 1,
+        explanation:
+          "'Norwegen — fast neunzig Prozent der Väter nehmen Elternzeit' — das hat messbare positive Effekte auf Karriereverläufe beider Elternteile.",
+      },
+      {
+        id: 5,
+        question: "Welchen wirtschaftlichen Effekt nennt Dr. Pfeiffer für Geschlechtervielfalt in Führung?",
+        options: [
+          "Unternehmen mit mehr Frauen in Führung haben höhere Lohnkosten.",
+          "Unternehmen mit höherer Geschlechtervielfalt in Führung schneiden wirtschaftlich besser ab.",
+          "Geschlechtervielfalt hat keinen messbaren wirtschaftlichen Effekt.",
+        ],
+        correct: 1,
+        explanation:
+          "'Unternehmen mit höherer Geschlechtervielfalt schneiden wirtschaftlich besser ab' — Gleichstellung ist kein Nullsummenspiel, sondern ein Vorteil.",
+      },
+    ],
+    xp: 70,
+  },
+
+  {
+    id: 19,
+    type: "gespraeche",
+    typeLabel: "Akademisches Gespräch",
+    typeLabelTr: "Akademik Tartışma",
+    title: "Naturschutz und wirtschaftliche Entwicklung",
+    difficulty: 3,
+    maleSpeakers: ["Dr. Vogt"],
+    audioText:
+      "Moderatorin: Biodiversitätsverlust ist eine der größten globalen Krisen — oft im Schatten des Klimawandels. Wie verhalten sich Naturschutz und Wirtschaft? Dr. Vogt, Sie sind Ökologe. Dr. Vogt: Die Zahlen sind alarmierend. Laut dem Weltbiodiversitätsrat IPBES sind seit 1970 die Bestände von Wirbeltieren um durchschnittlich siebenundsechzig Prozent zurückgegangen. Das ist keine abstrakte Zahl — es bedeutet den Kollaps von Ökosystemdienstleistungen, von denen unsere Wirtschaft vollständig abhängt. Prof. Hakim: Als Wirtschaftswissenschaftlerin sehe ich das Problem auch im fehlenden Preissystem. Natur hat keinen Marktpreis — deshalb wird sie ohne Hemmung ausgebeutet. Wenn wir Ökosystemleistungen bepreisen, ändern sich Anreize. Dr. Vogt: Der Dasgupta-Report hat das global aufgezeigt: unsere Wirtschaft behandelt die Natur als exogenem Faktor, nicht als das, was sie ist — das Fundament jeder Wirtschaft. Prof. Hakim: Das 'Biodiversitätsabkommen Kunming-Montreal' von zweitausend zweiundzwanzig will dreißig Prozent der Land- und Meeresfläche bis dreißig unter Schutz stellen. Das sogenannte '30x30-Ziel'. Dr. Vogt: Ein wichtiger Schritt. Aber Schutzgebiete allein reichen nicht. Wir brauchen nachhaltige Landwirtschaft, Renaturierung degradierter Flächen und den Abbau naturschädlicher Subventionen — weltweit werden noch immer Milliarden für Fischerei und Landwirtschaft ausgegeben, die direkt der Biodiversität schaden. Prof. Hakim: Und wir müssen die Länder einbeziehen, die die größte Biodiversität beherbergen — meist im Globalen Süden. Naturschutz ohne Entwicklungspolitik ist weder gerecht noch wirksam.",
+    instruction:
+      "Sie hören ein Gespräch über Naturschutz und Wirtschaft. Wählen Sie die richtige Antwort.",
+    questions: [
+      {
+        id: 1,
+        question: "Um wie viel Prozent sind Wirbeltierbestände laut IPBES seit 1970 zurückgegangen?",
+        options: ["Um dreißig Prozent", "Um fünfzig Prozent", "Um siebenundsechzig Prozent"],
+        correct: 2,
+        explanation:
+          "'siebenundsechzig Prozent Rückgang seit 1970' — der IPBES-Bericht dokumentiert den dramatischen Artenschwund.",
+      },
+      {
+        id: 2,
+        question: "Welches strukturelle Problem im Verhältnis Wirtschaft-Natur nennt Prof. Hakim?",
+        options: [
+          "Natur wird zu stark reguliert und hemmt Wirtschaftswachstum.",
+          "Natur hat keinen Marktpreis und wird deshalb ohne Hemmung ausgebeutet.",
+          "Unternehmen sind zu wenig über Biodiversitätsverluste informiert.",
+        ],
+        correct: 1,
+        explanation:
+          "'Natur hat keinen Marktpreis — deshalb wird sie ausgebeutet' — fehlende Bepreisung von Ökosystemleistungen ist das Kernproblem.",
+      },
+      {
+        id: 3,
+        question: "Was ist das '30x30-Ziel' des Kunming-Montreal-Abkommens?",
+        options: [
+          "CO₂-Emissionen bis 2030 um dreißig Prozent zu reduzieren",
+          "Dreißig Prozent der Land- und Meeresfläche bis 2030 unter Schutz zu stellen",
+          "Dreißig neue Naturschutzorganisationen bis 2030 zu gründen",
+        ],
+        correct: 1,
+        explanation:
+          "'dreißig Prozent der Land- und Meeresflächen bis dreißig unter Schutz stellen' — das ist das Kernziel des Kunming-Montreal-Abkommens.",
+      },
+      {
+        id: 4,
+        question: "Was fordert Dr. Vogt über Schutzgebiete hinaus?",
+        options: [
+          "Vollständigen Verzicht auf Landwirtschaft in sensiblen Gebieten",
+          "Nachhaltige Landwirtschaft, Renaturierung und Abbau naturschädlicher Subventionen",
+          "Privatisierung aller Naturschutzgebiete",
+        ],
+        correct: 1,
+        explanation:
+          "'nachhaltige Landwirtschaft, Renaturierung, Abbau naturschädlicher Subventionen' — Schutzgebiete allein sind keine ausreichende Strategie.",
+      },
+      {
+        id: 5,
+        question: "Welche Verknüpfung betont Prof. Hakim für wirksamen Naturschutz?",
+        options: [
+          "Naturschutz muss mit Technologiepolitik verbunden werden.",
+          "Naturschutz ohne Entwicklungspolitik ist weder gerecht noch wirksam.",
+          "Naturschutz ist ausschließlich eine nationale Aufgabe.",
+        ],
+        correct: 1,
+        explanation:
+          "'Naturschutz ohne Entwicklungspolitik ist weder gerecht noch wirksam' — der Globale Süden muss einbezogen werden.",
+      },
+    ],
+    xp: 70,
+  },
+
+  {
+    id: 20,
+    type: "gespraeche",
+    typeLabel: "Akademisches Gespräch",
+    typeLabelTr: "Akademik Tartışma",
+    title: "Überwachung und digitale Freiheit",
+    difficulty: 3,
+    maleSpeakers: ["Prof. Kern"],
+    audioText:
+      "Moderatorin: Staatliche Überwachung, Gesichtserkennung, Vorratsdatenspeicherung — wo endet legitime Sicherheit, wo beginnt Kontrolle? Prof. Kern, Sie sind Rechtswissenschaftler. Prof. Kern: Das Spannungsfeld ist verfassungsrechtlich klar: Sicherheit und Freiheit sind beide Verfassungsgüter, die abgewogen werden müssen. Massenüberwachung ohne konkreten Verdacht verletzt die Verhältnismäßigkeit — das ist der Standard des Bundesverfassungsgerichts und des Europäischen Gerichtshofs. Dr. Falk: Und praktisch wirkungslos obendrein. Massenüberwachung produziert Datenmengen, die keine Sicherheitsbehörde effektiv auswerten kann. Zielgerichtete Überwachung auf Basis konkreter Verdachtsmomente ist effektiver und grundrechtsschonender. Prof. Kern: Die Gesichtserkennung im öffentlichen Raum ist ein Sonderfall. In China wird sie flächendeckend eingesetzt — in der EU ist sie für Echtzeit-Biometrie in öffentlichen Räumen im AI Act weitgehend verboten. Dr. Falk: Wobei es Ausnahmen gibt: Terrorismusverdacht, schwere Kriminalität. Die Grenzen sind verhandelbar und politisch umkämpft. Prof. Kern: Das zeigt das grundlegende Problem: Überwachungstechnologien entwickeln sich schneller als rechtliche Rahmenbedingungen. Was heute als Ausnahme eingeführt wird, wird morgen zur Regel. Dr. Falk: Der Begriff 'function creep' beschreibt das — Technologien, die für einen Zweck eingeführt wurden, werden schrittweise für andere genutzt. Datensparsamkeit und Zweckbindung sind deshalb zentrale Datenschutzprinzipien. Prof. Kern: Und wir brauchen unabhängige Aufsichtsbehörden mit echten Durchsetzungsbefugnissen. Die DSGVO ist ein Rahmen — aber ohne effektive Kontrolle bleibt er zahnlos.",
+    instruction:
+      "Sie hören ein Gespräch über Überwachung und digitale Freiheit. Wählen Sie die richtige Antwort.",
+    questions: [
+      {
+        id: 1,
+        question: "Welchen verfassungsrechtlichen Standard nennt Prof. Kern für Überwachungsmaßnahmen?",
+        options: [
+          "Überwachung ist grundsätzlich immer erlaubt, wenn die Sicherheit bedroht ist.",
+          "Massenüberwachung ohne konkreten Verdacht verletzt die Verhältnismäßigkeit.",
+          "Sicherheitsinteressen haben immer Vorrang vor Grundrechten.",
+        ],
+        correct: 1,
+        explanation:
+          "'Massenüberwachung verletzt die Verhältnismäßigkeit' — das ist der Standard des Bundesverfassungsgerichts und EuGH.",
+      },
+      {
+        id: 2,
+        question: "Warum ist Massenüberwachung laut Dr. Falk auch praktisch problematisch?",
+        options: [
+          "Sie ist zu kostspielig für staatliche Behörden.",
+          "Sie produziert Datenmengen, die keine Sicherheitsbehörde effektiv auswerten kann.",
+          "Sie verhindert internationale Sicherheitskooperation.",
+        ],
+        correct: 1,
+        explanation:
+          "'Massenüberwachung produziert Datenmengen, die nicht effektiv ausgewertet werden können' — sie ist neben dem Grundrechtsproblem auch praktisch wirkungslos.",
+      },
+      {
+        id: 3,
+        question: "Wie regelt der EU AI Act Gesichtserkennung im öffentlichen Raum?",
+        options: [
+          "Gesichtserkennung ist in der EU vollständig verboten.",
+          "Echtzeit-Biometrie im öffentlichen Raum ist weitgehend verboten, mit Ausnahmen.",
+          "Gesichtserkennung ist unbeschränkt erlaubt.",
+        ],
+        correct: 1,
+        explanation:
+          "'Echtzeit-Biometrie in öffentlichen Räumen weitgehend verboten, mit Ausnahmen' — der EU AI Act schränkt diese Technologie stark ein.",
+      },
+      {
+        id: 4,
+        question: "Was versteht man unter 'function creep' im Kontext von Überwachungstechnologien?",
+        options: [
+          "Die technische Fehlfunktion von Überwachungssystemen",
+          "Die schrittweise Nutzung einer Technologie für Zwecke, für die sie ursprünglich nicht eingeführt wurde",
+          "Die unkontrollierte Verbreitung von Überwachungskameras",
+        ],
+        correct: 1,
+        explanation:
+          "'function creep: Technologien für einen Zweck eingeführt, schrittweise für andere genutzt' — das beschreibt die schleichende Ausweitung von Überwachung.",
+      },
+      {
+        id: 5,
+        question: "Was fordert Prof. Kern für die wirksame Umsetzung der DSGVO?",
+        options: [
+          "Strengere Strafrahmen für alle Datenschutzverstöße",
+          "Unabhängige Aufsichtsbehörden mit echten Durchsetzungsbefugnissen",
+          "Vollständige Abschaffung digitaler Dienste ohne Datensparsamkeit",
+        ],
+        correct: 1,
+        explanation:
+          "'unabhängige Aufsichtsbehörden mit echten Durchsetzungsbefugnissen' — ohne effektive Kontrolle bleibt die DSGVO zahnlos.",
+      },
+    ],
+    xp: 70,
+  },
+
+  {
+    id: 21,
+    type: "gespraeche",
+    typeLabel: "Akademisches Gespräch",
+    typeLabelTr: "Akademik Tartışma",
+    title: "Zukunft der Arbeit und Automatisierung",
+    difficulty: 3,
+    maleSpeakers: ["Prof. Maier"],
+    audioText:
+      "Moderatorin: Wird Automatisierung Massenarbeitslosigkeit auslösen, oder schafft sie neue Jobs? Prof. Maier, Wirtschaftsökonom — was sagen die Daten? Prof. Maier: Die Debatte ist alt, aber die Qualität der aktuellen Automatisierungswelle ist neu. Frühere Wellen — Industrialisierung, Computerisierung — haben primär Routinetätigkeiten automatisiert. Generative KI greift nun auch kognitive, kreative Tätigkeiten an, die man für automatisierungssicher hielt. Dr. Rios: Aber historisch hat jede Automatisierungswelle per Saldo mehr Jobs geschaffen als vernichtet. Das Produktivitätswachstum senkt Preise, erhöht Kaufkraft und schafft neue Konsumnachfrage — und damit neue Arbeit. Prof. Maier: Das ist die optimistische Lesart. Das Problem ist die Übergangsphase: Betroffene Arbeiter haben nicht automatisch die Qualifikationen für neue Jobs. Ohne aktive Umschulungspolitik entsteht strukturelle Arbeitslosigkeit. Dr. Rios: Das stimmt. Und es ist nicht egal, wer die Gewinne der Automatisierung einstreicht. Wenn Produktivitätsgewinne nur bei Kapitaleignern landen, verschärft sich Ungleichheit. Modelle wie Gewinnbeteiligung oder Besteuerung von KI-generierten Gewinnen werden diskutiert. Prof. Maier: Das Konzept einer 'Maschinensteuer' hat Bill Gates popularisiert. Die Idee: Wenn ein Roboter einen menschlichen Job ersetzt, soll das besteuert werden — um Umschulung und soziale Absicherung zu finanzieren. Dr. Rios: Konzeptionell interessant, praktisch schwer umsetzbar. Was ist ein 'Roboteräquivalent'? Wie misst man Automatisierung? Aber die grundlegende Frage — wer profitiert von der Automatisierung? — ist legitim und dringend.",
+    instruction:
+      "Sie hören ein Gespräch über Automatisierung und Arbeit. Wählen Sie die richtige Antwort.",
+    questions: [
+      {
+        id: 1,
+        question: "Was ist laut Prof. Maier das Neue an der aktuellen Automatisierungswelle?",
+        options: [
+          "Sie automatisiert ausschließlich körperliche Tätigkeiten.",
+          "Generative KI greift auch kognitive und kreative Tätigkeiten an.",
+          "Sie betrifft nur Entwicklungsländer.",
+        ],
+        correct: 1,
+        explanation:
+          "'Generative KI greift kognitive, kreative Tätigkeiten an, die man für automatisierungssicher hielt' — das ist qualitativ neu gegenüber früheren Wellen.",
+      },
+      {
+        id: 2,
+        question: "Welches historische Argument für Optimismus bringt Dr. Rios?",
+        options: [
+          "Frühere Automatisierungswellen haben keine Jobs vernichtet.",
+          "Jede Automatisierungswelle hat per Saldo mehr Jobs geschaffen als vernichtet.",
+          "KI wird keine menschlichen Tätigkeiten ersetzen können.",
+        ],
+        correct: 1,
+        explanation:
+          "'historisch hat jede Automatisierungswelle mehr Jobs geschaffen als vernichtet' — Produktivitätsgewinne erzeugen neue Konsumnachfrage.",
+      },
+      {
+        id: 3,
+        question: "Welches Problem in der Übergangsphase nennt Prof. Maier?",
+        options: [
+          "Mangelnde Investitionen in neue Technologien",
+          "Betroffene Arbeiter haben nicht automatisch die Qualifikationen für neue Jobs",
+          "Zu geringe Staatsverschuldung für Automatisierungsinvestitionen",
+        ],
+        correct: 1,
+        explanation:
+          "'Betroffene haben nicht automatisch die Qualifikationen für neue Jobs' — ohne Umschulungspolitik entsteht strukturelle Arbeitslosigkeit.",
+      },
+      {
+        id: 4,
+        question: "Welches Verteilungsproblem spricht Dr. Rios an?",
+        options: [
+          "Automatisierungsgewinne landen möglicherweise nur bei Kapitaleignern.",
+          "Staatliche Unternehmen profitieren zu stark von Automatisierung.",
+          "Arbeiter werden durch Automatisierung zu Kapitaleignern.",
+        ],
+        correct: 0,
+        explanation:
+          "'Wenn Produktivitätsgewinne nur bei Kapitaleignern landen, verschärft sich Ungleichheit' — Verteilungsfragen sind zentral.",
+      },
+      {
+        id: 5,
+        question: "Wer hat das Konzept der 'Maschinensteuer' popularisiert?",
+        options: ["Elon Musk", "Bill Gates", "Jeff Bezos"],
+        correct: 1,
+        explanation:
+          "'Bill Gates hat die Maschinensteuer popularisiert' — die Idee: Roboter, die menschliche Jobs ersetzen, sollen besteuert werden.",
+      },
+    ],
+    xp: 70,
+  },
+
+  {
+    id: 22,
+    type: "gespraeche",
+    typeLabel: "Akademisches Gespräch",
+    typeLabelTr: "Akademik Tartışma",
+    title: "Wissenschaftsethik und Forschungsintegrität",
+    difficulty: 3,
+    maleSpeakers: ["Prof. Becker"],
+    audioText:
+      "Moderatorin: Replikationskrise, Plagiate, gefälschte Daten — steht die Wissenschaft unter Druck? Prof. Becker, Wissenschaftssoziologe. Prof. Becker: Die sogenannte 'Replikationskrise' — die Tatsache, dass viele prominente Studien, vor allem in der Psychologie, sich nicht reproduzieren lassen — hat das Vertrauen erschüttert. Aber sie ist auch ein Zeichen, dass Wissenschaft sich selbst hinterfragt. Das ist grundsätzlich gesund. Dr. Gruber: Das stimmt, aber wir müssen die Ursachen ernst nehmen. Das akademische Anreizsystem ist dysfunktional: Wer viel publiziert, wird befördert. 'Publish or perish' führt zu überhasteten, nicht ausreichend replizierten Studien. Prof. Becker: Und zu selektiver Berichterstattung — sogenannte 'publication bias': Positive Ergebnisse werden veröffentlicht, negative vergraben. Das verzerrt das Gesamtbild der Wissenschaft erheblich. Dr. Gruber: Gegenmittel gibt es: Präregistrierung von Studien, Open Data, Open Access, Replikationsstudien als eigenständige Publikationsform. Diese Reformen werden zunehmend gefordert. Prof. Becker: Und Plagiatserkennungssoftware, Peer-Review-Reformen. Das Problem ist: Peer Review ist das Herzstück wissenschaftlicher Qualitätssicherung, aber selbst anfällig für Bias — wer reviewt, kennt oft die Autoren. Dr. Gruber: Deshalb plädieren viele für 'doppelt-blindes Peer Review', bei dem weder Autor noch Reviewer die Identität des jeweils anderen kennen. Studien zeigen, dass das zu gerechteren Bewertungen führt. Prof. Becker: Am Ende bleibt: Wissenschaftliche Selbstkorrektur ist langsam, aber sie funktioniert. Und Wissenschaft, die ihre Fehler öffentlich benennt, ist glaubwürdiger als eine, die sie versteckt.",
+    instruction:
+      "Sie hören ein Gespräch über Wissenschaftsethik. Wählen Sie die richtige Antwort.",
+    questions: [
+      {
+        id: 1,
+        question: "Was versteht man unter der 'Replikationskrise'?",
+        options: [
+          "Wissenschaftler veröffentlichen zu wenig Studien.",
+          "Viele prominente Studien lassen sich nicht reproduzieren.",
+          "Forschungsdaten werden häufig gestohlen.",
+        ],
+        correct: 1,
+        explanation:
+          "'Viele prominente Studien, vor allem in der Psychologie, lassen sich nicht reproduzieren' — das ist der Kern der Replikationskrise.",
+      },
+      {
+        id: 2,
+        question: "Was kritisiert Dr. Gruber am akademischen Anreizsystem?",
+        options: [
+          "'Publish or perish' führt zu überhasteten, unzureichend replizierten Studien.",
+          "Akademiker werden für internationale Kooperationen zu wenig belohnt.",
+          "Fördergelder werden ungerecht zwischen Disziplinen verteilt.",
+        ],
+        correct: 0,
+        explanation:
+          "'Publish or perish führt zu überhasteten Studien' — das Anreizsystem belohnt Quantität statt Qualität.",
+      },
+      {
+        id: 3,
+        question: "Was versteht man unter 'publication bias'?",
+        options: [
+          "Verlage bevorzugen Studien aus bestimmten Ländern.",
+          "Positive Ergebnisse werden veröffentlicht, negative werden vergraben.",
+          "Reviewers bevorzugen bekannte Autoren.",
+        ],
+        correct: 1,
+        explanation:
+          "'Positive Ergebnisse veröffentlicht, negative vergraben' — publication bias verzerrt das Gesamtbild der Wissenschaft.",
+      },
+      {
+        id: 4,
+        question: "Welche Maßnahmen nennt Dr. Gruber gegen Forschungsfehlentwicklungen?",
+        options: [
+          "Abschaffung des Peer-Review-Systems",
+          "Präregistrierung, Open Data, Open Access und Replikationsstudien",
+          "Reduzierung der Anzahl wissenschaftlicher Zeitschriften",
+        ],
+        correct: 1,
+        explanation:
+          "'Präregistrierung, Open Data, Open Access, Replikationsstudien' — diese Maßnahmen sollen Transparenz und Reproduzierbarkeit stärken.",
+      },
+      {
+        id: 5,
+        question: "Was ist der Vorteil von 'doppelt-blindem Peer Review'?",
+        options: [
+          "Es beschleunigt den Review-Prozess erheblich.",
+          "Es führt laut Studien zu gerechteren Bewertungen.",
+          "Es ermöglicht den Reviewern, häufiger zu publizieren.",
+        ],
+        correct: 1,
+        explanation:
+          "'doppelt-blindes Peer Review führt zu gerechteren Bewertungen' — wenn Reviewer und Autor anonym bleiben, wirken Vorurteile weniger stark.",
+      },
+    ],
+    xp: 70,
+  },
+
+  // ── Teile 23–30: Wissenschaftliche Vorträge (MCQ) ────────────────────────
+
+  {
+    id: 23,
+    type: "informationen",
+    typeLabel: "Wissenschaftlicher Vortrag",
+    typeLabelTr: "Bilimsel Konuşma",
+    title: "Psychologie der Entscheidungsfindung",
+    difficulty: 3,
+    audioText:
+      "Jeden Tag treffen wir Tausende von Entscheidungen — die meisten unbewusst. Die Verhaltensökonomen Daniel Kahneman und Amos Tversky haben mit ihrer Prospect Theory gezeigt, dass menschliches Entscheidungsverhalten systematisch von rationalen Modellen abweicht. Sie unterscheiden zwei Denksy­steme: System 1, das schnell, automatisch und intuitiv arbeitet, und System 2, das langsam, bewusst und analytisch vorgeht. Die meisten Entscheidungen trifft System 1 — was effizient, aber fehleranfällig ist. Besonders einflussreich ist der sogenannte 'Framing-Effekt': Dieselbe Information, unterschiedlich formuliert, führt zu verschiedenen Entscheidungen. Ein klassisches Beispiel: 'Diese Operation hat eine Überlebensrate von neunzig Prozent' klingt attraktiver als 'Diese Operation hat eine Sterblichkeitsrate von zehn Prozent' — obwohl es dieselbe Aussage ist. Der 'Ankereffekt' zeigt, dass die erste Zahl, mit der wir konfrontiert werden, alle folgenden Einschätzungen verankert — selbst wenn diese Zahl irrelevant ist. Verkäufer nutzen diesen Mechanismus bewusst: Ein Produkt, das zuerst mit fünfhundert Euro bewertet und dann auf zweihundert reduziert wird, wirkt attraktiver als eines, das von Anfang an zweihundert kostet. 'Nudging' — sanftes Schubsen — ist eine politische Anwendung dieser Erkenntnisse: Durch intelligente Voreinstellungen können Entscheidungsarchitekten Verhaltensänderungen bewirken, ohne zu zwingen. Die Voreinstellung 'Organspende: Ja' erhöht die Spendenbereitschaft signifikant — allein durch die Umkehrung der Standardoption.",
+    instruction:
+      "Sie hören einen Vortrag über Entscheidungspsychologie. Wählen Sie die richtige Antwort.",
+    questions: [
+      {
+        id: 1,
+        question: "Was beschreibt die Prospect Theory von Kahneman und Tversky?",
+        options: [
+          "Menschen treffen stets rationale Entscheidungen auf Basis vollständiger Information.",
+          "Menschliches Entscheidungsverhalten weicht systematisch von rationalen Modellen ab.",
+          "Entscheidungen werden ausschließlich von System 2 getroffen.",
+        ],
+        correct: 1,
+        explanation:
+          "'Entscheidungsverhalten weicht systematisch von rationalen Modellen ab' — die Prospect Theory beschreibt kognitive Verzerrungen.",
+      },
+      {
+        id: 2,
+        question: "Was ist System 1 im Sinne von Kahnemans Modell?",
+        options: [
+          "Das langsame, analytische Denksystem",
+          "Das schnelle, automatische, intuitive Denksystem",
+          "Das sprachbasierte, logische Denksystem",
+        ],
+        correct: 1,
+        explanation:
+          "'System 1 — schnell, automatisch, intuitiv' — es trifft die meisten Entscheidungen, ist aber fehleranfällig.",
+      },
+      {
+        id: 3,
+        question: "Was zeigt der 'Framing-Effekt'?",
+        options: [
+          "Entscheidungen hängen ausschließlich vom Inhalt einer Information ab.",
+          "Dieselbe Information führt je nach Formulierung zu verschiedenen Entscheidungen.",
+          "Menschen ignorieren statistische Informationen bei medizinischen Entscheidungen.",
+        ],
+        correct: 1,
+        explanation:
+          "'Dieselbe Information, unterschiedlich formuliert, führt zu verschiedenen Entscheidungen' — der Rahmen beeinflusst die Wahrnehmung.",
+      },
+      {
+        id: 4,
+        question: "Wie nutzen Verkäufer laut dem Vortrag den Ankereffekt?",
+        options: [
+          "Sie zeigen immer zuerst das günstigste Produkt.",
+          "Sie bewerten ein Produkt zuerst hoch, um die reduzierte Zahl attraktiver wirken zu lassen.",
+          "Sie verstecken den ursprünglichen Preis vollständig.",
+        ],
+        correct: 1,
+        explanation:
+          "'Zuerst 500 Euro, dann auf 200 reduziert' — der hohe Ankerpreis macht die Reduktion attraktiver als ein von Anfang an günstiges Produkt.",
+      },
+      {
+        id: 5,
+        question: "Wie funktioniert 'Nudging' bei der Organspende?",
+        options: [
+          "Organspende wird gesetzlich verpflichtend gemacht.",
+          "Die Voreinstellung 'Ja' zur Organspende erhöht die Spendenbereitschaft signifikant.",
+          "Bürger werden durch finanzielle Anreize zur Organspende motiviert.",
+        ],
+        correct: 1,
+        explanation:
+          "'Voreinstellung Ja erhöht die Spendenbereitschaft' — Nudging nutzt Standardoptionen als sanften Anstoß ohne Zwang.",
+      },
+    ],
+    xp: 75,
+  },
+
+  {
+    id: 24,
+    type: "informationen",
+    typeLabel: "Wissenschaftlicher Vortrag",
+    typeLabelTr: "Bilimsel Konuşma",
+    title: "Soziologie der Religion in der Moderne",
+    difficulty: 3,
+    audioText:
+      "Die Frage, ob Modernisierung zwingend zur Säkularisierung führt, war lange Zeit ein Dogma der Soziologie. Max Weber beschrieb die Moderne als 'Entzauberung der Welt' — eine Ablösung religiöser Weltbilder durch rationale, wissenschaftliche Erklärungen. Dieser Säkularisierungsthese wurde jedoch zunehmend widersprochen. Der Soziologe José Casanova prägte den Begriff der 'Deprivatisierung' der Religion: Entgegen der Erwartung, dass Religion ins Private zurückgedrängt wird, behauptet sie sich zunehmend im öffentlichen Raum — durch religiöse soziale Bewegungen, politische Parteien und transnationale Netzwerke. Das Paradox der Gegenwart: In westlichen Gesellschaften nimmt institutionelle Religiosität ab — Kirchenmitgliedschaft, Gottesdienstbesuch —, während gleichzeitig eine diffuse Spiritualität wächst. Begriffe wie 'Spirituality without religion' oder 'believing without belonging' beschreiben diesen Trend. Andererseits erlebt religiöser Fundamentalismus weltweit eine Renaissance — als Reaktion auf Globalisierung, Modernisierung und das Gefühl kultureller Bedrohung. Religiöse Identität wird zur Ressource politischer Mobilisierung. Die Religionssoziologin Grace Davie unterscheidet zwischen 'Believing' und 'Belonging': Man kann an Gott glauben, ohne einer Gemeinschaft anzugehören — und umgekehrt Kirchenmitglied sein, ohne zu glauben. Beides entkoppelt sich in modernen Gesellschaften zunehmend.",
+    instruction:
+      "Sie hören einen Vortrag über Religion und Moderne. Wählen Sie die richtige Antwort.",
+    questions: [
+      {
+        id: 1,
+        question: "Was meinte Max Weber mit der 'Entzauberung der Welt'?",
+        options: [
+          "Die Zerstörung kultureller Traditionen durch Industrialisierung",
+          "Die Ablösung religiöser Weltbilder durch rationale, wissenschaftliche Erklärungen",
+          "Den Rückgang von Magie und Aberglauben in der Moderne",
+        ],
+        correct: 1,
+        explanation:
+          "'Ablösung religiöser Weltbilder durch rationale Erklärungen' — Webers 'Entzauberung' beschreibt den Rationalisierungsprozess der Moderne.",
+      },
+      {
+        id: 2,
+        question: "Was bedeutet 'Deprivatisierung der Religion' nach Casanova?",
+        options: [
+          "Religion zieht sich vollständig aus dem öffentlichen Leben zurück.",
+          "Religion behauptet sich entgegen der Erwartung zunehmend im öffentlichen Raum.",
+          "Religiöse Institutionen werden privatisiert.",
+        ],
+        correct: 1,
+        explanation:
+          "'Religion behauptet sich im öffentlichen Raum' — Casanova zeigt, dass Religion nicht einfach ins Private zurückgedrängt wird.",
+      },
+      {
+        id: 3,
+        question: "Was beschreibt der Begriff 'believing without belonging'?",
+        options: [
+          "Menschen glauben an Gott, ohne einer religiösen Gemeinschaft anzugehören.",
+          "Kirchenmitglieder haben keine persönlichen religiösen Überzeugungen mehr.",
+          "Spiritualität ohne Glauben an ein höheres Wesen.",
+        ],
+        correct: 0,
+        explanation:
+          "'believing without belonging' — man kann glauben, ohne einer Kirche anzugehören; Glaube und institutionelle Zugehörigkeit entkoppeln sich.",
+      },
+      {
+        id: 4,
+        question: "Als Reaktion auf was erlebt religiöser Fundamentalismus laut dem Vortrag eine Renaissance?",
+        options: [
+          "Als Reaktion auf den technologischen Rückstand bestimmter Regionen",
+          "Als Reaktion auf Globalisierung, Modernisierung und das Gefühl kultureller Bedrohung",
+          "Als Folge zunehmender Bildungsungleichheit",
+        ],
+        correct: 1,
+        explanation:
+          "'Reaktion auf Globalisierung, Modernisierung, Gefühl kultureller Bedrohung' — Fundamentalismus ist eine Gegenreaktion auf Modernisierungsprozesse.",
+      },
+      {
+        id: 5,
+        question: "Welche Unterscheidung trifft Grace Davie?",
+        options: [
+          "Zwischen öffentlicher und privater Religiosität",
+          "Zwischen 'Believing' und 'Belonging' als entkoppelten Dimensionen",
+          "Zwischen westlicher und östlicher Religiosität",
+        ],
+        correct: 1,
+        explanation:
+          "'Believing und Belonging entkoppeln sich' — Glauben und institutionelle Zugehörigkeit werden in modernen Gesellschaften immer unabhängiger.",
+      },
+    ],
+    xp: 75,
+  },
+
+  {
+    id: 25,
+    type: "informationen",
+    typeLabel: "Wissenschaftlicher Vortrag",
+    typeLabelTr: "Bilimsel Konuşma",
+    title: "Geschichte und Zukunft der Europäischen Union",
+    difficulty: 3,
+    audioText:
+      "Die Europäische Union ist das ambitionierteste politische Integrationsprojekt der Geschichte. Entstanden aus den Trümmern des Zweiten Weltkriegs mit dem Ziel, einen weiteren europäischen Krieg unmöglich zu machen, hat sie sich von einer Wirtschaftsgemeinschaft zur politischen Union weiterentwickelt — wenngleich dieser Prozess unvollständig und umstritten bleibt. Der Binnenmarkt mit freiem Waren-, Dienstleistungs-, Kapital- und Personenverkehr — die sogenannten vier Grundfreiheiten — gilt als größter wirtschaftlicher Erfolg. Weniger klar ist die demokratische Legitimation: Das Europäische Parlament wird direkt gewählt, hat aber geringere Gesetzgebungskompetenzen als nationale Parlamente. Der sogenannte 'Demokratiedefizit' ist ein anhaltender Kritikpunkt. Krisen haben die EU geprägt: die Eurokrise ab zweitausend zehn, die Flüchtlingskrise ab zweitausend fünfzehn, der Brexit — der erste Austritt eines Mitgliedsstaats —, die Corona-Pandemie und der russische Angriff auf die Ukraine. Jede Krise hat die EU verändert: Sie hat Solidarität erzwungen, aber auch Fliehkräfte offenbart. Die Frage nach der Finalität der EU — Bundesstaat, Staatenbund oder hybrides Gebilde — ist nicht entschieden. Föderalisten sehen in weiterer Integration die Antwort auf globale Herausforderungen. Euroskeptiker betonen die Notwendigkeit, Souveränität an Nationalstaaten zurückzugeben. Die EU steht vor der Aufgabe, handlungsfähig, demokratisch und gerecht zugleich zu sein — kein leichtes Gleichgewicht.",
+    instruction:
+      "Sie hören einen Vortrag über die Europäische Union. Wählen Sie die richtige Antwort.",
+    questions: [
+      {
+        id: 1,
+        question: "Mit welchem ursprünglichen Ziel wurde die europäische Integration begonnen?",
+        options: [
+          "Schaffung eines gemeinsamen Militärbündnisses",
+          "Verhinderung eines weiteren europäischen Krieges",
+          "Entwicklung einer gemeinsamen europäischen Sprache",
+        ],
+        correct: 1,
+        explanation:
+          "'Ziel: einen weiteren europäischen Krieg unmöglich zu machen' — die europäische Integration entstand als Friedensprojekt nach 1945.",
+      },
+      {
+        id: 2,
+        question: "Was sind die vier Grundfreiheiten des EU-Binnenmarkts?",
+        options: [
+          "Freier Waren-, Dienstleistungs-, Kapital- und Personenverkehr",
+          "Freie Meinungsäußerung, Religionsfreiheit, Versammlungsfreiheit und Wahlrecht",
+          "Reisefreiheit, Niederlassungsfreiheit, Studienfreiheit und Arbeitsfreiheit",
+        ],
+        correct: 0,
+        explanation:
+          "'freier Waren-, Dienstleistungs-, Kapital- und Personenverkehr' — das sind die vier Grundfreiheiten des europäischen Binnenmarkts.",
+      },
+      {
+        id: 3,
+        question: "Was meint der Begriff 'Demokratiedefizit' in der EU?",
+        options: [
+          "Mitgliedstaaten verstoßen systematisch gegen demokratische Grundsätze.",
+          "Das direkt gewählte Europäische Parlament hat geringere Kompetenzen als nationale Parlamente.",
+          "EU-Bürger dürfen nicht an Europawahlen teilnehmen.",
+        ],
+        correct: 1,
+        explanation:
+          "'Das Europäische Parlament hat geringere Kompetenzen als nationale Parlamente' — das Demokratiedefizit ist ein strukturelles Kritikproblem.",
+      },
+      {
+        id: 4,
+        question: "Welches Ereignis war laut dem Vortrag der erste Austritt eines EU-Mitgliedsstaats?",
+        options: ["Der Grexit", "Der Brexit", "Der Öxit"],
+        correct: 1,
+        explanation:
+          "'der Brexit — der erste Austritt eines Mitgliedsstaats' — Großbritannien verließ 2020 als erstes Land die EU.",
+      },
+      {
+        id: 5,
+        question: "Welche offene Frage stellt der Vortrag zur Zukunft der EU?",
+        options: [
+          "Ob die EU zu einer militärischen Supermacht werden soll",
+          "Ob die EU Bundesstaat, Staatenbund oder hybrides Gebilde sein wird",
+          "Ob der Euro als gemeinsame Währung aufgegeben werden soll",
+        ],
+        correct: 1,
+        explanation:
+          "'Bundesstaat, Staatenbund oder hybrides Gebilde — die Finalität der EU ist nicht entschieden' — das ist die fundamentale offene Verfassungsfrage.",
+      },
+    ],
+    xp: 75,
+  },
+
+  {
+    id: 26,
+    type: "informationen",
+    typeLabel: "Wissenschaftlicher Vortrag",
+    typeLabelTr: "Bilimsel Konuşma",
+    title: "Quantencomputing und gesellschaftliche Konsequenzen",
+    difficulty: 3,
+    audioText:
+      "Quantencomputer nutzen Prinzipien der Quantenmechanik — Superposition und Verschränkung —, um Berechnungen durchzuführen, die klassische Computer an ihre Grenzen bringen oder unmöglich machen. Während ein klassischer Bit entweder 0 oder 1 ist, kann ein Qubit dank Superposition gleichzeitig 0 und 1 sein — was exponentielle Rechenleistung für bestimmte Aufgaben ermöglicht. Praktische Quantencomputer sind noch in der Entwicklung, aber Meilensteine wie 'Quantum Supremacy' — die Demonstration von Rechenoperationen, die kein klassischer Computer in annehmbarer Zeit lösen kann — sind bereits erreicht. Die gesellschaftliche Relevanz ist enorm: Quantencomputer könnten die heutigen Verschlüsselungsstandards brechen, auf denen das gesamte digitale Finanzsystem, die Kommunikation und die Sicherheitsarchitektur beruhen. Das nennt man die 'kryptographische Bedrohung'. Als Reaktion entwickelt die Fachwelt 'Post-Quanten-Kryptographie' — Verschlüsselungsverfahren, die auch gegen Quantenangriffe resistent sind. Gleichzeitig bieten Quantencomputer Chancen: in der Medikamentenentwicklung können molekulare Simulationen revolutioniert werden. In der Logistik, dem Finanzwesen und der Materialforschung eröffnen sich neue Optimierungsmöglichkeiten. Wer als Erster leistungsfähige Quantencomputer betreibt, wird einen strategischen Vorteil haben — weshalb Quantencomputing auch ein geopolitisches Wettrennen ist.",
+    instruction:
+      "Sie hören einen Vortrag über Quantencomputing. Wählen Sie die richtige Antwort.",
+    questions: [
+      {
+        id: 1,
+        question: "Was ermöglicht das Prinzip der Superposition beim Qubit?",
+        options: [
+          "Ein Qubit kann nur den Wert 1 annehmen.",
+          "Ein Qubit kann dank Superposition gleichzeitig 0 und 1 sein.",
+          "Ein Qubit arbeitet doppelt so schnell wie ein klassisches Bit.",
+        ],
+        correct: 1,
+        explanation:
+          "'Qubit kann dank Superposition gleichzeitig 0 und 1 sein' — das ermöglicht exponentielle Rechenleistungssteigerung für bestimmte Aufgaben.",
+      },
+      {
+        id: 2,
+        question: "Was bezeichnet 'Quantum Supremacy'?",
+        options: [
+          "Die vollständige Ablösung klassischer Computer durch Quantencomputer",
+          "Die Demonstration von Berechnungen, die kein klassischer Computer in annehmbarer Zeit lösen kann",
+          "Die militärische Überlegenheit durch Quantentechnologie",
+        ],
+        correct: 1,
+        explanation:
+          "'Rechenoperationen, die kein klassischer Computer in annehmbarer Zeit lösen kann' — Quantum Supremacy ist ein Meilenstein, kein vollständiger Ersatz.",
+      },
+      {
+        id: 3,
+        question: "Worin besteht die 'kryptographische Bedrohung' durch Quantencomputer?",
+        options: [
+          "Quantencomputer können alle Passwörter im Internet gleichzeitig ändern.",
+          "Quantencomputer könnten die heutigen Verschlüsselungsstandards brechen.",
+          "Quantencomputer machen klassische Kommunikation vollständig unmöglich.",
+        ],
+        correct: 1,
+        explanation:
+          "'Quantencomputer könnten heutige Verschlüsselungsstandards brechen' — das bedroht das gesamte digitale Sicherheitssystem.",
+      },
+      {
+        id: 4,
+        question: "Was ist 'Post-Quanten-Kryptographie'?",
+        options: [
+          "Kryptographie, die ausschließlich von Quantencomputern genutzt wird",
+          "Verschlüsselungsverfahren, die gegen Quantenangriffe resistent sind",
+          "Veraltete Kryptographie, die durch Quantencomputer ersetzt wird",
+        ],
+        correct: 1,
+        explanation:
+          "'Verschlüsselungsverfahren, die gegen Quantenangriffe resistent sind' — Post-Quanten-Kryptographie soll die heutige Sicherheitsarchitektur zukunftssicher machen.",
+      },
+      {
+        id: 5,
+        question: "Warum ist Quantencomputing auch ein geopolitisches Wettrennen?",
+        options: [
+          "Weil Quantencomputer ausschließlich für militärische Zwecke geeignet sind",
+          "Weil derjenige, der zuerst leistungsfähige Quantencomputer betreibt, einen strategischen Vorteil erhält",
+          "Weil internationale Abkommen Quantenforschung nur einigen Ländern erlauben",
+        ],
+        correct: 1,
+        explanation:
+          "'Wer zuerst leistungsfähige Quantencomputer betreibt, hat einen strategischen Vorteil' — das macht Quantencomputing zu einem Schlüsselfeld geopolitischer Konkurrenz.",
+      },
+    ],
+    xp: 75,
+  },
+
+  {
+    id: 27,
+    type: "informationen",
+    typeLabel: "Wissenschaftlicher Vortrag",
+    typeLabelTr: "Bilimsel Konuşma",
+    title: "Klimapsychologie und Umweltverhalten",
+    difficulty: 3,
+    audioText:
+      "Warum handeln Menschen nicht so, wie es der Ernst der Klimakrise erfordert? Diese Frage beschäftigt die Klimapsychologie — eine noch junge Disziplin an der Schnittstelle von Psychologie, Verhaltensökonomie und Umweltwissenschaft. Ein zentrales Konzept ist die 'psychologische Distanz': Der Klimawandel wird von vielen Menschen als räumlich fern, zeitlich weit in der Zukunft und sozial andere betreffend wahrgenommen — obwohl die Auswirkungen längst global und unmittelbar sind. Diese Wahrnehmungsverzerrung erschwert Handlungsmotivation. Dazu kommt das 'Überwältigungsgefühl' — auf Englisch 'Eco-Anxiety' oder auch 'Klimaangst': Das Ausmaß der Krise erscheint so groß, dass Individuen sich machtlos fühlen und zur psychologischen Abwehr greifen — entweder durch Verleugnung oder durch 'Pseudo-Action': symbolische Handlungen wie Strohhalm-Verzicht, die das Gewissen beruhigen, aber strukturell nichts verändern. Klimapsychologen betonen, dass wirksame Kommunikation auf Handlungsmöglichkeiten und lokale Konsequenzen fokussieren sollte — statt auf ferne Katastrophenszenarien, die lähmen. 'Konstruktiver Journalismus' und 'Solutions-Journalism' setzen genau hier an. Kollektives Handeln ist psychologisch wirksamer als individueller Konsumverzicht: Das Gefühl, Teil einer Bewegung zu sein, stärkt die Handlungsbereitschaft. Und: Maßnahmen, die sowohl dem Klima als auch der persönlichen Gesundheit nützen — etwa Radfahren, pflanzliche Ernährung —, sind leichter zu kommunizieren als rein altruistische Opfer.",
+    instruction:
+      "Sie hören einen Vortrag über Klimapsychologie. Wählen Sie die richtige Antwort.",
+    questions: [
+      {
+        id: 1,
+        question: "Was versteht die Klimapsychologie unter 'psychologischer Distanz'?",
+        options: [
+          "Die physische Entfernung zwischen Klimaforschern und Politikern",
+          "Die Wahrnehmung des Klimawandels als räumlich fern, zeitlich weit und andere betreffend",
+          "Den Abstand zwischen wissenschaftlichem Konsens und öffentlicher Meinung",
+        ],
+        correct: 1,
+        explanation:
+          "'räumlich fern, zeitlich weit, andere betreffend' — psychologische Distanz erklärt, warum Menschen trotz Wissen nicht handeln.",
+      },
+      {
+        id: 2,
+        question: "Was bezeichnet 'Pseudo-Action' im Kontext der Klimapsychologie?",
+        options: [
+          "Symbolische Handlungen, die das Gewissen beruhigen, aber strukturell nichts verändern",
+          "Falsche wissenschaftliche Studien über Klimawandel",
+          "Politische Maßnahmen, die nur auf dem Papier existieren",
+        ],
+        correct: 0,
+        explanation:
+          "'Pseudo-Action: symbolische Handlungen wie Strohhalm-Verzicht, die beruhigen, aber nichts strukturell verändern' — das ist eine Form psychologischer Abwehr.",
+      },
+      {
+        id: 3,
+        question: "Worauf sollte wirksame Klimakommunikation laut Klimapsychologen fokussieren?",
+        options: [
+          "Auf ferne Katastrophenszenarien, die die Dringlichkeit verdeutlichen",
+          "Auf Handlungsmöglichkeiten und lokale Konsequenzen",
+          "Auf wissenschaftliche Daten und globale Temperaturkurven",
+        ],
+        correct: 1,
+        explanation:
+          "'Handlungsmöglichkeiten und lokale Konsequenzen' — ferne Katastrophen lähmen, während lokale Handlungsoptionen aktivieren.",
+      },
+      {
+        id: 4,
+        question: "Warum ist kollektives Handeln psychologisch wirksamer als individueller Konsumverzicht?",
+        options: [
+          "Kollektives Handeln hat geringere Kosten für Einzelpersonen.",
+          "Das Gefühl, Teil einer Bewegung zu sein, stärkt die Handlungsbereitschaft.",
+          "Kollektives Handeln wird von Medien stärker beachtet.",
+        ],
+        correct: 1,
+        explanation:
+          "'Teil einer Bewegung zu sein stärkt Handlungsbereitschaft' — soziale Zugehörigkeit ist ein stärkerer Motivator als individuelles Pflichtgefühl.",
+      },
+      {
+        id: 5,
+        question: "Welche Klimamaßnahmen sind laut dem Vortrag leichter zu kommunizieren?",
+        options: [
+          "Maßnahmen, die rein altruistische Opfer erfordern",
+          "Maßnahmen, die sowohl dem Klima als auch der persönlichen Gesundheit nützen",
+          "Maßnahmen mit hohen wirtschaftlichen Kosten",
+        ],
+        correct: 1,
+        explanation:
+          "'Maßnahmen, die Klima und persönliche Gesundheit verbinden, wie Radfahren' — Co-Benefits machen Verhaltensänderungen attraktiver.",
+      },
+    ],
+    xp: 75,
+  },
+
+  {
+    id: 28,
+    type: "informationen",
+    typeLabel: "Wissenschaftlicher Vortrag",
+    typeLabelTr: "Bilimsel Konuşma",
+    title: "Sprachenpolitik und Minderheitensprachen",
+    difficulty: 3,
+    audioText:
+      "Sprachliche Vielfalt ist ein globales Erbe — und ein bedrohtes. Linguisten schätzen, dass von den rund siebentausend Sprachen der Welt bis zum Ende des einundzwanzigsten Jahrhunderts die Hälfte aussterben könnte. Sprachsterben ist kein Naturphänomen, sondern das Ergebnis von Machtverhältnissen: Sprachen dominanter Gruppen werden in Bildung, Verwaltung und Medien durchgesetzt, während Minderheitensprachen marginalisiert werden. Europa hat dafür ein Rahmenabkommen: die Europäische Charta der Regional- oder Minderheitensprachen, die Staaten verpflichtet, anerkannte Minderheitensprachen in Bildung und öffentlichem Leben zu fördern. In Deutschland sind Sorbisch, Dänisch, Niederdeutsch, Romanes und Friesisch anerkannte Minderheitensprachen. Das Konzept der 'Sprachlichen Menschenrechte' — entwickelt u.a. von der finnischen Linguistin Tove Skutnabb-Kangas — argumentiert, dass jeder Mensch das Recht hat, in seiner Muttersprache unterrichtet zu werden und öffentliche Dienstleistungen zu erhalten. 'Linguizismus' — sprachbasierte Diskriminierung — wird in dieser Perspektive als Form struktureller Gewalt betrachtet. Die Digitalisierung hat ambivalente Auswirkungen: Einerseits dominieren einige wenige Sprachen das Internet, was die Marginalisierung kleiner Sprachen verstärkt. Andererseits ermöglicht das Netz die Dokumentation und Wiederbelebung bedrohter Sprachen — durch Apps, digitale Archive und globale Sprachgemeinschaften.",
+    instruction:
+      "Sie hören einen Vortrag über Sprachenpolitik. Wählen Sie die richtige Antwort.",
+    questions: [
+      {
+        id: 1,
+        question: "Wie viele Sprachen könnten laut Linguisten bis Ende des 21. Jahrhunderts aussterben?",
+        options: [
+          "Etwa ein Viertel der rund 7.000 Sprachen",
+          "Etwa die Hälfte der rund 7.000 Sprachen",
+          "Fast alle der rund 7.000 Sprachen",
+        ],
+        correct: 1,
+        explanation:
+          "'die Hälfte der rund 7.000 Sprachen könnte aussterben' — Sprachensterben ist eine der größten kulturellen Bedrohungen.",
+      },
+      {
+        id: 2,
+        question: "Was verpflichtet die Europäische Charta der Regional- oder Minderheitensprachen die Staaten?",
+        options: [
+          "Alle Bürger müssen eine Minderheitensprache lernen.",
+          "Anerkannte Minderheitensprachen müssen in Bildung und öffentlichem Leben gefördert werden.",
+          "Minderheitensprachen müssen als offizielle Staatssprachen anerkannt werden.",
+        ],
+        correct: 1,
+        explanation:
+          "'Staaten verpflichtet, anerkannte Minderheitensprachen in Bildung und öffentlichem Leben zu fördern' — die Charta schützt, verpflichtet aber nicht zur vollständigen Gleichstellung.",
+      },
+      {
+        id: 3,
+        question: "Welche Sprachen sind in Deutschland anerkannte Minderheitensprachen?",
+        options: [
+          "Türkisch, Arabisch und Polnisch",
+          "Sorbisch, Dänisch, Niederdeutsch, Romanes und Friesisch",
+          "Französisch, Niederländisch und Tschechisch",
+        ],
+        correct: 1,
+        explanation:
+          "'Sorbisch, Dänisch, Niederdeutsch, Romanes und Friesisch' — das sind die offiziell anerkannten Minderheitensprachen in Deutschland.",
+      },
+      {
+        id: 4,
+        question: "Was versteht man unter 'Linguizismus'?",
+        options: [
+          "Eine Methode zur Sprachanalyse in der Linguistik",
+          "Sprachbasierte Diskriminierung als Form struktureller Gewalt",
+          "Ein Programm zur Förderung von Mehrsprachigkeit",
+        ],
+        correct: 1,
+        explanation:
+          "'Linguizismus — sprachbasierte Diskriminierung als strukturelle Gewalt' — analog zu Rassismus beschreibt er Ungleichbehandlung aufgrund der Sprache.",
+      },
+      {
+        id: 5,
+        question: "Welche ambivalente Wirkung hat die Digitalisierung auf Minderheitensprachen?",
+        options: [
+          "Die Digitalisierung schadet Minderheitensprachen ausschließlich.",
+          "Einerseits dominieren wenige Sprachen das Internet, andererseits ermöglicht das Netz Dokumentation und Wiederbelebung.",
+          "Die Digitalisierung führt zu vollständiger sprachlicher Gleichstellung im Internet.",
+        ],
+        correct: 1,
+        explanation:
+          "'Einerseits Dominanz weniger Sprachen, andererseits Dokumentation und Wiederbelebung' — Digitalisierung ist kein eindeutiger Segen oder Fluch für Minderheitensprachen.",
+      },
+    ],
+    xp: 75,
+  },
+
+  {
+    id: 29,
+    type: "informationen",
+    typeLabel: "Wissenschaftlicher Vortrag",
+    typeLabelTr: "Bilimsel Konuşma",
+    title: "Schule der Zukunft und digitales Lernen",
+    difficulty: 3,
+    audioText:
+      "Die Schule der Zukunft ist ein vieldiskutiertes Thema — und die Corona-Pandemie hat Digitalisierungslücken im deutschen Bildungssystem schonungslos offengelegt. Während Länder wie Estland seit Jahren auf digitale Bildungsinfrastruktur setzen, kämpften deutsche Schulen noch zwanzigjahre nach der Jahrtausendwende mit fehlenden Endgeräten und instabilen WLAN-Verbindungen. Dabei ist 'Digitalisierung der Schule' mehr als Laptops im Klassenzimmer. Es geht um eine grundlegende pädagogische Transformation: Weg von der Wissensübertragung hin zur Kompetenzentwicklung. Wissen ist heute frei verfügbar — Google, Wikipedia, KI-Assistenten. Die Schule der Zukunft muss vermitteln, wie man mit Wissen umgeht: Quellen beurteilen, kritisch denken, kollaborieren, kreativ lösen. Das finnische Bildungssystem gilt als Vorbild: weniger Frontalunterricht, mehr projektbasiertes Lernen, individualisierte Förderung und Lehrer als Lernbegleiter statt Wissensvermittler. Allerdings ist das finnische Modell nicht einfach übertragbar — es setzt gesellschaftliche Wertschätzung für Bildung und Lehrerberufe voraus, die nicht überall vorhanden ist. Adaptive Lernsoftware — KI-gestützte Systeme, die den Lernpfad an individuelle Stärken und Schwächen anpassen — bietet enorme Chancen. Aber sie birgt auch Risiken: Datenschutz, algorithmische Diskriminierung und die Gefahr, dass Bildung zum individualisierten Konsumerlebnis verkommt statt sozialer Erfahrung zu bleiben.",
+    instruction:
+      "Sie hören einen Vortrag über Bildung und Digitalisierung. Wählen Sie die richtige Antwort.",
+    questions: [
+      {
+        id: 1,
+        question: "Was hat die Corona-Pandemie im deutschen Bildungssystem offengelegt?",
+        options: [
+          "Einen Mangel an qualifizierten Lehrern in den MINT-Fächern",
+          "Erhebliche Digitalisierungslücken in der Infrastruktur",
+          "Zu geringe Investitionen in Sportstätten und Schulgebäude",
+        ],
+        correct: 1,
+        explanation:
+          "'Digitalisierungslücken schonungslos offengelegt — fehlende Endgeräte, instabiles WLAN' — die Pandemie zeigte Deutschlands digitalen Rückstand.",
+      },
+      {
+        id: 2,
+        question: "Was ist laut dem Vortrag die eigentliche Aufgabe der Schule der Zukunft?",
+        options: [
+          "Schülern möglichst viel Faktenwissen zu vermitteln",
+          "Kompetenzentwicklung — Umgang mit Wissen, kritisches Denken, Kollaboration",
+          "Ausschließlich digitale Werkzeuge in den Unterricht zu integrieren",
+        ],
+        correct: 1,
+        explanation:
+          "'Weg von Wissensübertragung hin zu Kompetenzentwicklung' — Wissen ist frei verfügbar; Schulen müssen Umgang mit Wissen lehren.",
+      },
+      {
+        id: 3,
+        question: "Warum ist das finnische Bildungsmodell nicht einfach übertragbar?",
+        options: [
+          "Es ist zu kostspielig für andere Länder.",
+          "Es setzt gesellschaftliche Wertschätzung für Bildung und Lehrerberufe voraus.",
+          "Es funktioniert nur in kleinen, homogenen Gesellschaften.",
+        ],
+        correct: 1,
+        explanation:
+          "'setzt gesellschaftliche Wertschätzung für Bildung und Lehrerberufe voraus' — strukturelle Voraussetzungen fehlen in vielen Ländern.",
+      },
+      {
+        id: 4,
+        question: "Was ist adaptive Lernsoftware?",
+        options: [
+          "Software, die Noten automatisch berechnet",
+          "KI-gestützte Systeme, die den Lernpfad an individuelle Stärken und Schwächen anpassen",
+          "Programme zur automatischen Unterrichtsvorbereitung für Lehrer",
+        ],
+        correct: 1,
+        explanation:
+          "'KI-gestützte Systeme, die Lernpfad an Stärken und Schwächen anpassen' — adaptive Software individualisiert den Lernprozess.",
+      },
+      {
+        id: 5,
+        question: "Welches Risiko adaptiver Lernsoftware nennt der Vortrag?",
+        options: [
+          "Zu hohe Kosten für Schulen",
+          "Bildung könnte zum individualisierten Konsumerlebnis statt sozialer Erfahrung werden",
+          "Lehrer werden vollständig durch Software ersetzt",
+        ],
+        correct: 1,
+        explanation:
+          "'Bildung als individualisiertes Konsumerlebnis statt sozialer Erfahrung' — das ist ein zentrales Risiko der Überdigitalisierung.",
+      },
+    ],
+    xp: 75,
+  },
+
+  {
+    id: 30,
+    type: "informationen",
+    typeLabel: "Wissenschaftlicher Vortrag",
+    typeLabelTr: "Bilimsel Konuşma",
+    title: "Postkolonialismus und globale Wissenssysteme",
+    difficulty: 3,
+    audioText:
+      "Postkoloniale Theorie beschäftigt sich mit den anhaltenden Auswirkungen des Kolonialismus auf Kultur, Wissen und Machtverhältnisse. Der Literaturwissenschaftler Edward Said prägte mit seinem Werk 'Orientalismus' einen Schlüsselbegriff: die Konstruktion des 'Orients' durch westliche Wissenschaft und Literatur als das Fremde, das Irrationale, das der westlichen Rationalität gegenübergestellt wird. Diese Darstellung diente nicht nur der Beschreibung, sondern der Legitimation von Herrschaft. Homi Bhabha erweiterte die Analyse um das Konzept der 'Hybridität': Kolonisierte Kulturen übernehmen Elemente der Kolonialmacht, transformieren sie aber und schaffen etwas Neues — keine reine Übernahme, keine reine Ablehnung. Gayatri Spivak stellte die radikale Frage: 'Können die Subalternen sprechen?' — können also die Unterdrückten ihre Erfahrungen in Begriffen ausdrücken, die innerhalb dominanter Wissenssysteme anerkannt werden? Ihre Antwort war ernüchternd: Die vorhandenen Sprachen und Kategorien sind selbst Produkte kolonialer Machtverhältnisse. Im akademischen Kontext manifestiert sich das als 'Epistemischer Kolonialismus': Wessen Wissen gilt als universell? Westliche wissenschaftliche Methoden und Kategorien sind als Norm gesetzt, während andere Wissensformen — indigenes Wissen, lokale Ontologien — marginalisiert werden. 'Dekolonisierung des Wissens' ist deshalb ein wachsendes Projekt: Lehrpläne, Bibliotheken und Forschungsagenden sollen vielfältigere Wissenstraditionen einbeziehen.",
+    instruction:
+      "Sie hören einen Vortrag über Postkolonialismus. Wählen Sie die richtige Antwort.",
+    questions: [
+      {
+        id: 1,
+        question: "Was beschreibt Edward Saids Begriff des 'Orientalismus'?",
+        options: [
+          "Eine geografische Studie über asiatische Kulturen",
+          "Die Konstruktion des 'Orients' durch westliche Wissenschaft als das Fremde und Irrationale",
+          "Eine Bewegung zur Förderung des kulturellen Austauschs zwischen Ost und West",
+        ],
+        correct: 1,
+        explanation:
+          "'Konstruktion des Orients als das Fremde, Irrationale — zur Legitimation von Herrschaft' — Orientalismus ist kein neutrales Wissen, sondern Machtausübung.",
+      },
+      {
+        id: 2,
+        question: "Was versteht Homi Bhabha unter 'Hybridität'?",
+        options: [
+          "Die vollständige Übernahme der Kolonialkutur durch die Kolonisierten",
+          "Die vollständige Ablehnung westlicher Einflüsse",
+          "Die Entstehung von etwas Neuem durch Transformation kolonialer Elemente",
+        ],
+        correct: 2,
+        explanation:
+          "'weder reine Übernahme noch reine Ablehnung — etwas Neues entsteht' — Hybridität beschreibt den kreativen Transformationsprozess kolonisierter Kulturen.",
+      },
+      {
+        id: 3,
+        question: "Was fragt Gayatri Spivak mit 'Können die Subalternen sprechen?'",
+        options: [
+          "Ob Unterdrückte politische Rechte haben",
+          "Ob Unterdrückte ihre Erfahrungen in Begriffen ausdrücken können, die dominante Systeme anerkennen",
+          "Ob kolonisierte Länder internationale Gremien beeinflussen können",
+        ],
+        correct: 1,
+        explanation:
+          "'Können Unterdrückte ihre Erfahrungen in anerkannten Begriffen ausdrücken?' — Spivak zeigt, dass die Sprache selbst kolonial geprägt ist.",
+      },
+      {
+        id: 4,
+        question: "Was versteht man unter 'Epistemischem Kolonialismus'?",
+        options: [
+          "Die physische Kontrolle über Bildungsinstitutionen durch Kolonialmächte",
+          "Die Setzung westlicher wissenschaftlicher Methoden als universelle Norm, während andere Wissensformen marginalisiert werden",
+          "Die wirtschaftliche Abhängigkeit von Entwicklungsländern von westlichen Universitäten",
+        ],
+        correct: 1,
+        explanation:
+          "'Westliche Methoden als Norm — andere Wissensformen marginalisiert' — epistemischer Kolonialismus betrifft die Machtstrukturen im Wissensbereich.",
+      },
+      {
+        id: 5,
+        question: "Was bedeutet 'Dekolonisierung des Wissens'?",
+        options: [
+          "Die vollständige Ablehnung westlicher Wissenschaft",
+          "Die Einbeziehung vielfältigerer Wissenstraditionen in Lehrpläne, Bibliotheken und Forschungsagenden",
+          "Die Rückgabe physischer Kulturgüter an ihre Ursprungsländer",
+        ],
+        correct: 1,
+        explanation:
+          "'Lehrpläne, Bibliotheken, Forschungsagenden sollen vielfältigere Wissenstraditionen einbeziehen' — Dekolonisierung des Wissens ist keine Ablehnung, sondern Erweiterung.",
+      },
+    ],
+    xp: 75,
+  },
+];
+
 // ── Accessor helpers ──────────────────────────────────────────────────────────
 
 const LEVEL_DATA: Record<string, HorenTeil[]> = {
@@ -5135,6 +7321,7 @@ const LEVEL_DATA: Record<string, HorenTeil[]> = {
   a2: A2_TEILE,
   b1: B1_TEILE,
   b2: B2_TEILE,
+  c1: C1_TEILE,
 };
 
 export function getHorenTeile(level: string): HorenTeil[] {
