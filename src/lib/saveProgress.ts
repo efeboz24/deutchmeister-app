@@ -17,9 +17,23 @@ export async function saveProgress(opts: {
     if (opts.minutes) {
       requests.push(fetch("/api/progress/session", { method: "POST", headers, body: JSON.stringify({ minutes: opts.minutes }) }));
     }
-    const responses = await Promise.all(requests);
-    if (responses.some((r) => !r.ok)) {
+
+    const [xpRes, ...rest] = await Promise.all(requests);
+
+    if (!xpRes.ok || rest.some((r) => !r.ok)) {
       toast.error("İlerleme kaydedilemedi");
+      return;
+    }
+
+    const xpData = await xpRes.json() as {
+      leveledUp: boolean;
+      newLevel: string | null;
+    };
+
+    if (xpData.leveledUp && xpData.newLevel) {
+      window.dispatchEvent(
+        new CustomEvent("levelup", { detail: { newLevel: xpData.newLevel } })
+      );
     }
   } catch {
     toast.error("İlerleme kaydedilemedi");

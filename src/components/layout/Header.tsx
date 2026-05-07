@@ -7,6 +7,17 @@ import { Badge } from "@/components/ui/Badge";
 import { signOut, useSession } from "next-auth/react";
 import { useNotepad } from "@/contexts/NotepadContext";
 
+// Cumulative XP thresholds matching seed data
+const LEVEL_XP: Record<string, number> = {
+  A1: 500, A2: 1000, B1: 2000, B2: 3500, C1: 5000,
+};
+const LEVEL_PREV_XP: Record<string, number> = {
+  A1: 0, A2: 500, B1: 1000, B2: 2000, C1: 3500,
+};
+const NEXT_LEVEL: Record<string, string> = {
+  A1: "A2", A2: "B1", B1: "B2", B2: "C1",
+};
+
 interface HeaderProps {
   userName: string;
   userLevel: string;
@@ -15,9 +26,20 @@ interface HeaderProps {
 
 export function Header({ userName, userLevel, streak }: HeaderProps) {
   const { data: session } = useSession();
+  const liveLevel = (session?.user as { currentLevel?: string })?.currentLevel ?? userLevel;
   const liveStreak = (session?.user as { streak?: number })?.streak ?? streak;
   const liveXP = (session?.user as { totalXP?: number })?.totalXP ?? 0;
   const { isOpen, toggle } = useNotepad();
+
+  const goalXP = LEVEL_XP[liveLevel] ?? null;
+  const prevXP = LEVEL_PREV_XP[liveLevel] ?? 0;
+  const nextLevel = NEXT_LEVEL[liveLevel] ?? null;
+  const isMaxLevel = liveLevel === "C1" && liveXP >= (LEVEL_XP.C1 ?? 5000);
+
+  const progressPct = goalXP
+    ? Math.min(100, Math.round(((liveXP - prevXP) / (goalXP - prevXP)) * 100))
+    : 100;
+  const remaining = goalXP ? Math.max(0, goalXP - liveXP) : 0;
 
   return (
     <header className="h-16 bg-navy-light border-b border-navy-border flex items-center justify-between px-6 sticky top-0 z-10">
@@ -33,10 +55,30 @@ export function Header({ userName, userLevel, streak }: HeaderProps) {
 
       {/* Sağ taraf */}
       <div className="flex items-center gap-4">
-        {/* XP */}
-        <div className="flex items-center gap-1.5 px-3 py-1.5 bg-gold/10 border border-gold/20 rounded-lg">
-          <Zap className="w-3.5 h-3.5 text-gold" />
-          <span className="text-sm font-semibold text-gold">{liveXP.toLocaleString()} XP</span>
+
+        {/* XP + Progress */}
+        <div className="flex flex-col items-end gap-0.5 min-w-[140px]">
+          <div className="flex items-center justify-between w-full">
+            <div className="flex items-center gap-1">
+              <Zap className="w-3.5 h-3.5 text-gold" />
+              <span className="text-xs font-bold text-gold">
+                {liveXP.toLocaleString("tr-TR")} XP
+              </span>
+            </div>
+            {isMaxLevel ? (
+              <span className="text-[10px] text-gold font-semibold">MAX</span>
+            ) : nextLevel ? (
+              <span className="text-[10px] text-text-muted">
+                {remaining.toLocaleString("tr-TR")} XP → {nextLevel}
+              </span>
+            ) : null}
+          </div>
+          <div className="w-full h-1.5 bg-navy rounded-full overflow-hidden">
+            <div
+              className="h-full bg-gold rounded-full transition-all duration-500"
+              style={{ width: `${progressPct}%` }}
+            />
+          </div>
         </div>
 
         {/* Not Defteri */}
@@ -72,7 +114,7 @@ export function Header({ userName, userLevel, streak }: HeaderProps) {
           </div>
           <div className="hidden sm:block">
             <p className="text-sm font-medium text-text-primary leading-none mb-0.5">{userName}</p>
-            <Badge variant="level">{userLevel}</Badge>
+            <Badge variant="level">{liveLevel}</Badge>
           </div>
         </Link>
 

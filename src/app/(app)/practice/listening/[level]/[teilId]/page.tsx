@@ -22,6 +22,8 @@ import {
 } from "lucide-react";
 import { getHorenTeil, saveHorenProgress, HorenTeilType } from "@/lib/horen-data";
 import { saveProgress } from "@/lib/saveProgress";
+import { savePracticeMistakes, type PracticeMistakeEntry } from "@/lib/practice-mistakes";
+import { WrongAnswerReview } from "@/components/practice/WrongAnswerReview";
 
 const TYPE_META: Record<HorenTeilType, { icon: React.ElementType; color: string; bg: string }> = {
   ansagen: { icon: Mic, color: "text-blue-400", bg: "bg-blue-500/10" },
@@ -255,6 +257,8 @@ export default function HorenTeilPage() {
   const [showExplanation, setShowExplanation] = useState(false);
   const [showTranscript, setShowTranscript] = useState(false);
   const [xpSaved, setXpSaved] = useState(false);
+  const [wrongAnswers, setWrongAnswers] = useState<Omit<PracticeMistakeEntry, "key" | "addedAt">[]>([]);
+  const [showWrongReview, setShowWrongReview] = useState(false);
 
   useEffect(() => {
     if (teil) setAnswers(new Array(teil.questions.length).fill(null));
@@ -306,6 +310,27 @@ export default function HorenTeilPage() {
 
     saveHorenProgress(level, teilId, finalScore, teil!.questions.length);
 
+    // Collect wrong answers and save to mistakes
+    const levelLabel = level.toUpperCase();
+    const isRF = teil!.questionFormat === "richtigfalsch";
+    const topicTitle = `Hören ${levelLabel} · Teil ${teilId}: ${teil!.title}`;
+    const mistakes = teil!.questions
+      .map((q, i) => ({ q, userAnswer: answers[i] }))
+      .filter(({ q, userAnswer }) => userAnswer !== null && userAnswer !== q.correct)
+      .map(({ q, userAnswer }) => ({
+        topicId: `horen-${level}-${teilId}`,
+        topicTitle,
+        levelName: levelLabel,
+        question: q.question,
+        options: isRF ? ["Richtig", "Falsch"] : (q.options ?? ["Richtig", "Falsch"]),
+        correct: q.correct,
+        userAnswer: userAnswer as number,
+        explanation: q.explanation,
+      }));
+
+    setWrongAnswers(mistakes);
+    savePracticeMistakes(mistakes);
+
     if (!xpSaved) {
       setXpSaved(true);
       await saveProgress({ xp: earnedXp, skill: "horen", skillScore: finalPct, minutes: 5 });
@@ -323,6 +348,8 @@ export default function HorenTeilPage() {
     setShowExplanation(false);
     setShowTranscript(false);
     setXpSaved(false);
+    setWrongAnswers([]);
+    setShowWrongReview(false);
   }
 
   const levelColor = LEVEL_COLORS[level] ?? "text-text-primary";
@@ -446,22 +473,50 @@ export default function HorenTeilPage() {
             })}
           </div>
 
-          <div className="px-5 pb-5 flex gap-3">
-            <button
-              onClick={handleRestart}
-              className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-navy border border-navy-border text-text-secondary hover:text-text-primary hover:border-navy-border/80 transition-all text-sm font-medium"
-            >
-              <RotateCcw className="w-4 h-4" />
-              Tekrar
-            </button>
-            <Link
-              href={`/practice/listening/${level}`}
-              className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-blue-500/10 border border-blue-500/30 text-blue-400 hover:bg-blue-500/20 transition-all text-sm font-semibold"
-            >
-              Diğer Teile
-              <ChevronRight className="w-4 h-4" />
-            </Link>
+          <div className="px-5 pb-5 space-y-3">
+            <div className="flex gap-3">
+              <button
+                onClick={handleRestart}
+                className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-navy border border-navy-border text-text-secondary hover:text-text-primary hover:border-navy-border/80 transition-all text-sm font-medium"
+              >
+                <RotateCcw className="w-4 h-4" />
+                Tekrar
+              </button>
+              <Link
+                href={`/practice/listening/${level}`}
+                className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-blue-500/10 border border-blue-500/30 text-blue-400 hover:bg-blue-500/20 transition-all text-sm font-semibold"
+              >
+                Diğer Teile
+                <ChevronRight className="w-4 h-4" />
+              </Link>
+            </div>
+
+            {wrongAnswers.length > 0 && (
+              <button
+                onClick={() => setShowWrongReview((v) => !v)}
+                className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl bg-red-500/10 border border-red-500/30 text-red-400 hover:bg-red-500/20 transition-all text-sm font-semibold"
+              >
+                <XCircle className="w-4 h-4" />
+                {showWrongReview ? "İncelemeyi Kapat" : `${wrongAnswers.length} Yanlış Cevabı İncele`}
+              </button>
+            )}
           </div>
+
+          <AnimatePresence>
+            {showWrongReview && wrongAnswers.length > 0 && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.3 }}
+                className="overflow-hidden border-t border-navy-border"
+              >
+                <div className="p-5">
+                  <WrongAnswerReview mistakes={wrongAnswers} accentColor="text-blue-400" />
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </motion.div>
       </div>
     );

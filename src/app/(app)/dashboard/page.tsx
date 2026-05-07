@@ -24,7 +24,7 @@ export default async function DashboardPage() {
   };
 
   // Paralel veri çekimi
-  const [skills, workSessions, examAttempts, vocabCount, levelData] = await Promise.all([
+  const results = await Promise.allSettled([
     prisma.userProgress.findMany({ where: { userId } }),
     prisma.userWorkSession.findMany({
       where: {
@@ -51,12 +51,26 @@ export default async function DashboardPage() {
         },
       },
     }),
-  ]).catch(() => {
-    throw new Error("Veriler yüklenirken bir hata oluştu. Lütfen sayfayı yenileyin.");
-  });
+  ]);
 
+  for (const result of results) {
+    if (result.status === "rejected") {
+      console.error("[Dashboard] Query failed:", result.reason);
+    }
+  }
+
+  const skills = results[0].status === "fulfilled" ? results[0].value : [];
+  const workSessions = results[1].status === "fulfilled" ? results[1].value : [];
+  const examAttempts = results[2].status === "fulfilled" ? results[2].value : [];
+  const vocabCount = results[3].status === "fulfilled" ? results[3].value : 0;
+  const levelData = results[4].status === "fulfilled" ? results[4].value : null;
+
+  const LEVEL_PREV_XP: Record<string, number> = { A1: 0, A2: 500, B1: 1000, B2: 2000, C1: 3500 };
+  const currentLevel = userInfo.currentLevel ?? "A1";
   const goalXP = levelData?.goalXP ?? 1000;
-  const levelProgress = Math.min(100, Math.round(((userInfo.totalXP ?? 0) / goalXP) * 100));
+  const prevXP = LEVEL_PREV_XP[currentLevel] ?? 0;
+  const totalXP = userInfo.totalXP ?? 0;
+  const levelProgress = Math.min(100, Math.round(((totalXP - prevXP) / (goalXP - prevXP)) * 100));
 
   const skillScores: SkillScore[] = ["horen", "lesen", "schreiben", "sprechen", "grammatik"].map(
     (skill) => ({

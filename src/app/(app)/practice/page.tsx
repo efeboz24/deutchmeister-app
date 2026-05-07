@@ -81,7 +81,7 @@ const otherTools = [
 ];
 
 const AVAILABLE: Record<string, string[]> = {
-  listening: ["A2"],
+  listening: ["A1", "A2", "B1", "B2"],
   reading: ["A1", "A2", "B1", "B2", "C1"],
   writing: ["A1", "A2", "B1", "B2", "C1"],
 };
