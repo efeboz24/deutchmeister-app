@@ -14,6 +14,7 @@ import {
   Mic,
   MessageSquare,
   Radio,
+  Info,
 } from "lucide-react";
 import { getHorenTeile, loadHorenProgress, HorenProgress, HorenTeil, HorenTeilType } from "@/lib/horen-data";
 
@@ -26,9 +27,17 @@ const LEVEL_META: Record<string, { label: string; color: string; bg: string; bor
 };
 
 const TYPE_META: Record<HorenTeilType, { icon: React.ElementType; color: string; label: string }> = {
-  ansagen: { icon: Mic, color: "text-blue-400", label: "Ansagen" },
-  gespraeche: { icon: MessageSquare, color: "text-green-400", label: "Gespräch" },
-  informationen: { icon: Radio, color: "text-violet-400", label: "Radio-Interview" },
+  ansagen:       { icon: Mic,           color: "text-blue-400",   label: "Ansagen & Durchsagen" },
+  gespraeche:    { icon: MessageSquare, color: "text-green-400",  label: "Gespräche" },
+  informationen: { icon: Radio,         color: "text-violet-400", label: "Radio / Interview" },
+};
+
+const TYPE_ORDER: HorenTeilType[] = ["ansagen", "gespraeche", "informationen"];
+
+const TEIL_INFO: Record<HorenTeilType, string> = {
+  ansagen:       "TELC'de kısa duyurular veya anonslar dinlenir · doğru/yanlış ya da kısa cevap soruları gelir",
+  gespraeche:    "TELC'de iki kişi arasındaki konuşma dinlenir · içerik ve detay soruları cevaplanır",
+  informationen: "TELC'de radyo programı, haber veya röportaj dinlenir · çoktan seçmeli sorular gelir",
 };
 
 function DifficultyStars({ level }: { level: 1 | 2 | 3 }) {
@@ -237,33 +246,36 @@ export default function HorenLevelPage() {
         )}
       </div>
 
-      {/* Teile grid */}
+      {/* Teile grouped by type */}
       {hasContent ? (
-        <>
-          <div className="flex items-center gap-4 text-xs text-text-muted flex-wrap">
-            {Object.entries(TYPE_META).map(([key, val]) => {
-              const Icon = val.icon;
-              return (
-                <div key={key} className="flex items-center gap-1">
-                  <Icon className={`w-3.5 h-3.5 ${val.color}`} />
-                  <span>{val.label}</span>
+        <div className="space-y-8">
+          {TYPE_ORDER.map((type) => {
+            const gruppe = teile.filter((t) => t.type === type);
+            if (gruppe.length === 0) return null;
+            const { icon: Icon, color, label } = TYPE_META[type];
+            const info = TEIL_INFO[type];
+            return (
+              <div key={type}>
+                <div className="flex flex-wrap items-start gap-x-2 gap-y-1.5 mb-3">
+                  <div className="flex items-center gap-2">
+                    <Icon className={`w-4 h-4 ${color}`} />
+                    <h2 className="text-sm font-bold text-text-primary">{label}</h2>
+                    <span className="text-xs text-text-muted">({gruppe.length} Teil)</span>
+                  </div>
+                  <div className="flex items-center gap-1.5 bg-blue-500/8 border border-blue-500/20 rounded-lg px-2.5 py-1">
+                    <Info className="w-3 h-3 text-blue-400 shrink-0" />
+                    <span className="text-[11px] text-blue-300 leading-tight">{info}</span>
+                  </div>
                 </div>
-              );
-            })}
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-            {teile.map((teil, i) => (
-              <TeilCard
-                key={teil.id}
-                teil={teil}
-                progress={progress}
-                index={i}
-                level={level}
-              />
-            ))}
-          </div>
-        </>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                  {gruppe.map((teil, i) => (
+                    <TeilCard key={teil.id} teil={teil} progress={progress} index={i} level={level} />
+                  ))}
+                </div>
+              </div>
+            );
+          })}
+        </div>
       ) : (
         <div className="text-center py-16 bg-navy-card border border-navy-border rounded-2xl">
           <Lock className="w-10 h-10 text-text-muted mx-auto mb-3" />

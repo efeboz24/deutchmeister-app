@@ -1,317 +1,166 @@
-export type SprechenTeilType = "vorstellen" | "informationen" | "bitten";
+export type SprechenTeilType =
+  | "vorstellen" | "fragen"
+  | "alltag" | "bild"
+  | "praesentation" | "reaktion" | "planung"
+  | "diskussion" | "argumentation"
+  | "vortrag" | "debatte" | "analyse";
 
-export interface SprechenSchritt {
-  id: number;
-  prueferText: string;
-  prueferAntwort?: string;
-  aufgabe: string;
-  karteKeywords?: string[];
-  bildKarte?: { emoji: string; word: string; artikel: string };
-  mustEnthalten?: string[];
-  bewertungsTipps: string[];
-}
-
-export interface SprechenTeil {
-  id: 1 | 2 | 3;
+export interface SprechenAufgabe {
+  id: string;
   level: string;
-  title: string;
-  subtitle: string;
-  prueferEinleitung: string;
-  aufgabenKarteTitle: string;
-  aufgabenKarteInhalt: string[];
   type: SprechenTeilType;
-  schritte: SprechenSchritt[];
-  maxPunkte: number;
+  title: string;
+  prompt: string;
+  hints: string[];
+  minSeconds: number;
+  maxSeconds: number;
   xp: number;
-  tipps: string[];
+  difficulty: 1 | 2 | 3;
 }
 
-export interface SprechenProgressItem {
-  completed: boolean;
-  score: number;
-  punkte: number;
-  maxPunkte: number;
-  xpEarned: number;
+export type SprechenProgress = Record<string, { score: number; transcript: string }>;
+
+const AUFGABEN: SprechenAufgabe[] = [
+  // A1 — Teil 1: Sich vorstellen
+  { id: "a1-1", level: "a1", type: "vorstellen", title: "Sich vorstellen", prompt: "Stell dich vor! Sag, wie du heißt, woher du kommst, wie alt du bist und was du machst.", hints: ["Ich heiße ...", "Ich komme aus ...", "Ich bin ... Jahre alt.", "Ich bin ... (Beruf/Student)."], minSeconds: 30, maxSeconds: 90, xp: 30, difficulty: 1 },
+  { id: "a1-2", level: "a1", type: "vorstellen", title: "Familie vorstellen", prompt: "Erzähl von deiner Familie! Wie viele Personen hat deine Familie? Was machen sie?", hints: ["Ich habe ... Geschwister.", "Meine Mutter ist ...", "Mein Vater arbeitet als ...", "Wir wohnen in ..."], minSeconds: 30, maxSeconds: 90, xp: 30, difficulty: 1 },
+  { id: "a1-3", level: "a1", type: "vorstellen", title: "Hobbys vorstellen", prompt: "Erzähl über deine Hobbys! Was machst du in deiner Freizeit? Was magst du?", hints: ["In meiner Freizeit ...", "Ich mag ...", "Ich spiele gern ...", "Ich höre gern ..."], minSeconds: 30, maxSeconds: 90, xp: 30, difficulty: 1 },
+  { id: "a1-4", level: "a1", type: "vorstellen", title: "Wohnort vorstellen", prompt: "Wo wohnst du? Erzähl über deine Stadt oder deinen Wohnort!", hints: ["Ich wohne in ...", "Das ist eine ...", "Es gibt hier ...", "Ich wohne seit ... Jahren in ..."], minSeconds: 30, maxSeconds: 90, xp: 30, difficulty: 1 },
+  // A1 — Teil 2: Fragen
+  { id: "a1-5", level: "a1", type: "fragen", title: "Im Supermarkt", prompt: "Du bist im Supermarkt. Frag nach dem Preis und dem Ort von Produkten.\n\nBeispiel: Wo ist die Milch? Wie viel kostet das Brot?", hints: ["Wo ist ...?", "Wie viel kostet ...?", "Haben Sie ...?", "Das kostet ... Euro."], minSeconds: 30, maxSeconds: 90, xp: 35, difficulty: 1 },
+  { id: "a1-6", level: "a1", type: "fragen", title: "Nach dem Weg fragen", prompt: "Du bist in einer fremden Stadt. Frag nach dem Weg zum Bahnhof und zur Post. Erkläre auch den Weg.", hints: ["Entschuldigung, wo ist ...?", "Gehen Sie geradeaus.", "Dann links/rechts abbiegen.", "Das ist nicht weit."], minSeconds: 30, maxSeconds: 90, xp: 35, difficulty: 2 },
+  { id: "a1-7", level: "a1", type: "fragen", title: "Kurs anmelden", prompt: "Du möchtest einen Deutschkurs belegen. Frag nach Kurszeiten, Kosten und Anmeldung.", hints: ["Wann beginnt der Kurs?", "Was kostet der Kurs?", "Wie kann ich mich anmelden?", "Wie viele Stunden hat der Kurs?"], minSeconds: 30, maxSeconds: 90, xp: 35, difficulty: 2 },
+  { id: "a1-8", level: "a1", type: "fragen", title: "Im Restaurant", prompt: "Du bist in einem Restaurant. Bestell etwas zu essen und trinken. Frag nach der Speisekarte und dem Preis.", hints: ["Ich möchte ..., bitte.", "Was empfehlen Sie?", "Die Rechnung, bitte.", "Haben Sie ...?"], minSeconds: 30, maxSeconds: 90, xp: 35, difficulty: 1 },
+
+  // A2 — Teil 1: Vorstellen
+  { id: "a2-1", level: "a2", type: "vorstellen", title: "Ausführliche Vorstellung", prompt: "Stell dich ausführlich vor! Erzähl über dich: Name, Herkunft, Alter, Beruf/Studium, Familie, Wohnort, Hobbys und Alltag.", hints: ["Ich heiße ... und komme aus ...", "Ich arbeite als ... / Ich studiere ...", "In meiner Freizeit ...", "Meine Familie besteht aus ..."], minSeconds: 60, maxSeconds: 120, xp: 40, difficulty: 1 },
+  // A2 — Teil 2: Alltag
+  { id: "a2-2", level: "a2", type: "alltag", title: "Einkaufen", prompt: "Erzähl über deine Einkaufsgewohnheiten! Wo kaufst du ein? Was kaufst du? Wie oft gehst du einkaufen?", hints: ["Ich gehe ... einkaufen.", "Normalerweise kaufe ich ... im ...", "Am liebsten kaufe ich ...", "Das Einkaufen dauert ..."], minSeconds: 45, maxSeconds: 120, xp: 40, difficulty: 1 },
+  { id: "a2-3", level: "a2", type: "alltag", title: "Arzttermin vereinbaren", prompt: "Du rufst bei einem Arzt an und möchtest einen Termin machen. Erkläre dein Problem, frage nach freien Terminen und bestätige den Termin.", hints: ["Ich möchte einen Termin machen.", "Ich habe Schmerzen im/in der ...", "Wann haben Sie Zeit?", "Geht es am ... um ...?"], minSeconds: 45, maxSeconds: 120, xp: 45, difficulty: 2 },
+  { id: "a2-4", level: "a2", type: "alltag", title: "Wetter und Kleidung", prompt: "Beschreib das Wetter heute und erkläre, was du deswegen angezogen hast. Was ist dein Lieblingswetter?", hints: ["Heute ist es ...", "Es regnet / Die Sonne scheint.", "Deshalb trage ich ...", "Mein Lieblingswetter ist ..."], minSeconds: 45, maxSeconds: 120, xp: 40, difficulty: 1 },
+  { id: "a2-5", level: "a2", type: "alltag", title: "Verkehrsmittel", prompt: "Wie kommst du zur Arbeit oder zur Schule? Welche Verkehrsmittel benutzt du? Was sind die Vor- und Nachteile?", hints: ["Ich fahre mit dem/der ...", "Das dauert ... Minuten.", "Es ist praktisch, weil ...", "Ein Nachteil ist ..."], minSeconds: 45, maxSeconds: 120, xp: 40, difficulty: 1 },
+  { id: "a2-6", level: "a2", type: "alltag", title: "Lieblingsessen", prompt: "Erzähl über dein Lieblingsessen! Was isst du gern? Kannst du es kochen? Wo isst du es am liebsten?", hints: ["Mein Lieblingsessen ist ...", "Ich esse gern ...", "Ich koche es ...", "Am liebsten esse ich es ..."], minSeconds: 45, maxSeconds: 120, xp: 40, difficulty: 1 },
+  { id: "a2-7", level: "a2", type: "alltag", title: "Freizeitaktivitäten", prompt: "Was machst du in deiner Freizeit? Erzähl über deine Hobbys und was du am Wochenende machst.", hints: ["In meiner Freizeit ...", "Am Wochenende ...", "Ich treffe mich mit ...", "Ich interessiere mich für ..."], minSeconds: 45, maxSeconds: 120, xp: 40, difficulty: 1 },
+  { id: "a2-8", level: "a2", type: "alltag", title: "Wohnung beschreiben", prompt: "Beschreib deine Wohnung oder dein Haus! Wie viele Zimmer hat es? Was ist in deinem Lieblingsraum?", hints: ["Meine Wohnung hat ... Zimmer.", "Es gibt einen/eine/ein ...", "Mein Lieblingsraum ist ..., weil ...", "In der Küche / im Wohnzimmer ..."], minSeconds: 45, maxSeconds: 120, xp: 40, difficulty: 1 },
+  { id: "a2-9", level: "a2", type: "alltag", title: "Tagesablauf", prompt: "Beschreib deinen typischen Tagesablauf! Was machst du morgens, mittags und abends?", hints: ["Ich stehe um ... auf.", "Dann ...", "Um ... Uhr ...", "Abends ..."], minSeconds: 45, maxSeconds: 120, xp: 40, difficulty: 1 },
+  { id: "a2-10", level: "a2", type: "alltag", title: "Urlaub planen", prompt: "Du möchtest Urlaub machen. Wohin möchtest du fahren? Was möchtest du dort machen? Wie lange bleibst du?", hints: ["Ich möchte nach ... fahren.", "Ich bleibe ... Tage.", "Dort möchte ich ...", "Das Wetter soll ... sein."], minSeconds: 45, maxSeconds: 120, xp: 45, difficulty: 2 },
+  { id: "a2-11", level: "a2", type: "alltag", title: "Gesundheit", prompt: "Wie bleibst du gesund? Was machst du für deine Gesundheit? Was ist für dich wichtig?", hints: ["Ich schlafe ... Stunden.", "Ich esse ...", "Ich treibe Sport, zum Beispiel ...", "Ich versuche ..."], minSeconds: 45, maxSeconds: 120, xp: 40, difficulty: 2 },
+  // A2 — Teil 3: Bild beschreiben
+  { id: "a2-12", level: "a2", type: "bild", title: "Auf dem Markt", prompt: "Beschreib dieses Bild: Ein belebter Wochenmarkt. Viele Menschen kaufen Obst, Gemüse und Blumen. Ein Verkäufer hilft einer Frau. Im Hintergrund sind bunte Stände.\n\nWer ist auf dem Bild? Was machen die Menschen?", hints: ["Auf dem Bild sehe ich ...", "Im Vordergrund / Hintergrund ...", "Die Person links/rechts ...", "Es gibt viele ..."], minSeconds: 45, maxSeconds: 120, xp: 45, difficulty: 2 },
+  { id: "a2-13", level: "a2", type: "bild", title: "In der Küche", prompt: "Beschreib dieses Bild: Eine Familie kocht zusammen in der Küche. Die Mutter schneidet Gemüse, der Vater rührt in einem Topf. Zwei Kinder helfen dabei.\n\nWas machen die Menschen?", hints: ["Auf dem Bild sehe ich ...", "Die Familie ...", "Die Mutter / der Vater ...", "Die Kinder ..."], minSeconds: 45, maxSeconds: 120, xp: 45, difficulty: 1 },
+  { id: "a2-14", level: "a2", type: "bild", title: "Im Park", prompt: "Beschreib dieses Bild: Ein sonniger Tag im Park. Menschen spazieren, Kinder spielen auf dem Spielplatz. Ein Mann liest ein Buch auf einer Bank. Ein Hund läuft frei herum.\n\nBeschreib, was du siehst!", hints: ["Das Wetter ist ...", "Im Park gibt es ...", "Links sehe ich ...", "Die Menschen ..."], minSeconds: 45, maxSeconds: 120, xp: 45, difficulty: 1 },
+  { id: "a2-15", level: "a2", type: "bild", title: "Am Bahnhof", prompt: "Beschreib dieses Bild: Ein großer Bahnhof. Viele Menschen haben Koffer und Taschen. Ein Zug steht auf dem Gleis. Eine Frau schaut auf die Anzeigetafel.\n\nBeschreib, was du siehst!", hints: ["Auf dem Bild sehe ich einen Bahnhof.", "Viele Menschen ...", "Ein Zug ...", "Die Frau ..."], minSeconds: 45, maxSeconds: 120, xp: 45, difficulty: 1 },
+  { id: "a2-16", level: "a2", type: "bild", title: "Im Klassenzimmer", prompt: "Beschreib dieses Bild: Ein Klassenzimmer mit vielen Schülern. Eine Lehrerin schreibt an der Tafel. Die Schüler hören zu oder schreiben. Auf den Tischen liegen Bücher und Hefte.\n\nBeschreib, was du siehst!", hints: ["Im Klassenzimmer sind ...", "Die Lehrerin ...", "Die Schüler ...", "Auf den Tischen ..."], minSeconds: 45, maxSeconds: 120, xp: 45, difficulty: 1 },
+  { id: "a2-17", level: "a2", type: "bild", title: "Im Büro", prompt: "Beschreib dieses Bild: Ein modernes Büro. Mehrere Kollegen sitzen an Computern. Zwei Personen sprechen miteinander. Es gibt viele Pflanzen und große Fenster.\n\nBeschreib, was du siehst!", hints: ["Das Büro ist ...", "Die Kollegen ...", "Im Hintergrund ...", "Die zwei Personen ..."], minSeconds: 45, maxSeconds: 120, xp: 45, difficulty: 2 },
+  { id: "a2-18", level: "a2", type: "bild", title: "Beim Sport", prompt: "Beschreib dieses Bild: Ein Sportzentrum. Menschen spielen Basketball. Einige trainieren an Geräten. Ein Trainer erklärt etwas einer Gruppe.\n\nBeschreib, was du siehst!", hints: ["Im Sportzentrum ...", "Die Menschen ...", "Auf der linken Seite ...", "Der Trainer ..."], minSeconds: 45, maxSeconds: 120, xp: 45, difficulty: 2 },
+  { id: "a2-19", level: "a2", type: "bild", title: "In der Stadt", prompt: "Beschreib dieses Bild: Eine belebte Fußgängerzone. Geschäfte mit bunten Schaufenstern. Menschen gehen einkaufen, sitzen in Cafés oder auf Bänken.\n\nBeschreib, was du siehst!", hints: ["Die Straße ist ...", "Es gibt viele Geschäfte.", "Die Menschen ...", "Im Café ..."], minSeconds: 45, maxSeconds: 120, xp: 45, difficulty: 2 },
+  { id: "a2-20", level: "a2", type: "bild", title: "Im Krankenhaus", prompt: "Beschreib dieses Bild: Ein Wartezimmer in einem Krankenhaus. Patienten sitzen auf Stühlen. Eine Krankenschwester spricht mit einem Arzt. Ein Kind liest ein Buch.\n\nBeschreib, was du siehst!", hints: ["Im Wartezimmer ...", "Die Patienten ...", "Die Krankenschwester ...", "Das Kind ..."], minSeconds: 45, maxSeconds: 120, xp: 45, difficulty: 2 },
+  { id: "a2-21", level: "a2", type: "bild", title: "Auf dem Spielplatz", prompt: "Beschreib dieses Bild: Ein Spielplatz mit vielen Kindern. Kinder spielen auf der Schaukel, der Rutsche und dem Klettergerüst. Eltern sitzen auf Bänken.\n\nBeschreib, was du siehst!", hints: ["Auf dem Spielplatz ...", "Die Kinder ...", "Auf der Schaukel / Rutsche ...", "Die Eltern ..."], minSeconds: 45, maxSeconds: 120, xp: 45, difficulty: 1 },
+
+  // B1 — Teil 1: Präsentation
+  { id: "b1-1", level: "b1", type: "praesentation", title: "Umweltschutz", prompt: "Halte eine kurze Präsentation zum Thema Umweltschutz!\n\nDeine Notizen:\n• Was ist das Problem?\n• Was kann man im Alltag tun?\n• Deine persönliche Meinung", hints: ["Mein Thema ist ...", "Erstens / Zweitens ...", "Ich denke, dass ...", "Zum Schluss möchte ich sagen ..."], minSeconds: 60, maxSeconds: 180, xp: 60, difficulty: 2 },
+  { id: "b1-2", level: "b1", type: "praesentation", title: "Soziale Medien", prompt: "Halte eine kurze Präsentation zum Thema Soziale Medien!\n\nDeine Notizen:\n• Welche sozialen Medien nutzt du?\n• Vor- und Nachteile\n• Deine persönliche Meinung", hints: ["Ich möchte über ... sprechen.", "Ein Vorteil ist ...", "Auf der anderen Seite ...", "Meiner Meinung nach ..."], minSeconds: 60, maxSeconds: 180, xp: 60, difficulty: 2 },
+  { id: "b1-3", level: "b1", type: "praesentation", title: "Gesunde Ernährung", prompt: "Halte eine kurze Präsentation zum Thema gesunde Ernährung!\n\nDeine Notizen:\n• Was bedeutet gesunde Ernährung?\n• Probleme bei der Umsetzung\n• Tipps für den Alltag", hints: ["Gesunde Ernährung bedeutet ...", "Viele Menschen haben Probleme, weil ...", "Ein Tipp ist ...", "Ich empfehle ..."], minSeconds: 60, maxSeconds: 180, xp: 60, difficulty: 2 },
+  { id: "b1-4", level: "b1", type: "praesentation", title: "Homeoffice", prompt: "Halte eine kurze Präsentation zum Thema Homeoffice!\n\nDeine Notizen:\n• Was ist Homeoffice?\n• Vor- und Nachteile für Arbeitnehmer\n• Deine persönliche Erfahrung oder Meinung", hints: ["Homeoffice bedeutet ...", "Ein Vorteil für Arbeitnehmer ist ...", "Allerdings gibt es auch ...", "Ich finde, dass ..."], minSeconds: 60, maxSeconds: 180, xp: 60, difficulty: 2 },
+  { id: "b1-5", level: "b1", type: "praesentation", title: "Reisen", prompt: "Halte eine kurze Präsentation zum Thema Reisen!\n\nDeine Notizen:\n• Warum reisen Menschen?\n• Deine liebste Reiseart\n• Eine unvergessliche Reise", hints: ["Menschen reisen, weil ...", "Ich reise am liebsten mit ...", "Einmal war ich in ... und ...", "Reisen ist wichtig, weil ..."], minSeconds: 60, maxSeconds: 180, xp: 60, difficulty: 1 },
+  // B1 — Teil 2: Reaktion
+  { id: "b1-6", level: "b1", type: "reaktion", title: "Einladung absagen", prompt: "Dein Freund lädt dich zu seiner Geburtstagsparty ein, aber du kannst leider nicht kommen. Erkläre den Grund, entschuldige dich und mache einen alternativen Vorschlag.", hints: ["Es tut mir wirklich leid, aber ...", "Ich kann leider nicht kommen, weil ...", "Könnten wir uns vielleicht ... treffen?", "Ich freue mich trotzdem auf ..."], minSeconds: 45, maxSeconds: 120, xp: 55, difficulty: 2 },
+  { id: "b1-7", level: "b1", type: "reaktion", title: "Beschwerde im Hotel", prompt: "Du bist in einem Hotel. Dein Zimmer ist zu laut, die Heizung funktioniert nicht und das Frühstück war kalt. Beschwere dich an der Rezeption und bitte um eine Lösung.", hints: ["Ich möchte mich beschweren.", "Das Zimmer ist ...", "Könnten Sie bitte ...?", "Ich erwarte, dass ..."], minSeconds: 45, maxSeconds: 120, xp: 55, difficulty: 2 },
+  { id: "b1-8", level: "b1", type: "reaktion", title: "Vorschläge machen", prompt: "Dein Freund ist gestresst und braucht Erholung. Mache drei Vorschläge, was er/sie tun könnte. Erkläre, warum diese Aktivitäten helfen würden.", hints: ["Ich schlage vor, dass ...", "Du könntest ...", "Das würde dir helfen, weil ...", "Eine andere Möglichkeit wäre ..."], minSeconds: 45, maxSeconds: 120, xp: 55, difficulty: 2 },
+  { id: "b1-9", level: "b1", type: "reaktion", title: "Kaufentscheidung", prompt: "Du möchtest ein neues Fahrrad kaufen. Ein Freund empfiehlt ein teures Modell, du überlegst ein günstigeres. Diskutiere die Vor- und Nachteile beider Optionen.", hints: ["Das teure Modell hat den Vorteil, dass ...", "Das günstigere Modell ...", "Ich denke, es ist besser ...", "Was ist dir wichtiger?"], minSeconds: 45, maxSeconds: 120, xp: 55, difficulty: 2 },
+  { id: "b1-10", level: "b1", type: "reaktion", title: "Missverständnis klären", prompt: "Du hast einen Termin um 14 Uhr verstanden, aber dein Chef meint es war um 10 Uhr. Erkläre, was passiert ist und löse das Missverständnis.", hints: ["Ich hatte verstanden, dass ...", "Ich glaube, es gab ein Missverständnis.", "Könnten wir einen neuen Termin vereinbaren?", "Entschuldigung, ich dachte ..."], minSeconds: 45, maxSeconds: 120, xp: 55, difficulty: 2 },
+  // B1 — Teil 3: Planung
+  { id: "b1-11", level: "b1", type: "planung", title: "Klassenreise planen", prompt: "Ihr möchtet als Klasse eine Reise machen. Plane die Reise: Wohin? Wie lange? Womit fahrt ihr? Was macht ihr dort? Denk an Argumente für verschiedene Optionen.", hints: ["Ich schlage vor, nach ... zu fahren.", "Wir könnten ... Tage bleiben.", "Als Transportmittel ...", "Dort könnten wir ..."], minSeconds: 60, maxSeconds: 180, xp: 60, difficulty: 2 },
+  { id: "b1-12", level: "b1", type: "planung", title: "Geburtstagsfeier organisieren", prompt: "Du möchtest eine Geburtstagsparty für einen Freund organisieren. Plane alles: Wo? Wann? Wer wird eingeladen? Was gibt es zu essen? Welche Aktivitäten?", hints: ["Die Party könnte ... stattfinden.", "Wir könnten ... einladen.", "Als Essen schlage ich vor ...", "Für die Unterhaltung ..."], minSeconds: 60, maxSeconds: 180, xp: 60, difficulty: 1 },
+  { id: "b1-13", level: "b1", type: "planung", title: "Wochenendausflug", prompt: "Du und deine Freunde möchten einen Wochenendausflug machen. Plane: Ziel, Unterkunft, Aktivitäten, Essen. Einige haben wenig Geld, andere möchten aktiv sein.", hints: ["Als Ziel empfehle ich ...", "Wir könnten in ... übernachten.", "Für die günstigen Optionen ...", "Die Aktiven unter uns könnten ..."], minSeconds: 60, maxSeconds: 180, xp: 60, difficulty: 2 },
+  { id: "b1-14", level: "b1", type: "planung", title: "Neues Büro einrichten", prompt: "Dein Team bekommt ein neues Büro. Plane die Einrichtung: Welche Möbel braucht ihr? Wie soll das Büro aussehen? Was ist wichtig für die Mitarbeiter?", hints: ["Wir brauchen auf jeden Fall ...", "Es wäre schön, wenn ...", "Für die Produktivität ist wichtig ...", "Ich würde vorschlagen ..."], minSeconds: 60, maxSeconds: 180, xp: 60, difficulty: 2 },
+  { id: "b1-15", level: "b1", type: "planung", title: "Stadtfest planen", prompt: "Eure Stadt möchte ein Sommerfest organisieren. Du bist im Komitee. Plane: Datum, Ort, Aktivitäten, Essen, Budget.", hints: ["Das Fest könnte am ... stattfinden.", "Als Ort schlage ich ... vor.", "Wir könnten ... anbieten.", "Für das Budget ..."], minSeconds: 60, maxSeconds: 180, xp: 65, difficulty: 3 },
+
+  // B2 — Teil 1: Präsentation
+  { id: "b2-1", level: "b2", type: "praesentation", title: "Digitalisierung im Bildungswesen", prompt: "Halte eine strukturierte Präsentation: Digitalisierung im Bildungswesen.\n\nStruktur:\n• Aktuelle Situation\n• Chancen der Digitalisierung\n• Risiken und Herausforderungen\n• Fazit mit Empfehlung", hints: ["Ich möchte über ... sprechen.", "Die aktuelle Situation zeigt ...", "Einerseits ... Andererseits ...", "Abschließend empfehle ich ..."], minSeconds: 90, maxSeconds: 240, xp: 75, difficulty: 2 },
+  { id: "b2-2", level: "b2", type: "praesentation", title: "Klimawandel und Verantwortung", prompt: "Halte eine strukturierte Präsentation: Klimawandel und persönliche Verantwortung.\n\nStruktur:\n• Ursachen des Klimawandels\n• Was kann der Einzelne tun?\n• Grenzen individuellen Handelns\n• Politische Maßnahmen und dein Standpunkt", hints: ["Der Klimawandel wird verursacht durch ...", "Auf individueller Ebene kann man ...", "Allerdings sind die Möglichkeiten begrenzt, weil ...", "Politisch gesehen brauchen wir ..."], minSeconds: 90, maxSeconds: 240, xp: 75, difficulty: 2 },
+  { id: "b2-3", level: "b2", type: "praesentation", title: "Statistik: Smartphone-Nutzung", prompt: "Präsentiere diese Statistik: 87% der 18–30-Jährigen nutzen ihr Smartphone mehr als 4 Stunden täglich. Bei 50–65-Jährigen sind es nur 31%.\n\nStruktur:\n• Statistik erläutern\n• Gründe für die Unterschiede\n• Folgen für die Gesellschaft\n• Dein Standpunkt", hints: ["Die Statistik zeigt, dass ...", "Ein Grund dafür könnte sein ...", "Diese Entwicklung hat Folgen für ...", "Ich finde es bedenklich/positiv, dass ..."], minSeconds: 90, maxSeconds: 240, xp: 75, difficulty: 3 },
+  { id: "b2-4", level: "b2", type: "praesentation", title: "Work-Life-Balance", prompt: "Halte eine Präsentation: Work-Life-Balance in der modernen Arbeitswelt.\n\nStruktur:\n• Was bedeutet Work-Life-Balance?\n• Probleme in der heutigen Arbeitswelt\n• Strategien zur Verbesserung\n• Verantwortung von Arbeitgebern vs. Arbeitnehmern", hints: ["Work-Life-Balance bedeutet ...", "Heutzutage ist es schwieriger, weil ...", "Um die Balance zu verbessern ...", "Sowohl Arbeitgeber als auch Arbeitnehmer müssen ..."], minSeconds: 90, maxSeconds: 240, xp: 75, difficulty: 2 },
+  { id: "b2-5", level: "b2", type: "praesentation", title: "Migration und Integration", prompt: "Halte eine ausgewogene Präsentation: Migration und Integration.\n\nStruktur:\n• Aktuelle Migrationssituation in Europa\n• Chancen der Zuwanderung\n• Herausforderungen der Integration\n• Empfehlungen für erfolgreiche Integration", hints: ["In Europa gibt es derzeit ...", "Migration bietet Chancen wie ...", "Die Integration ist herausfordernd, weil ...", "Für eine erfolgreiche Integration empfehle ich ..."], minSeconds: 90, maxSeconds: 240, xp: 80, difficulty: 3 },
+  // B2 — Teil 2: Diskussion
+  { id: "b2-6", level: "b2", type: "diskussion", title: "Autofahren teurer machen?", prompt: "Diskutiere: 'Autofahren sollte durch höhere Steuern teurer werden, um den öffentlichen Nahverkehr zu finanzieren.'\n\nBring Argumente für UND gegen diese Aussage und verteidige deinen Standpunkt.", hints: ["Ein Argument dafür ist ...", "Kritiker hingegen sagen ...", "Ich bin der Meinung, dass ...", "Man muss jedoch bedenken, dass ..."], minSeconds: 90, maxSeconds: 240, xp: 75, difficulty: 2 },
+  { id: "b2-7", level: "b2", type: "diskussion", title: "Vegetarismus als Pflicht?", prompt: "Diskutiere: 'Aus Gründen des Klimaschutzes sollten alle Menschen auf Fleisch verzichten.'\n\nBring verschiedene Perspektiven ein und verteidige deinen Standpunkt.", hints: ["Befürworter argumentieren ...", "Allerdings muss man berücksichtigen ...", "Aus meiner Sicht ...", "Ein wichtiges Gegenargument ist ..."], minSeconds: 90, maxSeconds: 240, xp: 75, difficulty: 2 },
+  { id: "b2-8", level: "b2", type: "diskussion", title: "Homeoffice als Standard?", prompt: "Diskutiere: 'Homeoffice sollte zur Standardarbeitsform werden. Büros sind ineffizient und unnötig teuer.'\n\nAnalysiere verschiedene Perspektiven und nimm Stellung.", hints: ["Für das Homeoffice spricht ...", "Trotzdem gibt es Nachteile ...", "Aus Arbeitgebersicht ...", "Ich denke, ein Gleichgewicht ist ideal."], minSeconds: 90, maxSeconds: 240, xp: 75, difficulty: 2 },
+  { id: "b2-9", level: "b2", type: "diskussion", title: "Soziale Medien und Demokratie", prompt: "Diskutiere: 'Soziale Medien sind eine Gefahr für die Demokratie, weil sie Fehlinformationen verbreiten und die Gesellschaft spalten.'\n\nNimm Stellung und präsentiere verschiedene Sichtweisen.", hints: ["Es stimmt, dass ...", "Andererseits bieten soziale Medien ...", "Das Problem ist ...", "Eine Lösung könnte sein ..."], minSeconds: 90, maxSeconds: 240, xp: 80, difficulty: 3 },
+  { id: "b2-10", level: "b2", type: "diskussion", title: "Tourismus — Chance oder Bedrohung?", prompt: "Diskutiere: 'Massentourismus schadet mehr als er nützt. Regionen sollten Touristenzahlen begrenzen.'\n\nBring wirtschaftliche, ökologische und kulturelle Perspektiven ein.", hints: ["Wirtschaftlich gesehen ...", "Ökologisch betrachtet ...", "Für die lokale Kultur ...", "Eine Balance zwischen ... wäre sinnvoll."], minSeconds: 90, maxSeconds: 240, xp: 80, difficulty: 3 },
+  // B2 — Teil 3: Argumentation
+  { id: "b2-11", level: "b2", type: "argumentation", title: "Gegen Ganztagsschulen", prompt: "Dein Gesprächspartner sagt: 'Ganztagsschulen sind super! Kinder lernen mehr und Eltern können besser arbeiten.'\n\nNimm eine kritische Position ein. Bring mindestens 3 Gegenargumente und schlage Alternativen vor.", hints: ["Ich sehe das etwas anders.", "Ein Problem dabei ist ...", "Kinder brauchen auch ...", "Eine Alternative wäre ..."], minSeconds: 60, maxSeconds: 180, xp: 75, difficulty: 2 },
+  { id: "b2-12", level: "b2", type: "argumentation", title: "Gegen kostenlosen ÖPNV", prompt: "Dein Gesprächspartner sagt: 'Der öffentliche Nahverkehr sollte komplett kostenlos sein. Das ist gut für die Umwelt und soziale Gerechtigkeit.'\n\nBring kritische Gegenargumente und schlage Alternativen vor.", hints: ["Das klingt attraktiv, aber ...", "Ein schwerwiegendes Problem ist die Finanzierung.", "Außerdem ...", "Stattdessen könnte man ..."], minSeconds: 60, maxSeconds: 180, xp: 75, difficulty: 2 },
+  { id: "b2-13", level: "b2", type: "argumentation", title: "Gegen 4-Tage-Woche", prompt: "Dein Gesprächspartner sagt: 'Die 4-Tage-Woche sollte überall eingeführt werden. Studien zeigen, dass die Produktivität steigt.'\n\nNimm eine differenzierte kritische Position ein.", hints: ["Studien zeigen zwar ..., aber ...", "In manchen Branchen ist das problematisch ...", "Man muss auch bedenken ...", "Ein fairer Kompromiss wäre ..."], minSeconds: 60, maxSeconds: 180, xp: 75, difficulty: 3 },
+  { id: "b2-14", level: "b2", type: "argumentation", title: "Gegen Handyverbot in Schulen", prompt: "Dein Gesprächspartner sagt: 'Smartphones sollten in Schulen komplett verboten werden. Sie lenken ab und schaden dem Lernen.'\n\nNimm eine differenzierte Gegenposition ein.", hints: ["Ich verstehe die Bedenken, aber ...", "Smartphones können auch nützlich sein für ...", "Das eigentliche Problem ist ...", "Sinnvoller wäre es ..."], minSeconds: 60, maxSeconds: 180, xp: 75, difficulty: 2 },
+  { id: "b2-15", level: "b2", type: "argumentation", title: "Gegen verpflichtendes Ehrenamt", prompt: "Dein Gesprächspartner sagt: 'Jeder Mensch sollte ein Jahr ehrenamtlich arbeiten. Das stärkt den Zusammenhalt in der Gesellschaft.'\n\nNimm eine kritische Position ein und schlage Alternativen vor.", hints: ["Ehrenamt ist wichtig, aber ...", "Ein Zwang würde den Charakter des Ehrenamts verändern.", "Außerdem ...", "Besser wäre es, ..."], minSeconds: 60, maxSeconds: 180, xp: 80, difficulty: 3 },
+
+  // C1 — Teil 1: Vortrag
+  { id: "c1-1", level: "c1", type: "vortrag", title: "KI und Arbeitsmarkt", prompt: "Halten Sie einen strukturierten Kurzvortrag: 'Künstliche Intelligenz und ihre Auswirkungen auf den Arbeitsmarkt'.\n\nAspekte:\n• Historische Parallelen zu früheren Revolutionen\n• Konkrete betroffene Berufsfelder\n• Neue Berufsbilder und Kompetenzen\n• Gesellschaftspolitische Konsequenzen und Empfehlungen", hints: ["Historisch gesehen ...", "Besonders betroffen sind ...", "Gleichzeitig entstehen neue ...", "Gesellschaftspolitisch erfordert dies ..."], minSeconds: 120, maxSeconds: 300, xp: 100, difficulty: 3 },
+  { id: "c1-2", level: "c1", type: "vortrag", title: "Urbanisierung und Lebensqualität", prompt: "Vortrag: 'Urbanisierung — Fluch oder Segen für die Lebensqualität?'\n\nAspekte:\n• Globale Urbanisierungstrends\n• Auswirkungen auf Infrastruktur, Umwelt, soziale Strukturen\n• Unterschiede Industrieländer vs. Entwicklungsländer\n• Zukunftsperspektiven und Fazit", hints: ["Weltweit zeigen Daten ...", "Im Hinblick auf die Infrastruktur ...", "In Industrieländern unterscheidet sich ...", "Für die Zukunft ist entscheidend ..."], minSeconds: 120, maxSeconds: 300, xp: 100, difficulty: 3 },
+  { id: "c1-3", level: "c1", type: "vortrag", title: "Medienkonsum und Demokratie", prompt: "Vortrag: 'Wie verändert der digitale Medienkonsum demokratische Prozesse?'\n\nAspekte:\n• Veränderung der Medienlandschaft\n• Filterblasen und Echokammern\n• Desinformation und ihre Folgen\n• Medienkompetenz als gesellschaftliche Aufgabe", hints: ["Die Medienlandschaft hat sich grundlegend verändert ...", "Das Phänomen der Filterblasen ...", "Desinformation führt dazu, dass ...", "Medienkompetenz muss ..."], minSeconds: 120, maxSeconds: 300, xp: 100, difficulty: 3 },
+  { id: "c1-4", level: "c1", type: "vortrag", title: "Globalisierung und kulturelle Identität", prompt: "Vortrag: 'Bedroht die Globalisierung kulturelle Identitäten oder fördert sie den interkulturellen Dialog?'\n\nAspekte:\n• Definition und Formen der Globalisierung\n• Kulturelle Homogenisierung vs. Bereicherung\n• Konkrete Beispiele aus Sprache, Musik, Essen\n• Differenziertes Fazit", hints: ["Globalisierung bezeichnet ...", "Einerseits führt sie zu ...", "Andererseits entstehen ...", "Mein differenziertes Fazit lautet ..."], minSeconds: 120, maxSeconds: 300, xp: 100, difficulty: 3 },
+  { id: "c1-5", level: "c1", type: "vortrag", title: "Bildungsgerechtigkeit", prompt: "Vortrag: 'Bildungsgerechtigkeit in modernen Gesellschaften — Mythos oder erreichbares Ziel?'\n\nAspekte:\n• Definition von Bildungsgerechtigkeit\n• Strukturelle Barrieren\n• Bestehende Maßnahmen und ihre Wirksamkeit\n• Ihr Reformvorschlag", hints: ["Bildungsgerechtigkeit bedeutet ...", "Strukturelle Barrieren umfassen ...", "Bisherige Maßnahmen zeigen ...", "Um echte Gerechtigkeit zu erreichen, muss ..."], minSeconds: 120, maxSeconds: 300, xp: 105, difficulty: 3 },
+  // C1 — Teil 2: Debatte
+  { id: "c1-6", level: "c1", type: "debatte", title: "KI in der Medizin", prompt: "Debattieren Sie: 'Künstliche Intelligenz sollte bei Diagnosen und Behandlungen den Ärzten gleichgestellt sein.'\n\nBerücksichtigen Sie:\n• Argumente der KI-Befürworter\n• Medizinethische Gegenargumente\n• Rechtliche und gesellschaftliche Implikationen\n• Ihr nuancierter Standpunkt", hints: ["KI-Befürworter argumentieren ...", "Aus medizinethischer Sicht ...", "Rechtlich stellt sich die Frage ...", "Mein nuancierter Standpunkt ist ..."], minSeconds: 120, maxSeconds: 300, xp: 100, difficulty: 3 },
+  { id: "c1-7", level: "c1", type: "debatte", title: "Überwachungsgesellschaft", prompt: "Debattieren Sie: 'Zur Verbrechensbekämpfung sollten Regierungen alle digitalen Kommunikationswege überwachen dürfen.'\n\nBerücksichtigen Sie Sicherheitsargumente, Grundrechte, historische Vergleiche und mögliche Kompromisse.", hints: ["Sicherheitspolitisch ...", "Das Grundrecht auf Privatsphäre ...", "In anderen Ländern hat man gesehen ...", "Ein möglicher Kompromiss wäre ..."], minSeconds: 120, maxSeconds: 300, xp: 100, difficulty: 3 },
+  { id: "c1-8", level: "c1", type: "debatte", title: "Genmanipulation", prompt: "Debattieren Sie: 'Die genetische Veränderung menschlicher Embryonen zur Prävention von Erbkrankheiten sollte erlaubt sein.'\n\nBerücksichtigen Sie medizinische, ethische, soziale und religiöse Perspektiven.", hints: ["Medizinisch gesehen ...", "Ethisch betrachtet ...", "Religionsübergreifend ...", "Die gesellschaftliche Konsequenz wäre ..."], minSeconds: 120, maxSeconds: 300, xp: 105, difficulty: 3 },
+  { id: "c1-9", level: "c1", type: "debatte", title: "Bedingungsloses Grundeinkommen", prompt: "Debattieren Sie: 'Ein bedingungsloses Grundeinkommen würde die Arbeitsmotivation zerstören und ist wirtschaftlich nicht finanzierbar.'\n\nAnalysieren Sie aus ökonomischen, sozialen und philosophischen Perspektiven.", hints: ["Diese These lässt außer Acht ...", "Aus ökonomischer Sicht ...", "Philosophisch stellt sich ...", "Empirische Studien zeigen ..."], minSeconds: 120, maxSeconds: 300, xp: 105, difficulty: 3 },
+  { id: "c1-10", level: "c1", type: "debatte", title: "Postwachstumsgesellschaft", prompt: "Debattieren Sie: 'Wirtschaftswachstum und Nachhaltigkeit sind grundsätzlich unvereinbar. Wir brauchen eine Postwachstumsgesellschaft.'\n\nAnalysieren Sie aus wirtschaftlicher, ökologischer und sozialpolitischer Perspektive.", hints: ["Diese provokante These ...", "Wachstumskritiker argumentieren ...", "Aus wirtschaftswissenschaftlicher Sicht ...", "Eine Postwachstumsgesellschaft würde bedeuten ..."], minSeconds: 120, maxSeconds: 300, xp: 105, difficulty: 3 },
+  // C1 — Teil 3: Analyse
+  { id: "c1-11", level: "c1", type: "analyse", title: "Politikeraussage analysieren", prompt: "Analysieren Sie: 'Unsere neue Wirtschaftspolitik hat die Arbeitslosigkeit um 2% gesenkt — ein großer Erfolg unserer Regierung.'\n\nAnalysieren Sie:\n• Was sagt die Aussage aus, was verschweigt sie?\n• Welche rhetorischen Mittel werden eingesetzt?\n• Welche Fragen würden Sie dem Politiker stellen?", hints: ["Die Aussage betont ..., verschweigt aber ...", "Rhetorisch gesehen wird ... eingesetzt.", "Kritisch zu hinterfragen wäre ...", "Um die Aussage einzuordnen, bräuchte man ..."], minSeconds: 120, maxSeconds: 300, xp: 100, difficulty: 3 },
+  { id: "c1-12", level: "c1", type: "analyse", title: "Ethisches Dilemma", prompt: "Analysieren Sie: Ein Arzt kann einen Patienten mit einer teuren, aber wirksamen Therapie behandeln oder mit einer günstigeren mit geringeren Erfolgschancen. Das Krankenhaus hat ein begrenztes Budget.\n\nWelche ethischen Prinzipien stehen im Konflikt? Wie würden Sie entscheiden?", hints: ["Es stehen folgende Prinzipien im Konflikt ...", "Aus Sicht des Arztes ...", "Das Krankenhaus muss ...", "Ich würde entscheiden ..., weil ..."], minSeconds: 120, maxSeconds: 300, xp: 100, difficulty: 3 },
+  { id: "c1-13", level: "c1", type: "analyse", title: "Werbung analysieren", prompt: "Analysieren Sie: 'Wissenschaftler bestätigen: Unser Produkt XY ist die effektivste Lösung für Ihre Gesundheit — jetzt 50% günstiger!'\n\nWelche sprachlichen Mittel werden eingesetzt? Was wird behauptet, was verschwiegen? Warum könnte diese Formulierung irreführend sein?", hints: ["Die Formulierung 'Wissenschaftler bestätigen' ...", "Das Wort 'effektivste' impliziert ...", "Verschwiegen wird ...", "Kritischer Medienkonsum bedeutet ..."], minSeconds: 120, maxSeconds: 300, xp: 100, difficulty: 3 },
+  { id: "c1-14", level: "c1", type: "analyse", title: "Statistik kritisch lesen", prompt: "Analysieren Sie: 'In den letzten 10 Jahren ist die Kriminalitätsrate um 40% gestiegen. Die Einwanderung ist im gleichen Zeitraum um 35% gestiegen.'\n\nWelche implizite Aussage macht diese Gegenüberstellung? Was sind die methodischen Probleme?", hints: ["Die implizite Aussage ist ...", "Methodisch problematisch ist ...", "Eine alternative Interpretation wäre ...", "Dies zeigt, dass Statistiken ..."], minSeconds: 120, maxSeconds: 300, xp: 105, difficulty: 3 },
+  { id: "c1-15", level: "c1", type: "analyse", title: "Zukunftsszenario bewerten", prompt: "Bewerten Sie: 'Im Jahr 2050 werden 60% aller Jobs durch KI ersetzt. Menschen arbeiten nur noch 20 Stunden pro Woche und der Staat finanziert den Rest durch eine KI-Steuer.'\n\nWelche Annahmen liegen zugrunde? Was ist realistisch, was spekulativ? Welche gesellschaftlichen Herausforderungen entstehen?", hints: ["Dem Szenario liegt die Annahme zugrunde ...", "Realistisch erscheint ..., spekulativ hingegen ...", "Gesellschaftlich würde dies ...", "Mein Fazit zur Plausibilität ..."], minSeconds: 120, maxSeconds: 300, xp: 105, difficulty: 3 },
+];
+
+export function getSprechenAufgaben(level: string): SprechenAufgabe[] {
+  return AUFGABEN.filter((a) => a.level === level.toLowerCase());
 }
 
-export type SprechenProgress = Record<string, SprechenProgressItem>;
+export function getSprechenAufgabe(id: string): SprechenAufgabe | undefined {
+  return AUFGABEN.find((a) => a.id === id);
+}
 
 export function loadSprechenProgress(level: string): SprechenProgress {
   if (typeof window === "undefined") return {};
   try {
-    const raw = localStorage.getItem(`sprechen-progress-${level.toLowerCase()}`);
-    return raw ? JSON.parse(raw) : {};
+    const raw = localStorage.getItem(`sprechen-progress-${level}`);
+    return raw ? (JSON.parse(raw) as SprechenProgress) : {};
   } catch {
     return {};
   }
 }
 
-export function saveSprechenProgress(level: string, progress: SprechenProgress): void {
+export function saveSprechenProgress(level: string, id: string, score: number, transcript: string) {
   if (typeof window === "undefined") return;
-  localStorage.setItem(
-    `sprechen-progress-${level.toLowerCase()}`,
-    JSON.stringify(progress)
-  );
+  try {
+    const progress = loadSprechenProgress(level);
+    progress[id] = { score, transcript };
+    localStorage.setItem(`sprechen-progress-${level}`, JSON.stringify(progress));
+  } catch {}
 }
 
-const A1_TEILE: SprechenTeil[] = [
-  {
-    id: 1,
-    level: "A1",
-    title: "Sich vorstellen",
-    subtitle: "Kendinizi tanıtın",
-    prueferEinleitung:
-      "Guten Tag! Herzlich willkommen zur Prüfung. Bitte stellen Sie sich vor.",
-    aufgabenKarteTitle: "Stellen Sie sich vor!",
-    aufgabenKarteInhalt: [
-      "Name",
-      "Alter",
-      "Herkunft",
-      "Wohnort",
-      "Beruf / Schule",
-      "Sprachen",
-      "Hobbys",
-    ],
-    type: "vorstellen",
-    schritte: [
-      {
-        id: 1,
-        prueferText:
-          "Guten Tag! Wie heißen Sie? Bitte stellen Sie sich vor.",
-        aufgabe:
-          "Kendinizi tanıtın. Karttaki tüm noktalara değinmeye çalışın.",
-        karteKeywords: [
-          "Name",
-          "Alter",
-          "Herkunft",
-          "Wohnort",
-          "Beruf / Schule",
-          "Sprachen",
-          "Hobbys",
-        ],
-        mustEnthalten: [
-          "ich heiße",
-          "ich komme",
-          "ich wohne",
-          "ich bin",
-          "ich lerne",
-          "ich spreche",
-          "ich arbeite",
-          "mein hobby",
-          "ich mag",
-          "ich gehe",
-        ],
-        bewertungsTipps: [
-          "Adınızı tam cümleyle söylediniz mi? (Ich heiße...)",
-          "Nereden geldiğinizi söylediniz mi? (Ich komme aus...)",
-          "Nerede oturduğunuzu söylediniz mi? (Ich wohne in...)",
-          "Yaşınızı veya mesleğinizi söylediniz mi?",
-          "Hobilerinizden en az birini söylediniz mi?",
-        ],
-      },
-    ],
-    maxPunkte: 3,
-    xp: 40,
-    tipps: [
-      "Her noktayı sırayla ele alın",
-      "Sadece kelime söylemeyin, tam cümle kurun: 'Ich heiße...'",
-      "Hata yapmaktan korkmayın, devam edin",
-    ],
-  },
-  {
-    id: 2,
-    level: "A1",
-    title: "Informationen erfragen",
-    subtitle: "Bilgi sorun ve verin",
-    prueferEinleitung:
-      "Jetzt spielen wir ein Spiel mit Karten. Ich frage Sie zuerst, dann sind Sie dran!",
-    aufgabenKarteTitle: "Themen-Karten",
-    aufgabenKarteInhalt: ["🍳 Frühstück", "🎸 Hobbys", "👨‍👩‍👧 Familie"],
-    type: "informationen",
-    schritte: [
-      {
-        id: 1,
-        prueferText:
-          "Ich habe eine Karte gezogen: \"Frühstück\" 🍳\nWas essen oder trinken Sie zum Frühstück?",
-        aufgabe:
-          "Prüfer size sabah kahvaltısı hakkında soru sordu. Cevap verin.",
-        karteKeywords: ["🍳 Frühstück"],
-        mustEnthalten: [
-          "ich esse",
-          "ich trinke",
-          "zum frühstück",
-          "morgens",
-          "brot",
-          "kaffee",
-          "tee",
-          "milch",
-          "ei",
-          "müsli",
-          "obst",
-        ],
-        bewertungsTipps: [
-          "En az bir yiyecek veya içecek adı söylediniz mi?",
-          "'Ich esse...' veya 'Ich trinke...' kullandınız mı?",
-          "Tam cümle mi kurdunuz?",
-        ],
-      },
-      {
-        id: 2,
-        prueferText:
-          "Sehr gut! Jetzt sind Sie dran. Ziehen Sie eine Karte!",
-        aufgabe:
-          "Sizin kartınız: \"Hobbys\" 🎸\n\nPrüfere hobi hakkında bir soru sorun.",
-        karteKeywords: ["🎸 Hobbys"],
-        prueferAntwort:
-          "Ich spiele gern Gitarre und lese viel. Im Sommer gehe ich auch gern wandern. Und Sie, was machen Sie gern in der Freizeit?",
-        mustEnthalten: [
-          "was",
-          "machen",
-          "spielen",
-          "haben",
-          "mögen",
-          "?",
-          "hobby",
-          "freizeit",
-          "gern",
-        ],
-        bewertungsTipps: [
-          "Bir soru sordunuz mu? ('Was machen Sie gern?' gibi)",
-          "Soru içeren bir yapı kullandınız mı?",
-          "Konu 'Hobbys' ile ilgili miydi?",
-        ],
-      },
-      {
-        id: 3,
-        prueferText:
-          "Karte: \"Familie\" 👨‍👩‍👧\nHaben Sie Geschwister? Erzählen Sie von Ihrer Familie.",
-        aufgabe:
-          "Aileniz hakkında soruyu cevaplayın. Kardeşlerinizden veya ailenizden bahsedin.",
-        karteKeywords: ["👨‍👩‍👧 Familie"],
-        mustEnthalten: [
-          "ich habe",
-          "bruder",
-          "schwester",
-          "mutter",
-          "vater",
-          "eltern",
-          "geschwister",
-          "keine",
-          "meine familie",
-          "ich bin",
-        ],
-        bewertungsTipps: [
-          "Kardeşiniz var mı yok mu söylediniz mi?",
-          "Bir aile üyesini tanıttınız mı?",
-          "Tam cümle mi kurdunuz?",
-        ],
-      },
-    ],
-    maxPunkte: 6,
-    xp: 60,
-    tipps: [
-      "Soru sorarken: 'Was...?', 'Wo...?', 'Haben Sie...?' kullanın",
-      "Cevaplarken tam cümle kurun",
-      "Anlamadıysanız: 'Können Sie das wiederholen?' diyebilirsiniz",
-    ],
-  },
-  {
-    id: 3,
-    level: "A1",
-    title: "Bitten formulieren",
-    subtitle: "Kibarca bir şeyler isteyin",
-    prueferEinleitung:
-      "Jetzt sehen Sie Bilder. Formulieren Sie bitte eine höfliche Bitte!",
-    aufgabenKarteTitle: "Bildkarte",
-    aufgabenKarteInhalt: [],
-    type: "bitten",
-    schritte: [
-      {
-        id: 1,
-        prueferText:
-          "Sie sehen ein Bild. Was möchten Sie? Bitte formulieren Sie höflich!",
-        aufgabe: "Bu resmi görüyorsunuz. Kibarca bir istekte bulunun.",
-        bildKarte: { emoji: "💧", word: "Wasser", artikel: "ein Glas" },
-        prueferAntwort:
-          "Natürlich! Hier ist ein Glas Wasser. Bitte sehr!",
-        mustEnthalten: [
-          "wasser",
-          "bitte",
-          "können",
-          "darf",
-          "möchte",
-          "ich hätte",
-          "gern",
-        ],
-        bewertungsTipps: [
-          "'Bitte' sözcüğünü kullandınız mı?",
-          "Kibarca bir form kullandınız mı? ('Können Sie...?', 'Ich möchte...', 'Darf ich...?')",
-          "'Wasser' kelimesini doğru söylediniz mi?",
-        ],
-      },
-      {
-        id: 2,
-        prueferText: "Gut gemacht! Nächstes Bild.",
-        aufgabe: "Bu resmi görüyorsunuz. Kibarca bir istekte bulunun.",
-        bildKarte: { emoji: "✏️", word: "Stift", artikel: "einen" },
-        prueferAntwort:
-          "Ja, natürlich! Hier ist ein Stift für Sie. Bitte!",
-        mustEnthalten: [
-          "stift",
-          "bitte",
-          "können",
-          "darf",
-          "möchte",
-          "hätte",
-          "gern",
-        ],
-        bewertungsTipps: [
-          "Kibarca bir kalıp kullandınız mı?",
-          "'Stift' kelimesini söylediniz mi?",
-          "Prüfer verdikten sonra teşekkür ettiniz mi? (Danke!)",
-        ],
-      },
-      {
-        id: 3,
-        prueferText: "Sehr gut! Letztes Bild.",
-        aufgabe: "Bu resmi görüyorsunuz. Kibarca bir istekte bulunun.",
-        bildKarte: { emoji: "🗺️", word: "Stadtplan", artikel: "einen" },
-        prueferAntwort:
-          "Einen Stadtplan? Einen Moment... Hier, bitte! Sind Sie neu in der Stadt?",
-        mustEnthalten: [
-          "stadtplan",
-          "bitte",
-          "können",
-          "darf",
-          "möchte",
-          "hätte",
-          "haben",
-        ],
-        bewertungsTipps: [
-          "Kibarca bir kalıp kullandınız mı?",
-          "'Stadtplan' kelimesini doğru söylediniz mi?",
-          "Prüfer size bir soru sordu, cevap verdiniz mi?",
-        ],
-      },
-    ],
-    maxPunkte: 6,
-    xp: 60,
-    tipps: [
-      "Kibarca kalıplar: 'Können Sie mir... geben?', 'Ich möchte bitte...', 'Darf ich... haben?'",
-      "Her zaman 'bitte' ekleyin!",
-      "Alırken: 'Danke!' veya 'Vielen Dank!' deyin",
-    ],
-  },
-];
+export const TEIL_ORDER: Record<string, SprechenTeilType[]> = {
+  a1: ["vorstellen", "fragen"],
+  a2: ["vorstellen", "alltag", "bild"],
+  b1: ["praesentation", "reaktion", "planung"],
+  b2: ["praesentation", "diskussion", "argumentation"],
+  c1: ["vortrag", "debatte", "analyse"],
+};
 
-export function getSprechenTeile(level: string): SprechenTeil[] {
-  if (level.toUpperCase() === "A1") return A1_TEILE;
-  return [];
-}
-
-export function getSprechenTeil(
-  level: string,
-  teilId: number
-): SprechenTeil | undefined {
-  return getSprechenTeile(level).find((t) => t.id === teilId);
-}
+export const TYPE_LABELS: Record<SprechenTeilType, string> = {
+  vorstellen: "Sich vorstellen",
+  fragen: "Fragen & Antworten",
+  alltag: "Alltagsthemen",
+  bild: "Bildbeschreibung",
+  praesentation: "Präsentation",
+  reaktion: "Reaktion",
+  planung: "Planung",
+  diskussion: "Diskussion",
+  argumentation: "Argumentation",
+  vortrag: "Kurzvortrag",
+  debatte: "Debatte",
+  analyse: "Analyse",
+};
