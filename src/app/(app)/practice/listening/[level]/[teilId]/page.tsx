@@ -24,6 +24,7 @@ import { getHorenTeil, saveHorenProgress, HorenTeilType } from "@/lib/horen-data
 import { saveProgress } from "@/lib/saveProgress";
 import { savePracticeMistakes, type PracticeMistakeEntry } from "@/lib/practice-mistakes";
 import { WrongAnswerReview } from "@/components/practice/WrongAnswerReview";
+import { SpeakBtn } from "@/components/ui/SpeakBtn";
 
 const TYPE_META: Record<HorenTeilType, { icon: React.ElementType; color: string; bg: string }> = {
   ansagen: { icon: Mic, color: "text-blue-400", bg: "bg-blue-500/10" },
@@ -647,7 +648,10 @@ export default function HorenTeilPage() {
 
           {/* Question */}
           <div className="bg-navy-card border border-navy-border rounded-2xl p-5">
-            <p className="text-text-primary font-semibold mb-4">{question.question}</p>
+            <div className="flex items-start gap-2 mb-4">
+              <p className="text-text-primary font-semibold flex-1">{question.question}</p>
+              <SpeakBtn text={question.question} />
+            </div>
 
             {teil.questionFormat === "richtigfalsch" ? (
               <div className="grid grid-cols-2 gap-3">
@@ -718,6 +722,7 @@ export default function HorenTeilPage() {
                         {letter}
                       </span>
                       <span className="flex-1">{opt}</span>
+                      <SpeakBtn text={opt} className="shrink-0 opacity-60 hover:opacity-100" />
                       {showResult && isCorrect && <CheckCircle2 className="w-4 h-4 text-green-400 shrink-0" />}
                       {showResult && isSelected && !isCorrect && <XCircle className="w-4 h-4 text-red-400 shrink-0" />}
                     </motion.button>
