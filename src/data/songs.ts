@@ -1,0 +1,428 @@
+export interface LuckentextLine {
+  german: string;
+  turkish: string;
+  blank: string;
+}
+
+export interface TranslationLine {
+  german: string;
+  turkish: string;
+}
+
+export interface VocabItem {
+  word: string;
+  translation: string;
+  example: string;
+}
+
+export interface Song {
+  id: string;
+  title: string;
+  artist: string;
+  youtubeId: string;
+  level: "A1" | "A2" | "B1" | "B2" | "C1";
+  genre: string;
+  year: number;
+  description: string;
+  lyricsQuery: { artist: string; track: string };
+  translationLines: TranslationLine[];
+  luckentextLines: LuckentextLine[];
+  vocabulary: VocabItem[];
+}
+
+export const LEVEL_COLORS: Record<string, string> = {
+  A1: "bg-emerald-500/15 text-emerald-400 border-emerald-500/30",
+  A2: "bg-blue-500/15 text-blue-400 border-blue-500/30",
+  B1: "bg-violet-500/15 text-violet-400 border-violet-500/30",
+  B2: "bg-orange-500/15 text-orange-400 border-orange-500/30",
+  C1: "bg-gold/15 text-gold border-gold/30",
+};
+
+export const GENRE_COLORS: Record<string, string> = {
+  "Pop": "bg-sky-500/15 text-sky-400",
+  "Pop-Rap": "bg-cyan-500/15 text-cyan-400",
+  "Hip-Hop": "bg-amber-500/15 text-amber-400",
+  "Pop/Rock": "bg-teal-500/15 text-teal-400",
+  "Indie Rock": "bg-rose-500/15 text-rose-400",
+  "Industrial Metal": "bg-zinc-500/15 text-zinc-300",
+  "New Wave": "bg-purple-500/15 text-purple-400",
+  "Schlager": "bg-pink-500/15 text-pink-400",
+  "Rock": "bg-red-500/15 text-red-400",
+};
+
+export const songs: Song[] = [
+  // ── A1 ─────────────────────────────────────────────────────────────────────
+  {
+    id: "lieblingsmensch",
+    title: "Lieblingsmensch",
+    artist: "Namika",
+    youtubeId: "3ryohiCVq3M",
+    level: "A1",
+    genre: "Pop",
+    year: 2015,
+    description: "Arkadaşlık ve sevgi üzerine çok net bir telaffuzla söylenmiş neşeli bir şarkı. Günlük hayatta en sık kullanılan duygusal ifadeleri öğrenmek için mükemmel.",
+    lyricsQuery: { artist: "Namika", track: "Lieblingsmensch" },
+    translationLines: [
+      { german: "Hallo Lieblingsmensch", turkish: "Merhaba, en sevdiğim insan" },
+      { german: "Ein Riesenkompliment", turkish: "Kocaman bir iltifat" },
+      { german: "Ich bin froh, dass es dich gibt", turkish: "Var olduğun için ne kadar mutluyum" },
+      { german: "Du bist mein Lieblingsmensch auf dieser Welt", turkish: "Sen bu dünyadaki en sevdiğim insansın" },
+      { german: "Du gibst mir Heimweh nach dir", turkish: "Sen bende seni özletiyorsun" },
+      { german: "Niemand macht mich so glücklich wie du", turkish: "Hiç kimse senim gibi beni mutlu etmiyor" },
+      { german: "Du hast mir Mut gemacht", turkish: "Sen bana cesaret verdin" },
+      { german: "Du bist da, wenn ich dich brauche", turkish: "Sana ihtiyaç duyduğumda hep oradasın" },
+      { german: "Ich bin froh, dass wir uns kennen", turkish: "Seni tanıdığım için çok mutluyum" },
+    ],
+    luckentextLines: [
+      { german: "Du bist mein Lieblingsmensch auf dieser Welt", turkish: "Sen bu dünyadaki en sevdiğim insansın", blank: "Lieblingsmensch" },
+      { german: "Ein Riesenkompliment", turkish: "Kocaman bir iltifat", blank: "Riesenkompliment" },
+      { german: "Ich bin froh, dass es dich gibt", turkish: "Var olduğun için mutluyum", blank: "froh" },
+      { german: "Niemand macht mich so glücklich wie du", turkish: "Hiç kimse senim gibi beni mutlu etmiyor", blank: "glücklich" },
+      { german: "Du gibst mir Heimweh nach dir", turkish: "Sen bende seni özletiyorsun", blank: "Heimweh" },
+    ],
+    vocabulary: [
+      { word: "der Lieblingsmensch", translation: "en sevilen kişi, favorisi", example: "Du bist mein Lieblingsmensch auf dieser Welt." },
+      { word: "kennenlernen", translation: "tanımak, tanışmak", example: "Ich habe viele Leute kennengelernt." },
+      { word: "trotzdem", translation: "yine de, buna rağmen", example: "Es regnet, trotzdem gehe ich spazieren." },
+      { word: "vertrauen", translation: "güvenmek", example: "Ich vertraue dir." },
+      { word: "der Anker", translation: "çapa, dayanak", example: "Du bist mein Anker in schwierigen Zeiten." },
+      { word: "glücklich", translation: "mutlu", example: "Du machst mich glücklich." },
+    ],
+  },
+  {
+    id: "einmal-um-die-welt",
+    title: "Einmal um die Welt",
+    artist: "Cro",
+    youtubeId: "u2pySXCmwpc",
+    level: "A1",
+    genre: "Pop-Rap",
+    year: 2012,
+    description: "Panda maskeli rapçi Cro'nun sevilen şarkısı. Seyahat, hayaller ve gelecek zaman anlatımı için harika basit bir yapıya sahip.",
+    lyricsQuery: { artist: "Cro", track: "Einmal um die Welt" },
+    translationLines: [
+      { german: "Ich will einmal um die Welt", turkish: "Bir kez dünyayı dolaşmak istiyorum" },
+      { german: "Und alles seh'n, was mir gefällt", turkish: "Ve beğendiğim her şeyi görmek istiyorum" },
+      { german: "Ich will mit dir durch jedes Land", turkish: "Seninle her ülkeden geçmek istiyorum" },
+      { german: "Nur du und ich, Hand in Hand", turkish: "Sadece sen ve ben, el ele" },
+      { german: "Ich will nichts verpassen", turkish: "Hiçbir şeyi kaçırmak istemiyorum" },
+      { german: "Das wäre schön, wäre schön", turkish: "Bu çok güzel olurdu, çok güzel" },
+      { german: "Ich hab so viele Träume", turkish: "Çok fazla hayalim var" },
+      { german: "Baby, lass uns gehen", turkish: "Hayatım, hadi gidelim" },
+      { german: "Mit dir an meiner Seite ist alles möglich", turkish: "Yanımda seninle her şey mümkün" },
+    ],
+    luckentextLines: [
+      { german: "Ich will einmal um die Welt", turkish: "Bir kez dünyayı dolaşmak istiyorum", blank: "einmal" },
+      { german: "Und alles seh'n, was mir gefällt", turkish: "Ve beğendiğim her şeyi görmek", blank: "gefällt" },
+      { german: "Nur du und ich, Hand in Hand", turkish: "Sadece sen ve ben, el ele", blank: "Hand" },
+      { german: "Ich will nichts verpassen", turkish: "Hiçbir şeyi kaçırmak istemiyorum", blank: "verpassen" },
+      { german: "Das wäre schön, wäre schön", turkish: "Bu güzel olurdu, güzel olurdu", blank: "schön" },
+    ],
+    vocabulary: [
+      { word: "einmal", translation: "bir kez, bir sefer", example: "Ich war einmal in Berlin." },
+      { word: "die Welt", translation: "dünya", example: "Die Welt ist groß und schön." },
+      { word: "gefallen", translation: "hoşa gitmek, beğenmek", example: "Das Lied gefällt mir sehr." },
+      { word: "verpassen", translation: "kaçırmak, gözden kaçırmak", example: "Ich will nichts verpassen." },
+      { word: "der Traum", translation: "rüya, hayal", example: "Ich habe viele Träume." },
+      { word: "entdecken", translation: "keşfetmek", example: "Wir wollen die Welt entdecken." },
+    ],
+  },
+  // ── A2 ─────────────────────────────────────────────────────────────────────
+  {
+    id: "au-revoir",
+    title: "Au Revoir",
+    artist: "Mark Forster feat. Sido",
+    youtubeId: "MtDPKJSsBgc",
+    level: "A2",
+    genre: "Pop",
+    year: 2014,
+    description: "Vedalaşma ve yeni başlangıçlar üzerine akılda kalıcı bir nakarat. Sido'nun rap bölümüyle birlikte vedalaşma ifadelerini ve zaman zarflarını öğrenmek için ideal.",
+    lyricsQuery: { artist: "Mark Forster", track: "Au Revoir" },
+    translationLines: [
+      { german: "Au revoir, au revoir", turkish: "Hoşça kal, hoşça kal" },
+      { german: "Irgendwann gehen alle Wege auseinander", turkish: "Eninde sonunda tüm yollar ayrılır" },
+      { german: "Manchmal muss man Abschied nehmen", turkish: "Bazen veda etmek gerekir" },
+      { german: "Um vorwärts gehen zu können", turkish: "İlerleyebilmek için" },
+      { german: "Ich geh jetzt meinen Weg", turkish: "Artık kendi yoluma gidiyorum" },
+      { german: "Du bleibst in meinem Herzen", turkish: "Kalbimde kalıyorsun" },
+      { german: "Es war schön mit dir", turkish: "Seninle güzeldi" },
+      { german: "Ich trag dich immer bei mir", turkish: "Seni her zaman yanımda taşıyorum" },
+      { german: "Das Leben wartet nicht", turkish: "Hayat beklemiyor" },
+    ],
+    luckentextLines: [
+      { german: "Irgendwann gehen alle Wege auseinander", turkish: "Eninde sonunda tüm yollar ayrılır", blank: "auseinander" },
+      { german: "Manchmal muss man Abschied nehmen", turkish: "Bazen veda etmek gerekir", blank: "Abschied" },
+      { german: "Ich geh jetzt meinen Weg", turkish: "Artık kendi yoluma gidiyorum", blank: "Weg" },
+      { german: "Du bleibst in meinem Herzen", turkish: "Kalbimde kalıyorsun", blank: "Herzen" },
+      { german: "Es war schön mit dir", turkish: "Seninle güzeldi", blank: "schön" },
+    ],
+    vocabulary: [
+      { word: "der Abschied", translation: "veda", example: "Der Abschied fiel ihm schwer." },
+      { word: "loslassen", translation: "bırakmak, vazgeçmek", example: "Es ist schwer, loszulassen." },
+      { word: "der Neuanfang", translation: "yeni başlangıç", example: "Nach dem Umzug war es ein Neuanfang." },
+      { word: "egal", translation: "fark etmez, önemli değil", example: "Egal was passiert, ich bin bei dir." },
+      { word: "wagen", translation: "cesaret etmek, göze almak", example: "Ich wage einen neuen Versuch." },
+      { word: "das Versprechen", translation: "söz, vaat", example: "Ich halte mein Versprechen." },
+    ],
+  },
+  {
+    id: "auf-uns",
+    title: "Auf uns",
+    artist: "Andreas Bourani",
+    youtubeId: "k9EYjn5f_nE",
+    level: "A2",
+    genre: "Pop",
+    year: 2014,
+    description: "2014 Dünya Kupası için yazılan bu şarkı. Pozitif, 'başarı' ve 'birliktelik' üzerine zengin kelime dağarcığı sunar. Konjunktiv II yapısına ilk adım.",
+    lyricsQuery: { artist: "Andreas Bourani", track: "Auf uns" },
+    translationLines: [
+      { german: "Ein Hoch auf uns", turkish: "Bize şerefe" },
+      { german: "Auf das, was vor uns liegt", turkish: "Önümüzde olanlara" },
+      { german: "Auf jede Träne, die versiegt", turkish: "Kuruyan her gözyaşına" },
+      { german: "Das Einzige, was wirklich zählt", turkish: "Gerçekten önemli olan tek şeye" },
+      { german: "Ich glaube an uns", turkish: "Bize inanıyorum" },
+      { german: "Mit allem, was ich hab", turkish: "Sahip olduğum her şeyle" },
+      { german: "Ich bin bereit", turkish: "Hazırım" },
+      { german: "Ich öffne mein Herz", turkish: "Kalbimi açıyorum" },
+      { german: "Ich hab keine Angst mehr", turkish: "Artık korkum yok" },
+    ],
+    luckentextLines: [
+      { german: "Ein Hoch auf uns", turkish: "Bize şerefe", blank: "Hoch" },
+      { german: "Auf das, was vor uns liegt", turkish: "Önümüzde olanlara", blank: "liegt" },
+      { german: "Ich glaube an uns", turkish: "Bize inanıyorum", blank: "glaube" },
+      { german: "Auf jede Träne, die versiegt", turkish: "Kuruyan her gözyaşına", blank: "Träne" },
+      { german: "Das Einzige, was wirklich zählt", turkish: "Gerçekten önemli olan tek şeye", blank: "zählt" },
+    ],
+    vocabulary: [
+      { word: "ein Hoch auf", translation: "şerefe, yaşasın", example: "Ein Hoch auf das neue Jahr!" },
+      { word: "die Träne", translation: "gözyaşı", example: "Tränen liefen über ihre Wangen." },
+      { word: "zählen", translation: "sayılmak, önemli olmak", example: "Du zählst für mich." },
+      { word: "bereit", translation: "hazır", example: "Ich bin bereit für alles." },
+      { word: "die Angst", translation: "korku", example: "Ich habe keine Angst mehr." },
+      { word: "glauben", translation: "inanmak", example: "Ich glaube an dich." },
+    ],
+  },
+  // ── B1 ─────────────────────────────────────────────────────────────────────
+  {
+    id: "zusammen",
+    title: "Zusammen",
+    artist: "Die Fantastischen Vier feat. Clueso",
+    youtubeId: "H-RrCQQAdK4",
+    level: "B1",
+    genre: "Hip-Hop",
+    year: 2016,
+    description: "Alman hip-hopunun öncülerinden Die Fantastischen Vier ile Clueso'nun eğlenceli beraberlik şarkısı. Ritmi yüksek, birliktelik temalı B1 kelime dağarcığı.",
+    lyricsQuery: { artist: "Die Fantastischen Vier", track: "Zusammen" },
+    translationLines: [
+      { german: "Zusammen, zusammen", turkish: "Birlikte, birlikte" },
+      { german: "Zusammen sind wir stark", turkish: "Birlikte güçlüyüz" },
+      { german: "Zusammen ist man weniger allein", turkish: "Birlikte olunca insan daha az yalnız oluyor" },
+      { german: "Zusammen macht das Leben mehr Sinn", turkish: "Birlikte hayat daha anlam kazanıyor" },
+      { german: "Nur zusammen kommen wir weiter", turkish: "Yalnızca birlikte daha ileriye gidebiliriz" },
+      { german: "Gute Zeiten und schlechte Zeiten", turkish: "İyi zamanlar ve kötü zamanlar" },
+      { german: "Ich bin bei dir in beiden", turkish: "Her ikisinde de yanındayım" },
+      { german: "Das ist Freundschaft, das ist Liebe", turkish: "Bu arkadaşlık, bu aşk" },
+      { german: "Es ist schön, dass du da bist", turkish: "Orada olman ne güzel" },
+    ],
+    luckentextLines: [
+      { german: "Zusammen sind wir stark", turkish: "Birlikte güçlüyüz", blank: "stark" },
+      { german: "Zusammen ist man weniger allein", turkish: "Birlikte olunca insan daha az yalnız oluyor", blank: "allein" },
+      { german: "Zusammen macht das Leben mehr Sinn", turkish: "Birlikte hayat daha anlam kazanıyor", blank: "Sinn" },
+      { german: "Nur zusammen kommen wir weiter", turkish: "Yalnızca birlikte daha ileriye gidebiliriz", blank: "weiter" },
+      { german: "Gute Zeiten und schlechte Zeiten", turkish: "İyi zamanlar ve kötü zamanlar", blank: "schlechte" },
+    ],
+    vocabulary: [
+      { word: "zusammen", translation: "birlikte, beraber", example: "Wir machen das zusammen." },
+      { word: "sich kreuzen", translation: "kesişmek", example: "Unsere Wege haben sich gekreuzt." },
+      { word: "angehen", translation: "ele almak, yaklaşmak", example: "Wir gehen das Problem zusammen an." },
+      { word: "weniger", translation: "daha az", example: "Zusammen ist man weniger allein." },
+      { word: "die Freundschaft", translation: "arkadaşlık", example: "Unsere Freundschaft ist sehr stark." },
+      { word: "weiter kommen", translation: "ilerlemek, daha ileriye gitmek", example: "Zusammen kommen wir weiter." },
+    ],
+  },
+  {
+    id: "nur-noch-kurz",
+    title: "Nur noch kurz die Welt retten",
+    artist: "Tim Bendzko",
+    youtubeId: "4BAKb2p450Q",
+    level: "B1",
+    genre: "Pop",
+    year: 2011,
+    description: "\"Sadece dünyayı kurtarmam lazım\" diyor. Telefona çıkmamak için bahane üreten komik ve sevimli bir şarkı. Günlük dilde bahane ve erteleme ifadelerini öğrenmek için harika.",
+    lyricsQuery: { artist: "Tim Bendzko", track: "Nur noch kurz die Welt retten" },
+    translationLines: [
+      { german: "Ich muss nur noch kurz die Welt retten", turkish: "Sadece biraz daha dünyayı kurtarmam lazım" },
+      { german: "Warte mal eben", turkish: "Bir dakika bekle" },
+      { german: "Dann komm ich zu dir", turkish: "Sonra sana gelirim" },
+      { german: "Du rufst mich an", turkish: "Beni arıyorsun" },
+      { german: "Ich seh's auf meinem Handy", turkish: "Telefonumda görüyorum" },
+      { german: "Ich weiß, ich sollte rangehen", turkish: "Biliyorum, açmam gerekiyor" },
+      { german: "Ich ruf dich später an", turkish: "Seni daha sonra ararım" },
+      { german: "Ich kann nicht einfach weggehen", turkish: "Sadece çekip gidemem" },
+      { german: "Du verstehst das doch, oder?", turkish: "Anlıyorsun, değil mi?" },
+    ],
+    luckentextLines: [
+      { german: "Ich muss nur noch kurz die Welt retten", turkish: "Sadece biraz daha dünyayı kurtarmam lazım", blank: "retten" },
+      { german: "Warte mal eben", turkish: "Bir dakika bekle", blank: "eben" },
+      { german: "Dann komm ich zu dir", turkish: "Sonra sana gelirim", blank: "komm" },
+      { german: "Ich seh's auf meinem Handy", turkish: "Telefonumda görüyorum", blank: "Handy" },
+      { german: "Ich weiß, ich sollte rangehen", turkish: "Biliyorum, açmam gerekiyor", blank: "rangehen" },
+    ],
+    vocabulary: [
+      { word: "rangehen", translation: "telefonu açmak, almak", example: "Ich gehe nicht ran, wenn er anruft." },
+      { word: "retten", translation: "kurtarmak", example: "Er will die Welt retten." },
+      { word: "vorbei", translation: "bitti, geçti, sona erdi", example: "Das Konzert ist vorbei." },
+      { word: "aufregend", translation: "heyecan verici", example: "Das Abenteuer war sehr aufregend." },
+      { word: "wichtig", translation: "önemli", example: "Das ist sehr wichtig für mich." },
+      { word: "stecken", translation: "olmak, sıkışmak, içinde bulunmak", example: "Ich stecke mitten in der Arbeit." },
+    ],
+  },
+  {
+    id: "haus-am-see",
+    title: "Haus am See",
+    artist: "Peter Fox",
+    youtubeId: "cIfx8QiNXfs",
+    level: "B1",
+    genre: "Hip-Hop",
+    year: 2008,
+    description: "Modern bir klasik. Gelecek planları, ev, aile ve hayaller üzerine çok zengin tasvirler içeriyor. Koşullu cümleler ve gelecek hayal kurma anlatımı için mükemmel.",
+    lyricsQuery: { artist: "Peter Fox", track: "Haus am See" },
+    translationLines: [
+      { german: "Ich steh auf einem Hügel und seh ins Tal", turkish: "Bir tepede duruyorum ve vadiye bakıyorum" },
+      { german: "Ich will ein Haus am See", turkish: "Göl kenarında bir ev istiyorum" },
+      { german: "Ich brauch kein Geld, keine Macht", turkish: "Para istemiyorum, güç istemiyorum" },
+      { german: "Ich will alt werden und das ohne Hast", turkish: "Yaşlanmak istiyorum, telaşsızca" },
+      { german: "Mein Leben lang", turkish: "Hayatım boyunca" },
+      { german: "Ich seh mein Leben vor mir", turkish: "Hayatımı önümde görüyorum" },
+      { german: "Ein Haus am See, wo die Sonne untergeht", turkish: "Güneşin battığı, göl kenarında bir ev" },
+      { german: "Kinder, die im Garten spielen", turkish: "Bahçede oynayan çocuklar" },
+      { german: "Das ist alles, was ich will", turkish: "Tek istediğim bu" },
+    ],
+    luckentextLines: [
+      { german: "Ich steh auf einem Hügel und seh ins Tal", turkish: "Bir tepede duruyorum ve vadiye bakıyorum", blank: "Hügel" },
+      { german: "Ich will ein Haus am See", turkish: "Göl kenarında bir ev istiyorum", blank: "See" },
+      { german: "Ich brauch kein Geld, keine Macht", turkish: "Para istemiyorum, güç istemiyorum", blank: "Macht" },
+      { german: "Ich will alt werden und das ohne Hast", turkish: "Yaşlanmak istiyorum ve acele etmeksizin", blank: "Hast" },
+      { german: "Mein Leben lang", turkish: "Hayatım boyunca", blank: "Leben" },
+    ],
+    vocabulary: [
+      { word: "sich vorstellen", translation: "hayal etmek, tahayyül etmek", example: "Ich stelle mir ein schönes Leben vor." },
+      { word: "der See", translation: "göl", example: "Wir wohnen am See." },
+      { word: "der Platz", translation: "alan, yer, meydan", example: "Hier ist genug Platz für alle." },
+      { word: "begleiten", translation: "eşlik etmek, refakat etmek", example: "Der Hund begleitet uns überall." },
+      { word: "das Gefühl", translation: "his, duygu", example: "Das ist ein wunderbares Gefühl." },
+      { word: "alt werden", translation: "yaşlanmak", example: "Ich möchte hier alt werden." },
+    ],
+  },
+  // ── B2 ─────────────────────────────────────────────────────────────────────
+  {
+    id: "symphonie",
+    title: "Symphonie",
+    artist: "Silbermond",
+    youtubeId: "deDquONycuA",
+    level: "B2",
+    genre: "Pop/Rock",
+    year: 2015,
+    description: "Silbermond'un romantik hiti. Müzik ve aşk metaforları üzerinden duygusal sıfatları, karşılaştırma yapılarını ve B2 kelime dağarcığını zenginleştirin.",
+    lyricsQuery: { artist: "Silbermond", track: "Symphonie" },
+    translationLines: [
+      { german: "Du bist eine Symphonie", turkish: "Sen bir senfonisisin" },
+      { german: "Du bist wie eine Melodie, die nicht loslässt", turkish: "Sen bırakmayan bir melodi gibisin" },
+      { german: "Mit jedem Atemzug", turkish: "Her nefesimde" },
+      { german: "Mit jedem meiner Herzschläge", turkish: "Her kalp atışımda" },
+      { german: "Ich halte dich fest in Gedanken", turkish: "Seni düşüncelerimde sıkıca tutuyorum" },
+      { german: "Auch wenn du nicht da bist", turkish: "Orada olmasan bile" },
+      { german: "Du bist überall, du bist immer hier", turkish: "Her yerde varsın, her zaman buradasın" },
+      { german: "Denn mit dir ist alles anders", turkish: "Çünkü seninle her şey farklı" },
+      { german: "Alles fühlt sich richtig an", turkish: "Her şey doğru hissettiriyor" },
+    ],
+    luckentextLines: [
+      { german: "Du bist eine Symphonie", turkish: "Sen bir senfonisi", blank: "Symphonie" },
+      { german: "Du bist wie eine Melodie, die nicht loslässt", turkish: "Sen bırakmayan bir melodi gibisin", blank: "loslässt" },
+      { german: "Mit jedem Atemzug", turkish: "Her nefesimde", blank: "Atemzug" },
+      { german: "Ich halte dich fest in Gedanken", turkish: "Seni düşüncelerimde sıkıca tutuyorum", blank: "Gedanken" },
+      { german: "Denn mit dir ist alles anders", turkish: "Çünkü seninle her şey farklı", blank: "anders" },
+    ],
+    vocabulary: [
+      { word: "die Melodie", translation: "melodi, ezgi", example: "Diese Melodie geht mir nicht aus dem Kopf." },
+      { word: "loslassen", translation: "bırakmak, serbest bırakmak", example: "Es fällt mir schwer, loszulassen." },
+      { word: "der Atemzug", translation: "nefes alış", example: "Mit jedem Atemzug denke ich an dich." },
+      { word: "der Herzschlag", translation: "kalp atışı", example: "Ihr Herzschlag wurde schneller." },
+      { word: "in Gedanken", translation: "düşüncede, zihinde", example: "Ich bin in Gedanken immer bei dir." },
+      { word: "vertragen", translation: "kaldırmak, taşımak, katlanmak", example: "Ich kann kaum vertragen, wie schön du bist." },
+    ],
+  },
+  {
+    id: "guten-tag",
+    title: "Guten Tag",
+    artist: "Wir sind Helden",
+    youtubeId: "Vt8qY5KY9dQ",
+    level: "B2",
+    genre: "Indie Rock",
+    year: 2003,
+    description: "Tüketim toplumuna eleştiri getiren enerjik indie rock şarkısı. Kelime oyunları ve ironik dil zengindir. B2 öğrencileri için mükemmel bir kültürel referans.",
+    lyricsQuery: { artist: "Wir sind Helden", track: "Guten Tag" },
+    translationLines: [
+      { german: "Guten Tag, ich möchte mich beschweren", turkish: "İyi günler, şikâyette bulunmak istiyorum" },
+      { german: "Ich hab das Leben gründlich ausprobiert", turkish: "Hayatı iyice denedim" },
+      { german: "Es hat mir weder Glück noch Sinn gegeben", turkish: "Ne mutluluk ne de anlam verdi bana" },
+      { german: "Ich hätte gern mein altes Leben zurück", turkish: "Eski hayatımı geri almak istiyorum" },
+      { german: "Es war nicht wie versprochen", turkish: "Söylendiği gibi değildi" },
+      { german: "Ich will nicht frei und ungebunden sein", turkish: "Özgür ve bağımsız olmak istemiyorum" },
+      { german: "Ich will einfach nur mein Leben zurück", turkish: "Sadece hayatımı geri istiyorum" },
+      { german: "Bitte, das wäre sehr nett", turkish: "Lütfen, çok nazik olur" },
+      { german: "Ich möchte mich beklagen", turkish: "Yakınmak istiyorum" },
+    ],
+    luckentextLines: [
+      { german: "Guten Tag, ich möchte mich beschweren", turkish: "İyi günler, şikâyette bulunmak istiyorum", blank: "beschweren" },
+      { german: "Ich hätte gern mein altes Leben zurück", turkish: "Eski hayatımı geri almak istiyorum", blank: "zurück" },
+      { german: "Ich hab das Leben gründlich ausprobiert", turkish: "Hayatı iyice denedim", blank: "ausprobiert" },
+      { german: "Es war nicht wie versprochen", turkish: "Söylendiği gibi değildi", blank: "versprochen" },
+      { german: "Ich will nicht frei und ungebunden sein", turkish: "Özgür ve bağımsız olmak istemiyorum", blank: "ungebunden" },
+    ],
+    vocabulary: [
+      { word: "sich beschweren", translation: "şikâyet etmek", example: "Er beschwert sich über den Lärm." },
+      { word: "ausprobieren", translation: "denemek, test etmek", example: "Hast du das neue Restaurant ausprobiert?" },
+      { word: "versprechen", translation: "söz vermek, vaat etmek", example: "Das hat man mir so versprochen." },
+      { word: "zufrieden", translation: "memnun, hoşnut", example: "Ich bin mit meinem Leben zufrieden." },
+      { word: "sich beklagen", translation: "yakınmak, sızlanmak", example: "Sie beklagt sich über alles." },
+      { word: "ungebunden", translation: "özgür, bağımsız, serbest", example: "Er lebt frei und ungebunden." },
+    ],
+  },
+  {
+    id: "engel",
+    title: "Engel",
+    artist: "Rammstein",
+    youtubeId: "x2rQzv8OWEY",
+    level: "B2",
+    genre: "Industrial Metal",
+    year: 1997,
+    description: "Dini metaforlar, Konjunktiv II ve güçlü imge dili içeren Rammstein klasiği. B2 öğrencileri için felsefi ve dilsel açıdan zengin bir metin.",
+    lyricsQuery: { artist: "Rammstein", track: "Engel" },
+    translationLines: [
+      { german: "Wer hat Angst vorm schwarzen Mann", turkish: "Kara adamdan kim korkar" },
+      { german: "Gott weiß ich will kein Engel sein", turkish: "Tanrı bilir melek olmak istemiyorum" },
+      { german: "Jeder wartet auf das Licht", turkish: "Herkes ışığı bekliyor" },
+      { german: "Fürchtet euch, fürchtet euch nicht", turkish: "Korkunuz, korkmayın" },
+      { german: "Die Sonne scheint mir aus den Augen", turkish: "Güneş gözlerimden parlıyor" },
+      { german: "Sie wird heut Nacht nicht untergehen", turkish: "Bu gece batmayacak" },
+      { german: "Engel haben keine Wahl", turkish: "Meleklerin seçeneği yok" },
+      { german: "Engel müssen leiden", turkish: "Melekler acı çekmeli" },
+      { german: "Teufel dürfen alles haben", turkish: "Şeytanlar her şeye sahip olabilir" },
+    ],
+    luckentextLines: [
+      { german: "Wer hat Angst vorm schwarzen Mann", turkish: "Kara adamdan kim korkar", blank: "Angst" },
+      { german: "Gott weiß ich will kein Engel sein", turkish: "Tanrı bilir melek olmak istemiyorum", blank: "Engel" },
+      { german: "Jeder wartet auf das Licht", turkish: "Herkes ışığı bekliyor", blank: "wartet" },
+      { german: "Die Sonne scheint mir aus den Augen", turkish: "Güneş gözlerimden parlıyor", blank: "scheint" },
+      { german: "Ich will kein Engel sein", turkish: "Melek olmak istemiyorum", blank: "sein" },
+    ],
+    vocabulary: [
+      { word: "der Engel", translation: "melek", example: "Er ist wie ein Schutzengel." },
+      { word: "verraten", translation: "ihanet etmek, ele vermek", example: "Er hat das Geheimnis verraten." },
+      { word: "fürchten", translation: "korkmak", example: "Ich fürchte mich vor der Dunkelheit." },
+      { word: "die Stille", translation: "sessizlik, sükût", example: "Die Stille des Waldes ist friedvoll." },
+      { word: "leiden", translation: "acı çekmek", example: "Er leidet unter dem Druck." },
+      { word: "untergehen", translation: "batmak (güneş/gemi)", example: "Die Sonne geht um 20 Uhr unter." },
+    ],
+  },
+];
