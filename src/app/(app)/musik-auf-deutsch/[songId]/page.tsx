@@ -305,31 +305,15 @@ function SongDetail({ song }: { song: Song }) {
                 transition={{ duration: 0.12 }}
                 className="flex-1 overflow-y-auto"
               >
-                {lyricsLoading ? (
-                  <div className="flex-1 flex flex-col items-center justify-center gap-3 text-text-muted h-full">
-                    <Music className="w-6 h-6 animate-pulse" />
-                    <span className="text-sm">Sözler yükleniyor…</span>
+                {song.translationLines.map((line, i) => (
+                  <div
+                    key={i}
+                    className="px-4 py-2.5 border-b border-navy-border/20 last:border-0 hover:bg-navy-light/30 transition-colors"
+                  >
+                    <p className="text-text-primary text-sm leading-relaxed">{line.german}</p>
+                    <p className="text-purple-300/70 text-xs italic mt-0.5">{line.turkish}</p>
                   </div>
-                ) : (() => {
-                  const trMap = new Map(
-                    song.translationLines.map((l) => [l.german.toLowerCase().trim(), l.turkish])
-                  );
-                  const lines = syncedLines.length > 0 ? syncedLines : song.translationLines.map((l) => ({ seconds: 0, text: l.german }));
-                  return lines.map((line, i) => {
-                    const turkish = trMap.get(line.text.toLowerCase().trim());
-                    return (
-                      <div
-                        key={i}
-                        className="px-4 py-2.5 border-b border-navy-border/20 last:border-0 hover:bg-navy-light/30 transition-colors"
-                      >
-                        <p className="text-text-primary text-sm leading-relaxed">{line.text}</p>
-                        {turkish && (
-                          <p className="text-purple-300/70 text-xs italic mt-0.5">{turkish}</p>
-                        )}
-                      </div>
-                    );
-                  });
-                })()}
+                ))}
               </motion.div>
             )}
 
